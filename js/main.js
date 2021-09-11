@@ -1,6 +1,8 @@
+// Consigna 2 y 5: Módulo que contiene las funciones para subir una imagen y descargarla al disco
+import { uploadImage, downloadImage } from"./ImageLoader.js";
+
 // Consigna 3 y 4: Módulo que contiene los filtros
 import { ImageFilters } from "./ImageFilter.js"; 
-
 document.addEventListener("DOMContentLoaded", ()=> {
     let canvas =  document.getElementById("canvas");
     let ctx = canvas.getContext("2d");
@@ -9,6 +11,22 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
     ctx.fillStyle='white';
     ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+
+    // Consigna 2:
+    // Añadiendo eventos para subir una imagen
+    document.getElementById('btn-download-image').addEventListener('click', (e) => {
+        // Pasando el elemento HTML del evento
+        downloadImage(e.target, canvas)
+      })
+
+    // Consigna 5:
+    // Añadiendo eventos para descargar una imagen
+    document.getElementById('btn-upload-image').addEventListener("change", (e) => {
+        // Pasando el elemento HTML del evento
+        uploadImage(e.target, canvas)
+    });
+
 
     // Consigna 3 y 4:
     // Añadiendo los eventos para activar los filtros
@@ -48,7 +66,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         });
         
         // 2.2.1 Análogo a los pasos previos, pero adaptado a los inputs tipo checkbox
-        inputsFilters.forEach( input => {
+        inputsFilters.querySelectorAll("input[type=checkbox]:checked").forEach( input => {
                 let outputImagen = ctx.getImageData(canvas.clientLeft, canvas.clientTop, canvas.width, canvas.height);
                 let filter = input.getAttribute("data-filter-type")
                 inputImagen = ImageFilters[filter](inputImagen, outputImagen);
@@ -57,24 +75,5 @@ document.addEventListener("DOMContentLoaded", ()=> {
         // 3. Se coloca la imagen editada en el canvas
         ctx.putImageData(inputImagen, canvas.clientLeft, canvas.clientTop);
     });
-    
-    document.getElementById('fileUpload').addEventListener("change", loadImage);
-
-
-function loadImage() {
-    if (!this.files || !this.files[0]) return;
-    
-    const fileReader = new FileReader();
-    fileReader.addEventListener("load", (e) => {
-      const img = new Image();
-      img.addEventListener("load", () => {
-        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-        ctx.drawImage(img, 0, 0);
-      });
-      img.src = e.target.result;
-    });
-    fileReader.readAsDataURL(this.files[0]);
-  }
-
 });
 
