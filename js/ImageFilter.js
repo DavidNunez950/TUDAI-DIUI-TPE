@@ -7,23 +7,23 @@ export { ImageFilters };
 // provee este módulo no depende de como esté implementado, sino de la interfaz que provee este objeto
 const ImageFilters = {
     grayScale  : function(inputImage, outputImage, intensity) {
-        return imageFilterApplicator.aplyFilter(inputImage, outputImage, filters.grayScaleFilter, intensity)
+        return imageFilterApplicator.aplyFilter(inputImage, outputImage, filters.grayScaleFilter, intensity);
     },
     saturation : function(inputImage, outputImage, intensity) {
-        return imageFilterApplicator.aplyFilter(inputImage, outputImage, filters.saturationFilter, intensity)
+        return imageFilterApplicator.aplyFilter(inputImage, outputImage, filters.saturationFilter, intensity);
     },
     blur       : function(inputImage, outputImage, intensity) {
-        return imageFilterApplicator.aplyFilter(inputImage, outputImage, filters.blurFilter, intensity)
+        return imageFilterApplicator.aplyFilter(inputImage, outputImage, filters.blurFilter, intensity);
     },
     invertImage: function(inputImage, outputImage, intensity) {
-        return imageFilterApplicator.aplyFilter(inputImage, outputImage, filters.invertImageFilter, intensity)
+        return imageFilterApplicator.aplyFilter(inputImage, outputImage, filters.invertImageFilter, intensity);
     },
     invertColor: function(inputImage, outputImage, intensity) {
-        return imageFilterApplicator.aplyFilter(inputImage, outputImage, filters.invertColorImageFilter, intensity)
+        return imageFilterApplicator.aplyFilter(inputImage, outputImage, filters.invertColorImageFilter, intensity);
     },
-    sobel      : function(inputImage, outputImage) {
-        inputImage = imageFilterApplicator.aplyFilter(inputImage, outputImage, filters.sobelFilter)
-        return imageFilterApplicator.aplyFilter(outputImage, inputImage, filters.grayScaleFilter, 100)
+    sobel      : function(inputImage, outputImage, intensity) {
+        imageFilterApplicator.aplyFilter(inputImage, inputImage, filters.grayScaleFilter, 100);
+        return imageFilterApplicator.aplyFilter(inputImage, outputImage, filters.sobelFilter, intensity);
     }
 }
 
@@ -103,7 +103,7 @@ const filters = {
     
     // 3.3 Gray Sacle Filter
     grayScaleFilter: {
-        maxIntensity: 100,
+        maxIntensity: 1,
         minIntensity: 0,
         filter: function(imagenData, x, y, intensity = 0) {
             let index = (x + y * imagenData.width) * 4;
@@ -133,12 +133,13 @@ const filters = {
     // 4. Aplicar al menos dos de los siguientes filtros a la imagen: Blur, Saturación, Detección de Bordes.
     // 4.1 Blur Filter
     blurFilter: {
-        maxIntensity: 20,
+        maxIntensity: 10,
         minIntensity: 0,
         filter: function (imagenData, centerX, centerY, blurRadius = 10) {
             // La variable intensidad se renombró como radio de blur. Esta se utiliza para tomar
             // n pixeles hacia arriba y abajo en el eje vertical, y n pixeles hacia la derecha y la izquierda
             // en el eje horizontal, donde n es el valor del radio de blur.
+            blurRadius = Math.floor(blurRadius);
             let startX = (centerX - blurRadius <= 0) ? 0 : centerX - blurRadius;
             let startY = (centerY - blurRadius <= 0) ? 0 : centerY - blurRadius;
             let endX   = (centerX + blurRadius >= imagenData.width -1) ? imagenData.width  : centerX + blurRadius;
@@ -148,7 +149,7 @@ const filters = {
             // elevado al cuadrado. Los lados del cuadrado se pueden calcular como el radio del blur por dos, 
             // los n pixeles que se toman hacia la derecha y la izquierda en el eje horizontal, más
             // el mismo pixel sobre el que se está calculando el blur.
-            let totalPixelsAffected =(blurRadius * 2 + 1)*(blurRadius * 2 + 1)
+            let totalPixelsAffected = (blurRadius * 2 + 1)*(blurRadius * 2 + 1)
             let r = 0;
             let g = 0;
             let b = 0;
@@ -181,7 +182,9 @@ const filters = {
 
     // 4.3 Sobel Filter
     sobelFilter: {
-        filter: function (imagenData, xi, yi) { 
+        maxIntensity: 1000,
+        minIntensity: 0,
+        filter: function (imagenData, xi, yi, intensity) { 
             // las variables x e y se renombrearon como x sub i e y sub i
             let xr = 0; // red   en eje x
             let xg = 0; // blue  en eje x
@@ -214,9 +217,9 @@ const filters = {
             let r = Math.sqrt(xr*xr + yr*yr);
             let g = Math.sqrt(xg*xg + yg*yg);
             let b = Math.sqrt(xb*xb + yb*yb);
-            r = (r <= 70) ? 0 : 255;
-            g = (g <= 70) ? 0 : 255;
-            b = (b <= 70) ? 0 : 255;
+            r = (r <= intensity) ? 0 : 255;
+            g = (g <= intensity) ? 0 : 255;
+            b = (b <= intensity) ? 0 : 255;
             return [r, g, b];
         }
     }
