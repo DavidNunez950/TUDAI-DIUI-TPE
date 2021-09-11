@@ -4,3 +4,7 @@
     border: 0;
 }
 
+html, body, full-screen-height {
+    height: 100%;
+    height: 100vh;
+}

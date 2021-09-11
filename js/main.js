@@ -6,8 +6,11 @@ import { ImageFilters } from "./ImageFilter.js";
 document.addEventListener("DOMContentLoaded", ()=> {
     let canvas =  document.getElementById("canvas");
     let ctx = canvas.getContext("2d");
-    canvas.width  = 900;
-    canvas.height = 500;
+    console.log(canvas.parentElement)
+    canvas.maxWidth  = innerWidth  - canvas.parentElement.offsetLeft  - 65;
+    canvas.maxHeight = innerHeight - canvas.parentElement.offsetTop   - 15;
+    canvas.width  = canvas.maxWidth;
+    canvas.height = canvas.maxHeight;
 
     ctx.fillStyle='white';
     ctx.fillRect(0, 0, canvas.width, canvas.height)

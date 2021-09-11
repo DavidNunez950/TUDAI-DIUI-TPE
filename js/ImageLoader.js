@@ -14,7 +14,16 @@ function uploadImage(uploadBtn, canvas) {
         // 3. Se crea una instancia de la clase "Image" y utilizando la
         // propiedad "onload", se le agrega un evento que se agregue cuando termine de cargarse
         const img = new Image();
-        img.onload  = () => { canvas.getContext('2d').drawImage(img, 0, 0) };
+        img.onload  = () => {
+            let imgAscpectRatio = img.width / img.height; 
+            let cavasAscpectRatio = canvas.maxWidth / canvas.maxHeight; 
+            let coeficiente = (cavasAscpectRatio > imgAscpectRatio) ? canvas.maxHeight / img.height : canvas.maxWidth / img.width;
+            img.width  *= coeficiente;
+            img.height *= coeficiente;
+            canvas.width  = img.width ; 
+            canvas.height = img.height; 
+            canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height)
+        };
 
         // 4. Se setea el atributo "src" con el atributo "result" de la instancia "fileReader"
         // el cual contiene el archivo subido, en un formatea en particular, el cual, como se puede 
