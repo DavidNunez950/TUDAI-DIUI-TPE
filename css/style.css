@@ -1,3 +1,38 @@
 .asdas {
     background-color: rgb(255, 0, 0);
 }
+
+#canvas{
+    border: 5px solid rgb(143, 129, 129);
+}
+
+#context{
+    margin-left: 0px;
+}
+
+#barraYlienzo{
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+#herramientas{
+    background-color: rgb(230, 240, 229);
+    border: 5px solid rgb(143, 129, 129);
+}
+
+#navbar{
+    border: 5px solid black;
+}
+
+#botones{
+    margin-top: 30px;
+}
+
+#color{
+    margin-top: 20px;
+}
+
+#grosor{
+    margin-top: 20px;
+    margin-left: 10px;
+}

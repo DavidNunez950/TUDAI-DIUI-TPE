@@ -18,7 +18,7 @@ const ImageFilter = {
     invertColorImage: function(inputImage, outputImage, intensity) {
         return imageFilterApplicator.aplyFilter(inputImage, outputImage, filters.invertColorImageFilter, intensity)
     },
-    sobelX: function(inputImage, outputImage) {
+    sobel: function(inputImage, outputImage) {
         return imageFilterApplicator.aplyFilter(inputImage, outputImage, filters.sobelFilter)
     }
 }
@@ -66,9 +66,12 @@ invertColorImageFilter.maxIntensity = 100;
 invertColorImageFilter.minIntensity = 0;
 invertColorImageFilter.filter = function(imagenData, x, y, intensity) {
     let index = (x + y * imagenData.width) * 4;
-    let r = imagenData.data[index + 0] + ((255 - imagenData.data[index + 0]*2)/100) * intensity ;
-    let g = imagenData.data[index + 1] + ((255 - imagenData.data[index + 1]*2)/100) * intensity ;
-    let b = imagenData.data[index + 2] + ((255 - imagenData.data[index + 2]*2)/100) * intensity ;
+    // let color =  imagenData.data[index + 0];
+    // let negativo = 255 - imagenData.data[index + 0];
+    // let diferencia = negativo - color; es igual a 255 - color * 2
+    let r = imagenData.data[index + 0] + ((255 - imagenData.data[index + 0]*2)/100) * intensity;
+    let g = imagenData.data[index + 1] + ((255 - imagenData.data[index + 1]*2)/100) * intensity;
+    let b = imagenData.data[index + 2] + ((255 - imagenData.data[index + 2]*2)/100) * intensity;
     return [r, g, b];
 };
 
@@ -100,17 +103,17 @@ grayScaleFilter.filter = function (imagenData, x, y, intensity = 0) {
     return util.HSVtoRGB(hsv);
 };
 
-
 // Blur Filter
 const blurFilter = {...ImageFilterInterface};
 blurFilter.maxIntensity = 20;
 blurFilter.minIntensity = 0;
-blurFilter.filter = function (imagenData, x, y, blurRadius = 10) {
-    let startX = (centerX - blurRadius <= 0) ? 0 : centerX - blurRadius;
-    let startY = (centerY - blurRadius <= 0) ? 0 : centerY - blurRadius;
-    let endX   = (centerX + blurRadius >= imagenData.width -1) ? imagenData.width  : centerX + blurRadius;
-    let endY   = (centerY + blurRadius >= imagenData.height-1) ? imagenData.height : centerY + blurRadius;
-    let totalPixelsAffected =(blurRadius * 2 + 1)*(blurRadius * 2 + 1)
+blurFilter.filter = function (imagenData, centerX, centerY, blurRadius = 10) {
+    let startX = (centerX - blurRadius < 0) ? 0 : centerX - blurRadius;
+    let startY = (centerY - blurRadius < 0) ? 0 : centerY - blurRadius;
+    let endX   = (centerX + blurRadius > imagenData.width -1) ? imagenData.width  - 1 : centerX + blurRadius;
+    let endY   = (centerY + blurRadius > imagenData.height-1) ? imagenData.height - 1 : centerY + blurRadius;
+    // Explicar
+    let totalPixelsAffected = (blurRadius * 2 + 1)*(blurRadius * 2 + 1)
     let r = 0;
     let g = 0;
     let b = 0;
@@ -147,15 +150,19 @@ sobelFilter.filter = function(imagenData, centerX, centerY) {
     let endX   = (centerX + 1 >= imagenData.width -1) ? imagenData.width  - 1 : centerX + 1;
     let endY   = (centerY + 1 >= imagenData.height-1) ? imagenData.height - 1 : centerY + 1;
     
-    let xred = 0;
-    let xblu = 0;
-    let xgre = 0;
-    let yred = 0;
-    let yblu = 0;
-    let ygre = 0;
+    let xRed   = 0;
+    let xBlue  = 0;
+    let xGreen = 0;
+    let yRed   = 0;
+    let yBlue  = 0;
+    let yGreen = 0;
 
-    let matrixX = [-1, 0, 1,-2, 0, 2, -1, 0, 1];
-    let matrixY = [-1, -2, -1, 0, 0, 0, 1, 2, 1];
+    let matrixX = [-1, 0, 1,
+                    -2, 0, 2, 
+                    -1, 0, 1];
+    let matrixY = [-1, -2, -1, 
+                    0, 0, 0, 
+                    1, 2, 1];
 
     for (let y = startY; y <= endY; y++) {
         for (let x = startX; x <= endX; x++) {
@@ -191,8 +198,8 @@ const filters = {
 
 // https://es.wikipedia.org/wiki/Modelo_de_color_HSV#Transformaci%C3%B3n_RGB_a_HSV
 const util = {
-    RGBtoHSV: function(colour) {
-        let [r, g, b] = colour;
+    RGBtoHSV: function(color) {
+        let [r, g, b] = color;
         let h, s, v;
 
         r /= 255;
@@ -230,9 +237,9 @@ const util = {
     },
     
 
-    HSVtoRGB: function(colour) {
+    HSVtoRGB: function(color) {
         let  r,g,b;
-        let [h, s, v] = colour;
+        let [h, s, v] = color;
     
         s /= 100;
         v /= 100;
