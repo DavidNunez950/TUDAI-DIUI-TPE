@@ -16,9 +16,7 @@
     <script src="js/main.js" type="module"></script>
     <title>TUDAI - Interfaces</title>
 </head>
-<body class="bg-dark"> 
-
-
+<body class="bg-dark h-100">
         <section>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container">
@@ -35,7 +33,45 @@
             </nav>
         </section>
         <section class="container text-white">
-
+            <div class="row h-100">
+                <div class="col-2 pt-3">
+                    <div class="row my-1">
+                        <div class="col-6 mh-0 p-0">
+                            <input class="form-control w-100" type='file' id="btn-upload-image"/>
+                        </div>
+                        <div class="col-6 m-0 p-0">
+                            <a class="btn btn-secondary btn-group stretched-link" id="btn-download-image">
+                                download
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-secondary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#form-filter-collapse" aria-expanded="false">
+                            Filtros
+                        </button>
+                        <div class="filter collapse" id="form-filter-collapse">
+                            <form action="#" id="inputFilter">
+                                <label lass="form-label">Saturación:</label>
+                                <input type="range" class="form-range" min="0" max="100" value="0" data-filter-type="saturation">
+                                <label lass="form-label">Blur</label>
+                                <input type="range" class="form-range" min="0" max="100" value="0" data-filter-type="blur">
+                                <label lass="form-label">Escala de grises</label>
+                                <input type="range" class="form-range" min="0" max="100" value="0" data-filter-type="grayScale">
+                                <label lass="form-label">Color negativo</label>
+                                <input type="range" class="form-range" min="0" max="100" value="0" data-filter-type="invertColor">
+                                <label lass="form-check-label">Sobel</label>
+                                <input type="range" class="form-range" min="0" max="100" value="0" data-filter-type="sobel">
+                                <label lass="form-check-label">Invertir imagen</label>
+                                <input class="form-check-input" type="checkbox" value="false" id="flexCheckDefault" data-filter-type="invertImage">
+                                <button type="submit" class="btn btn-secondary mt-2 w-100">Aplicar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-10 h-100 d-flex justify-content-center align-items-center">
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
         </section>
         <div>
 
