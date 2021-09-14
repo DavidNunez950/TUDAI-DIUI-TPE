@@ -18,7 +18,7 @@ let drawing = false;
 let pencilColor = "black";
 let cleanColor = "white";
 
-// 1.3 Varible para manejar el grosor del lapíz:
+// 1.3 Varible para manejar el grosor del lápiz:
 let pencilWidth = "2";
 
 // 1.4 Varible para manejar si se está dibujando o borrando:
@@ -27,14 +27,15 @@ let eraser = false;
 
 
 // 2.0 Añadiendo eventos:
-// 2.1 Toggle lapíz:
+// 2.1 Toggle lápiz:
 function drawingWithPencil(e) {
     // 2.1.1 Si la varible siempre se vuelve su contrario de su valor
     pencil = (!pencil);
+    console.log(pencil, eraser)
     eraser = (false);
 }
 
-// 2.2 Toggle eraser: igual al lapíz
+// 2.2 Toggle eraser: igual al lápiz
 function cleanWithEraser(e) {
     eraser = (!eraser);
     pencil = (false);
@@ -60,7 +61,7 @@ function loadEvents() {
     canvas.addEventListener('mouseout', (e) => {stopDraw(e)}, false);
 }
 
-// 5. Método iniciar un trazar una linea (goma o lapíz):
+// 5. Método iniciar un trazar una linea (goma o lápiz):
 function draw(e) {
     e.preventDefault();
     drawing = true;
@@ -71,11 +72,13 @@ function draw(e) {
 // 6. Método para unir puntos y formar una linea
 function toDraw(e) {
     e.preventDefault();
-    if(drawing == true){
-        ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
-        ctx.strokeStyle = (pencil) ? pencilColor : 'white';
-        ctx.lineWidth = pencilWidth;
-        ctx.stroke();
+    if(pencil || eraser) {
+        if(drawing == true){
+            ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+            ctx.strokeStyle = (pencil) ? pencilColor : 'white';
+            ctx.lineWidth = pencilWidth;
+            ctx.stroke();
+        }
     }
 }
 
