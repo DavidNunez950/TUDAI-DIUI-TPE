@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
     function resize() {
         canvas.maxWidth  = innerWidth  - canvas.parentElement.offsetLeft  - 65;
-        canvas.maxHeight = innerHeight - canvas.parentElement.offsetTop   - 15;
+        canvas.maxHeight = innerHeight - canvas.parentElement.offsetTop   - 65;
         if(canvas.width === 0 || canvas.height === 0) {
             canvas.width  = canvas.maxWidth;
             canvas.height = canvas.maxHeight;

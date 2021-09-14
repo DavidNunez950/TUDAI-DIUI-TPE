@@ -4,87 +4,96 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
-    crossorigin="anonymous">
-    <link rel="stylesheet"
-          href="https://fonts.google.com/specimen/Press+Start+2P#glyphs">
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-
-<link href="css/style.css" rel="stylesheet"
-    crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <link href="css/style.css" rel="stylesheet" crossorigin="anonymous">
     <script src="js/main.js" type="module"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>TUDAI - Interfaces</title>
 </head>
 <body class="bg-dark h-100">
-        <section>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container">
-                    <a class="navbar-brand" href="index.html">Interfaces de Usuario</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-            </nav>
-        </section>
-        <section class="container text-white">
-            <div class="row h-100">
-                <div class="col-2 pt-3">
-                    <!-- Lapíz y goma -->
+    <section class="container text-white h-100 mx-5">
+        <div class="row h-100 gx-5">
+            <div class="col-2 pt-3">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark row">
                     <div class="row">
-                        <p class="text-white">Herramientas</p>
-                        <button class="btn btn-secondary col-6" id="lapiz">Lápiz</button>
-                        <button class="btn btn-secondary col-6" id="goma">Goma</button>
+                        <a class="navbar-brand p-0" href="index.html">Interfaces <br> de Usuario</a>
+                    </div>
+                </nav>
+                <!-- Lapíz y goma -->
+                <div class="row fs-6 row-1">
+                    <button class="btn btn-secondary w-100 row-3" type="button" data-bs-toggle="collapse" data-bs-target=".row-1 .div-collapse, .row-2 .div-collapse.collapse.show, .row-3 .div-collapse.collapse.show" aria-expanded="false">
+                        Herramientas
+                    </button>
+                    <div class="text-center div-collapse collapse mt-3">
+                        <button class="btn btn-secondary rounded-pill w-auto" id="lapiz">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-secondary rounded-pill w-auto" id="goma">
+                            <i class="fas fa-eraser"></i>
+                        </button>
+                        <div class="row d-flex flex-row flex-nowrap text-center">
+                            <div class="col-5">
+                                <label class="p-0 m-0">Color:</label>
+                            </div>
+                            <div class="col-7">
+                                <input class="form-color" type="color" name="color" id="color">
+                            </div>
+                        </div>
                         <div class="row">
-                            <input class="form-color" type="color" name="color" id="color">
+                            <label >Tamaño</label>
                             <input class="form-range" type="range" name="grosor" id="grosor" value="1" min="1" max="50">
                         </div>
                     </div>
-                    <!-- Descargar y subir imagen -->
-                    <div class="row my-1">
-                        <div class="col-6 mh-0 p-0">
-                            <input class="form-control w-100" type='file' id="btn-upload-image"/>
+                </div>
+                <!-- Descargar y subir imagen -->
+                <div class="row my-2 d-flex  fs-6 row-2">
+                    <button class="btn btn-secondary w-100 row-3" type="button" data-bs-toggle="collapse" data-bs-target=".row-2 .div-collapse, .row-1 .div-collapse.collapse.show, .row-3 .div-collapse.collapse.show" aria-expanded="false">
+                        Imagen
+                    </button>
+                    <div class="row div-collapse collapse mt-3">
+                        <div class="col-6 mh-0 p-0 d-flex justify-content-center">
+                            <div class="btn btn-secondary btn-group d-relative rounded-pill p-2">
+                                <input class="form-control inputs-file w-100 rounded-pill p-2" type='file' id="btn-upload-image"/>
+                                <i class="fas fa-upload"></i>
+                            </div>
                         </div>
-                        <div class="col-6 m-0 p-0">
-                            <a class="btn btn-secondary btn-group stretched-link" id="btn-download-image">
-                                download
+                        <div class="col-6 m-0 p-0 d-flex justify-content-center">
+                            <a class="btn btn-secondary btn-group stretched-link rounded-pill p-2" id="btn-download-image">
+                                <i class="fas fa-download"></i>
                             </a>
                         </div>
                     </div>
-                    <!-- Filtros -->
-                    <div class="row">
-                        <button class="btn btn-secondary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#form-filter-collapse" aria-expanded="false">
-                            Filtros
-                        </button>
-                        <div class="filter collapse" id="form-filter-collapse">
-                            <form action="#" id="inputFilter">
-                                <label lass="form-label">Saturación:</label>
-                                <input type="range" class="form-range" min="0" max="100" value="0" data-filter-type="saturation">
-                                <label lass="form-label">Blur</label>
-                                <input type="range" class="form-range" min="0" max="100" value="0" data-filter-type="blur">
-                                <label lass="form-label">Escala de grises</label>
-                                <input type="range" class="form-range" min="0" max="100" value="0" data-filter-type="grayScale">
-                                <label lass="form-label">Color negativo</label>
-                                <input type="range" class="form-range" min="0" max="100" value="0" data-filter-type="invertColor">
-                                <label lass="form-check-label">Sobel</label>
-                                <input type="range" class="form-range" min="0" max="100" value="0" data-filter-type="sobel">
-                                <label lass="form-check-label">Invertir imagen</label>
-                                <input class="form-check-input" type="checkbox" value="false" id="flexCheckDefault" data-filter-type="invertImage">
-                                <button type="submit" class="btn btn-secondary mt-2 w-100">Aplicar</button>
-                            </form>
-                        </div>
+                </div>
+                <!-- Filtros -->
+                <div class="row  fs-6 row-3">
+                    <button class="btn btn-secondary w-100 row-3" type="button" data-bs-toggle="collapse" data-bs-target=".row-3 .div-collapse, .row-2 .div-collapse.collapse.show, .row-1 .div-collapse.collapse.show" aria-expanded="false">
+                        Filtros
+                    </button>
+                    <div class="filter div-collapse collapse  mt-3" id="form-filter-collapse">
+                        <form action="#" id="inputFilter">
+                            <label lass="form-label">Saturación:</label>
+                            <input type="range" class="form-range" min="0" max="100" value="0" data-filter-type="saturation">
+                            <label lass="form-label">Blur</label>
+                            <input type="range" class="form-range" min="0" max="100" value="0" data-filter-type="blur">
+                            <label lass="form-label">Escala de grises</label>
+                            <input type="range" class="form-range" min="0" max="100" value="0" data-filter-type="grayScale">
+                            <label lass="form-label">Color negativo</label>
+                            <input type="range" class="form-range" min="0" max="100" value="0" data-filter-type="invertColor">
+                            <label lass="form-check-label">Sobel</label>
+                            <input type="range" class="form-range" min="0" max="100" value="0" data-filter-type="sobel">
+                            <label lass="form-check-label">Invertir imagen</label>
+                            <input class="form-check-input" type="checkbox" value="false" id="flexCheckDefault" data-filter-type="invertImage">
+                            <button type="submit" class="btn btn-secondary mt-2 w-100">Aplicar</button>
+                        </form>
                     </div>
                 </div>
-                <div class="col-10 h-100 d-flex justify-content-center align-items-center">
-                    <canvas id="canvas"></canvas>
-                </div>
             </div>
-        </section>
-        <div>
-
+            <div class="col-10 h-100 d-flex justify-content-center align-items-center bg-secondary">
+                <canvas id="canvas"></canvas>
+            </div>
         </div>
+    </section>
 </body>
 </html>
