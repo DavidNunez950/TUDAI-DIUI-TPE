@@ -1,20 +1,61 @@
+
+// Consigna 1: Módulo que contiene las funcionalidades del lápiz y goma:
+import {  selectColor, selectRange, drawingWithPencil, cleanWithEraser, selectTargetCanvas  } from './Tools.js';
+
 // Consigna 2 y 5: Módulo que contiene las funciones para subir una imagen y descargarla al disco
 import { uploadImage, downloadImage } from"./ImageLoader.js";
 
 // Consigna 3 y 4: Módulo que contiene los filtros
 import { ImageFilters } from "./ImageFilter.js"; 
 document.addEventListener("DOMContentLoaded", ()=> {
-    let canvas =  document.getElementById("canvas");
-    let ctx = canvas.getContext("2d");
-    console.log(canvas.parentElement)
-    canvas.maxWidth  = innerWidth  - canvas.parentElement.offsetLeft  - 65;
-    canvas.maxHeight = innerHeight - canvas.parentElement.offsetTop   - 15;
-    canvas.width  = canvas.maxWidth;
-    canvas.height = canvas.maxHeight;
+    const canvas =  document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width  = 0;
+    canvas.height = 0;
 
-    ctx.fillStyle='white';
+    // Funciones para ajustar el tamaño del canvas:
+    window.addEventListener('resize', resize);
+
+    function resize() {
+        canvas.maxWidth  = innerWidth  - canvas.parentElement.offsetLeft  - 65;
+        canvas.maxHeight = innerHeight - canvas.parentElement.offsetTop   - 15;
+        if(canvas.width === 0 || canvas.height === 0) {
+            canvas.width  = canvas.maxWidth;
+            canvas.height = canvas.maxHeight;
+        } else {
+            adjustAspectRatio(canvas)
+        }
+    }
+
+    function adjustAspectRatio(object) {
+        canvas
+        let imgAscpectRatio = object.width / object.height; 
+        let cavasAscpectRatio = canvas.maxWidth / canvas.maxHeight; 
+        let coefficient  = (cavasAscpectRatio > imgAscpectRatio) ? canvas.maxHeight / object.height : canvas.maxWidth / object.width;
+        canvas.width  *= coefficient;
+        canvas.height *= coefficient;
+        console.log(canvas.height)
+    }
+
+    resize();
+    
+    ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
+
+    // Consigna 1: 
+    selectTargetCanvas(canvas)
+    // 2.0 Añadiendo eventos:
+    // 2.1 Toggle lapíz:
+    document.getElementById('lapiz').addEventListener('click', (e)=> { drawingWithPencil(e) })
+
+    // 2.2 Toggle eraser: igual al lapíz
+    document.getElementById('goma').addEventListener('click', (e)=> { cleanWithEraser(e) });
+
+    // 3. Eventos para los inputs 
+    document.getElementById('grosor').addEventListener('change', (e)=> { selectRange(e) })
+
+    document.getElementById('color').addEventListener('change', (e)=> { selectColor(e) })
 
     // Consigna 2:
     // Añadiendo eventos para subir una imagen

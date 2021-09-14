@@ -27,7 +27,7 @@ function uploadImage(uploadBtn, canvas) {
 
         // 4. Se setea el atributo "src" con el atributo "result" de la instancia "fileReader"
         // el cual contiene el archivo subido, en un formatea en particular, el cual, como se puede 
-        // ver más adelante es un "Datos URIs" (traducción aproximada)
+        // ver más adelante es un "Datos URIs" (traducción aproximada :D)
         img.src = fileReader.result;
     });
     //  5. Una vez instanciado el "FileReader" y definido que tiene que hacer cuando 

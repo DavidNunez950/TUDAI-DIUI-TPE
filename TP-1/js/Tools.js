@@ -1,8 +1,13 @@
+
+export { selectColor, selectRange, drawingWithPencil, cleanWithEraser, selectTargetCanvas };
 "use strict";
 
 // 1. Consigna 1: Barra de herramientas con, al menos, lápiz (que pueda elegir color del lápiz) y 
 // goma de borrar, y su funcionalidad.
 let canvas = document.getElementById("canvas");
+function selectTargetCanvas(passcanvas) {
+ canvas = passcanvas;
+}
 let ctx = canvas.getContext("2d");
 
 // 1.0 Varibles:
@@ -23,30 +28,30 @@ let eraser = false;
 
 // 2.0 Añadiendo eventos:
 // 2.1 Toggle lapíz:
-document.getElementById('lapiz').addEventListener('click', ()=> {
+function drawingWithPencil(e) {
     // 2.1.1 Si la varible siempre se vuelve su contrario de su valor
     pencil = (!pencil);
     eraser = (false);
-})
+}
 
 // 2.2 Toggle eraser: igual al lapíz
-document.getElementById('goma').addEventListener('click', ()=> {
+function cleanWithEraser(e) {
     eraser = (!eraser);
     pencil = (false);
-})
+}
 
 // 3. Eventos para los inputs 
-document.getElementById('grosor').addEventListener('change', (e)=> {
+function selectRange(e) {
     e.preventDefault();
     pencilWidth = e.target.value ?? 1; // Añadiendo valor por defecto
-})
+}
 
-document.getElementById('color').addEventListener('change', (e)=> {
+function selectColor(e) {
     e.preventDefault();
     pencilColor = e.target.value ?? "#000000"; // Añadiendo valor por defecto
-})
+}
 
-    loadEvents()
+loadEvents()
 // 4. Añadiendo eventos al canvas
 function loadEvents() {
     canvas.addEventListener('mousedown', (e) => {draw(e)}, false);
@@ -80,6 +85,5 @@ function stopDraw(e) {
     if (drawing == true) {
         ctx.closePath();
         drawing = false;
-        console.log(drawing)
     }
 }
