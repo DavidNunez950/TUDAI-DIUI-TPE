@@ -24,7 +24,11 @@ const ImageFilters = {
     sobel      : function(inputImage, outputImage, intensity) {
         imageFilterApplicator.aplyFilter(inputImage, inputImage, filters.grayScaleFilter, 100);
         return imageFilterApplicator.aplyFilter(inputImage, outputImage, filters.sobelFilter, intensity);
-    }
+    },
+    binarization: function(inputImage, outputImage, intensity) {
+        imageFilterApplicator.aplyFilter(inputImage, inputImage, filters.grayScaleFilter, 100);
+        return imageFilterApplicator.aplyFilter(inputImage, outputImage, filters.binarizationFilter, intensity);
+    },
 }
 
 // Este objeto tiene la función de aplicar los filtros
@@ -74,6 +78,26 @@ const filters = {
             let g = imagenData.data[index + 1];
             let b = imagenData.data[index + 2];
             return [r, g, b];
+        }
+    },
+    binarizationFilter: {
+        maxIntensity: 255,
+        minIntensity: 0,
+        filter: function(imagenData, x, y, intensity) {
+            let index = (x + y * imagenData.width) * 4;
+            // El color negativo es igual la diferencia entre 255 y 
+            // el valor de alguna de las variables RGB:
+            // let color = imagenData.data[index + RGB];
+            // let negativo = 255 - color;
+            // Para poder aplicar la intensidad se necesita calcular la diferencia entre
+            // el color y su negativo:
+            // let diff = color - negativo; 
+            // La linea de arriba es equivalente a 255 - color - color
+            // Sin embargo, en el código se encuentra escrito: (255 - imagenData.data[index + RGB]*2)
+            // Ahora que se calculó la diferencia solo hay que dividirlo por 100, y multiplicarlo por la
+            // intensidad
+            let r = (imagenData.data[index + 0] > intensity) ? 255 : 0;
+            return [r, r, r];
         }
     },
 
