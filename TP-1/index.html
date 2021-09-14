@@ -92,8 +92,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col-10 h-100 d-flex justify-content-center align-items-center bg-secondary">
-                <canvas id="canvas"></canvas>
+            <div class="col-10 h-100 bg-secondary  d-flex">
+                <div class="h-0 p-0 m-0 w0 position absolute">
+                    <button class="btn btn-dark rounded-pill p-2 d-flex align-items-start position-absolute mt-4" id="btn-restore-canvas">
+                        <i class="fas fa-undo "></i>
+                    </button>
+                </div>
+                <div class=" w-100  h-100 d-flex justify-content-center  align-self-center align-items-center bg-secondary">
+                    <canvas id="canvas"></canvas>
+                </div>
             </div>
         </div>
     </section>

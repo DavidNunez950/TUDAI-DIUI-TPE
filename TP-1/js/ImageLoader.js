@@ -22,7 +22,8 @@ function uploadImage(uploadBtn, canvas) {
             img.height *= coeficiente;
             canvas.width  = img.width ; 
             canvas.height = img.height; 
-            canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height)
+            canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+            canvas.unfilteredImage = canvas.getContext('2d').getImageData(canvas.clientLeft, canvas.clientTop, canvas.width, canvas.height);
         };
 
         // 4. Se setea el atributo "src" con el atributo "result" de la instancia "fileReader"

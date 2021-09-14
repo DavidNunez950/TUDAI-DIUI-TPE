@@ -7,41 +7,29 @@ import { uploadImage, downloadImage } from"./ImageLoader.js";
 
 // Consigna 3 y 4: Módulo que contiene los filtros
 import { ImageFilters } from "./ImageFilter.js"; 
+
 document.addEventListener("DOMContentLoaded", ()=> {
+    // Variables  para configurar el tamaño del canvas:
     const canvas =  document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
     canvas.width  = 0;
     canvas.height = 0;
-
-    // Funciones para ajustar el tamaño del canvas:
-    window.addEventListener('resize', resize);
-
-    function resize() {
-        canvas.maxWidth  = innerWidth  - canvas.parentElement.offsetLeft  - 65;
-        canvas.maxHeight = innerHeight - canvas.parentElement.offsetTop   - 65;
-        if(canvas.width === 0 || canvas.height === 0) {
-            canvas.width  = canvas.maxWidth;
-            canvas.height = canvas.maxHeight;
-        } else {
-            adjustAspectRatio(canvas)
-        }
-    }
-
-    function adjustAspectRatio(object) {
-        canvas
-        let imgAscpectRatio = object.width / object.height; 
-        let cavasAscpectRatio = canvas.maxWidth / canvas.maxHeight; 
-        let coefficient  = (cavasAscpectRatio > imgAscpectRatio) ? canvas.maxHeight / object.height : canvas.maxWidth / object.width;
-        canvas.width  *= coefficient;
-        canvas.height *= coefficient;
-        console.log(canvas.height)
-    }
-
-    resize();
-    
+    canvas.maxWidth  = innerWidth  - canvas.parentElement.offsetLeft  - 65;
+    canvas.maxHeight = innerHeight - canvas.parentElement.offsetTop   - 65;
+    canvas.width  = canvas.maxWidth;
+    canvas.height = canvas.maxHeight;
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvas.width, canvas.height)
+    canvas.defaultCanvas    = ctx.getImageData(canvas.clientLeft, canvas.clientTop, canvas.width, canvas.height);
+    canvas.unfilteredImage  = null;
 
+
+    // Añadiendo un evento para restaurar el canvas:
+    document.getElementById('btn-restore-canvas').addEventListener('click', () => {
+        let aux = (canvas.unfilteredImage !== null) ? canvas.unfilteredImage : canvas.defaultCanvas;
+        ctx.putImageData(aux, canvas.clientLeft, canvas.clientTop);
+    });
+    
 
     // Consigna 1: 
     selectTargetCanvas(canvas)
@@ -68,7 +56,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
     // Añadiendo eventos para descargar una imagen
     document.getElementById('btn-upload-image').addEventListener("change", (e) => {
         // Pasando el elemento HTML del evento
-        uploadImage(e.target, canvas)
+        uploadImage(e.target, canvas);
     });
 
 
