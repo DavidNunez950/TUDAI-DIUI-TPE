@@ -36,12 +36,11 @@ class GameBoard {
      */
     constructor(squareCoordinates, numTileX, numTileY, tileSize, numLine, image, size, ctx) {
         this.#squareCoordinates = squareCoordinates;
-        this.#playerName = playerName;
         this.#numTileX = numTileX;
         this.#numTileY = numTileY;
         this.#tileSize = tileSize;
         this.#numLine = numLine;
-        this.#tokens = new Token[[,],[,]]; // Inicializar una matríz de numTileX * numTileY
+        this.#tokens = null// new Token()[][]; // Inicializar una matríz de numTileX * numTileY
         this.#tile = image;
         this.#size = size;
         this.#ctx = ctx;
