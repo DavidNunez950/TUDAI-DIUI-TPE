@@ -44,7 +44,6 @@ class GameBoard {
         this.#tile = image;
         this.#size = size;
         this.#ctx = ctx;
-        this.#drowGameBoard();
     }
 
     /**
@@ -77,7 +76,7 @@ class GameBoard {
     /**
      * Draw the column and rows and fill them with the tile image 
      */
-    #drowGameBoard() {
+    drawGameBoard() {
         let aux = false;
         for (let i = 0; i < this.#numTileY; i++) {
             aux = !aux;
@@ -85,6 +84,7 @@ class GameBoard {
             aux = !aux;
             this.#ctx.beginPath()
             this.#ctx.fillStyle = (aux) ? "#FAC88A" : "#5E412F";
+            // this.#ctx.fillStyle = (aux) ? "#ffffff" : "#000000";
             this.#ctx.fillRect(
                 this.#squareCoordinates.x1 + this.#tileSize * j,
                 this.#squareCoordinates.y1 + this.#tileSize * i ,
