@@ -35,8 +35,8 @@ class Token {
         this.#size       = size;
         this.#used       = false;
         this.#ctx        = ctx;
-        this.#x = Math.random() * (this.#squareCoordinates.x2 - this.#size*2) + (this.#squareCoordinates.x1 + this.#size)
-        this.#y = Math.random() * (this.#squareCoordinates.y2 - this.#size*2) + (this.#squareCoordinates.y1 + this.#size)
+        this.#x = Math.random() * ((this.#squareCoordinates.x2 - this.#squareCoordinates.x1) - this.#size * 2) + (this.#squareCoordinates.x1 + this.#size)
+        this.#y = Math.random() * ((this.#squareCoordinates.y2 - this.#squareCoordinates.y1) - this.#size * 2) + (this.#squareCoordinates.y1 + this.#size)
     }
 
     /**
