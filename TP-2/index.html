@@ -13,6 +13,149 @@
 </head>
 <body class="bg-dark h-100">
     <section class="container text-white h-100 2-100">
+        <div class="row">
+            <div class="col-6 rounded p-4">
+                <h1 class="text-center">4 En línea - El Juego</h1>
+                <div class="row h4">
+                    <div class="col">
+                        <label>Dimensiones de tablero</label>
+                        <div class="input-group">
+                            <input id="input-game-board-size" type="number" value="8" min="4" max="20" class="form-control" id="basic-url" >
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Fichas en línea</label>
+                        <div class="input-group mb-3">
+                            <input id="input-line-token-number" type="number" value="4" min="4" max="20" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <h2 class="text-center">Player 1</h2>
+                        <div id="carousel-1" class="carousel slide">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                                <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                                <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                            </div>
+                            <div class="carousel-inner rounded-circle" id="player-1"  data-color="success">
+                                <div class="carousel-item active">
+                                    <img src="img/token_1.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_2.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_3.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_4.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_5.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_6.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_7.png" class="d-block w-100" alt="img-token">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-1" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carousel-1" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div id="carousel-1" class="color d-flex flex-wrap justify-content-evenly" data-color-target="#player-1">
+                            <button class="btn rounded-circle p-3 d-none" data-color="success"></button>
+                            <button class="btn rounded-circle p-3 d-none" data-color="danger"></button>
+                            <button class="btn rounded-circle p-3" data-color="primary"></button>
+                            <button class="btn rounded-circle p-3" data-color="warning"></button>
+                            <button class="btn rounded-circle p-3" data-color="light"></button>
+                            <button class="btn rounded-circle p-3" data-color="secondary"></button>
+                        </div>
+                    </div>
+                
+                    <div class="col-6">
+                        <h2 class="text-center">Player 2</h2>
+                        <div id="carousel-2" class="carousel slide">
+                            <div class="carousel-indicators"  class="carousel slide">
+                                <button type="button" data-bs-target="#carousel-2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carousel-2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carousel-2" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carousel-2" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                <button type="button" data-bs-target="#carousel-2" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                                <button type="button" data-bs-target="#carousel-2" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                                <button type="button" data-bs-target="#carousel-2" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                            </div>
+                            <div class="carousel-inner rounded-circle" id="player-2" data-color="danger">
+                                <div class="carousel-item active">
+                                    <img src="img/token_1.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_2.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_3.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_4.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_5.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_6.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_7.png" class="d-block w-100" alt="img-token">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-2" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carousel-2" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div class="color d-flex flex-wrap justify-content-evenly" data-color-target="#player-2">
+                            <button class="btn rounded-circle p-3 d-none" data-color="success"></button>
+                            <button class="btn rounded-circle p-3 d-none" data-color="danger"></button>
+                            <button class="btn rounded-circle p-3" data-color="primary"></button>
+                            <button class="btn rounded-circle p-3" data-color="warning"></button>
+                            <button class="btn rounded-circle p-3" data-color="light"></button>
+                            <button class="btn rounded-circle p-3" data-color="secondary"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-5">
+                    <div class="col">
+                        <div class="d-grid gap-2 p2">
+                            <button id="btn-start" type="button" class="btn btn btn-outline-danger p-3">START</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 p-4 bg-secondary rounded">
+                <p class="h5">
+                    En esta página podras jugar al popular juego 4 en línea. Este juego consiste en, dado un tablero de n por n casillas, deberas formar una línea de de x cantidad de fichas para ganar. 
+                </p>
+                <img src="img/game_board.jpg" alt="game-board">
+            </div>
+        </div>
+    </section>
+    <section class="container text-white h-100 w-100">
         <canvas id="canvas"></canvas>
     </section>
 </body>
