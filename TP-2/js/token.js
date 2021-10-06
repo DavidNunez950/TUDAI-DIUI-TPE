@@ -13,6 +13,7 @@ class Token {
 
     #squareCoordinates;
     #playerColor;
+    #animation;
     #image;
     #size;
     #used;
@@ -33,6 +34,7 @@ class Token {
         this.#playerColor = playerColor;
         this.#image      = image;
         this.#size       = size;
+        this.#animation = "default";
         this.#used       = false;
         this.#ctx        = ctx;
         this.#x = Math.random() * ((this.#squareCoordinates.x2 - this.#squareCoordinates.x1) - this.#size * 2) + (this.#squareCoordinates.x1 + this.#size)
@@ -47,8 +49,13 @@ class Token {
         this.#ctx.arc(this.#x, this.#y, this.#size, 0, Math.PI*2, false)
         this.#ctx.fillStyle = this.#playerColor
         this.#ctx.fill()
-        this.#ctx.lineWidth = "2px"
-        this.#ctx.strokeStyle = "black"
+        let grd = this.#ctx.createRadialGradient(this.#x, this.#y, this.#size, this.#x, this.#y, this.#size+ 10);
+        grd.addColorStop(0.0, "rgba(0, 0, 0, 0)");
+        grd.addColorStop(0.001, "black");
+        let lineWidth = 2; 
+ 
+        this.#ctx.lineWidth = lineWidth;
+        this.#ctx.strokeStyle = (grd ?? "black");
         this.#ctx.stroke()
         this.#ctx.drawImage(this.#image, this.#x-this.#size, this.#y-this.#size, this.#size*2, this.#size*2)
         this.#ctx.closePath()
@@ -59,6 +66,18 @@ class Token {
      * @return {boolean} a boolean
      */
     isUsed() { return this.#used }
+
+    /**
+     * indicates if the xoordinates are inside the figure  
+     * @param {number} x The x position of the mouse 
+     * @param {number} y The y position of the mouse 
+     * @return {boolean} a boolean
+     */
+    isInPoint(x, y) { 
+        let dx = this.#x - x;
+        let dy = this.#y - y;
+        return (Math.sqrt((dx * dx + dy * dy)) < this.#size);
+    }
 
     
     /**
@@ -71,24 +90,32 @@ class Token {
      * Set the y position of the token 
      * @param {number} y The y position of the token 
      */
-    set setX(x) { this.#x = x }
+    setX(x) { this.#x = x }
 
     /**
      * Set the y position of the token 
      * @param {number} y The y position of the token 
      */
-    set setY(y) { this.#y = y }
+    setY(y) { this.#y = y }
 
     /**
      * Get the x position of the token 
      * @return {number} The x position of the token 
      */
-    get x() { return this.#x }
+    getX() { return this.#x }
 
     /**
      * Get the y position of the token 
      * @return {number} The y position of the token 
      */
-    get y() { return this.#y }
+    getY() { return this.#y }
+
+    getPlayerColor() { return this.#playerColor }
+
+    getAnimations() {return {default:"default", selected:"selected", winner:"winner"}}
+
+    setAnimation(animation = "default") {
+        this.#animation =  animation;
+    }
 
 }

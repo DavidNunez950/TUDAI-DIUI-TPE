@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
     const img = new Image()
     img.src = "../TP-2/img/token_1.png"
     img.addEventListener("load", ()=> {     
-        const game = instantiateGame(8, 2, "red", "blue", img) 
-        let idAnimation = window.requestAnimationFrame(game.drawGame.bind(game));
+        const game = instantiateGame(5, 4, "red", "blue", img);
         
         game.startGame();
 
@@ -34,7 +33,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
             return tokens
         };
 
-        let playerTokenNum = (tileNum * tileNum)/2;
+        let numTile  = tileNum * tileNum;
+        let playerTokenNum = numTile/2 + (numTile % 2 == 0 ?  0 : 1);
 
         let player1 = instantiateToken(playerTokenNum, player1SquareCoordinate, player1Color, img);
         let player2 = instantiateToken(playerTokenNum, player2SquareCoordinate, player2Color, img);
