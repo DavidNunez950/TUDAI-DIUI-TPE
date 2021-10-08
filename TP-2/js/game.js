@@ -22,6 +22,7 @@ class Game {
     #timer;
     #ctx;
     #events;
+    mouse;
 
     /**
      * Constructor
@@ -39,6 +40,8 @@ class Game {
         this.#timer     = timer;
         this.#ctx       = canvas.getContext('2d');
         this.#events = {};
+        this.canvasCopy = this.#canvas.cloneNode(true);
+
     }
 
     /** 
@@ -81,13 +84,20 @@ class Game {
             x: null, 
             y: null
         }
+        this.mouse = mouse
 
         // Mouse events
+        
+        this.#canvas.addEventListener(eventName, callback, true);
         this.#addEvent("mouseout",  this.#onMouseOut.bind(this, mouse));
         this.#addEvent("mousedown", this.#onMouseDown.bind(this, mouse, players));
         this.#addEvent("mouseup",   this.#onMouseUp.bind(this, mouse, players));
+        this.#addEvent("mouseup",   this.#onMouseUp.bind(this, mouse, players));
         this.#addEvent("mousemove", (e)=>{this.#onMouseMove(e, mouse)});
+        this.#addEvent("mousemove", this.#onMouseMove.bind(this).apply(e, mouse));
+        this.#addEvent("mousemove", this.#onMouseMove.bind(this));
         
+        // this.#canvas.addEventListener("mousemove", this.#onMouseMove.bind(this));
         // Game events:
         this.#addEvent("gameover", this.#removeEvents.bind(this));
 
@@ -102,13 +112,13 @@ class Game {
         mouse.y = null;
     }
 
-    #onMouseMove(e, mouse) {
-        mouse.x = e.clientX - this.#canvas.offsetLeft;
-        mouse.y = e.clientY - this.#canvas.offsetTop ;
-        if(mouse.clicked) {
-            if(mouse.lastClicked!=null) {
-                let token = mouse.lastClicked;
-                token.setX(mouse.x); token.setY(mouse.y);
+    #onMouseMove(e) {
+        this.mouse.x = e.clientX - this.#canvas.offsetLeft;
+        this.mouse.y = e.clientY - this.#canvas.offsetTop ;
+        if(this.mouse.clicked) {
+            if(this.mouse.lastClicked!=null) {
+                let token = this.mouse.lastClicked;
+                token.setX(this.mouse.x); token.setY(this.mouse.y);
             }
         }
     }
@@ -117,7 +127,9 @@ class Game {
         let player = players.player;
         mouse.clicked = true;
         mouse.lastClicked = this.selectToken(player, mouse.x, mouse.y);
-        mouse.lastClicked.setAnimation(mouse.lastClicked.getAnimations().selected);
+        if(mouse.lastClicked != null) {
+            mouse.lastClicked.setAnimation(mouse.lastClicked.getAnimations().selected);
+        }
     }
 
     #onMouseUp(mouse, players) {
@@ -127,21 +139,25 @@ class Game {
                 players.nextPlayer();
             }
         }
-        mouse.lastClicked.setAnimation(mouse.lastClicked.getAnimations().default);
+        if(mouse.lastClicked != null) {
+            mouse.lastClicked.setAnimation(mouse.lastClicked.getAnimations().default);
+            this.#endGame(mouse.lastClicked);
+        }
         mouse.lastClicked = null;
-        this.#endGame();
     }
 
     /** 
      *  Finish the game
      *  Inform who is the winner  
      */
-    #endGame() {
+    #endGame(token) {
+        console.log(this.#events)
         let isTheGameOver = false;
-        if(this.#isLineCompleted()) {
+        if(this.#isLineCompleted(token)) {
             let tokensLine = this.#gameBoard.getLineFormed();
+            console.log(tokensLine)
             tokensLine.forEach( token => {
-                tokensLine.setAnimation(token.getAnimations().winner);
+                token.setAnimation(token.getAnimations().winner);
             });
             this.#emmitEvent(
                 new Event("gameover-winnerfound", {detail: { message: "The winner lol!!!" }})
@@ -202,8 +218,11 @@ class Game {
     }
 
 
-    #isLineCompleted() {
-        return this.#gameBoard.isLineFormed();
+    #isLineCompleted(token) {
+        if(token != null) {
+            return this.#gameBoard.isLineFormed(token);
+        }
+        return false;
     }
 
     #isTimeUp() {
@@ -228,14 +247,18 @@ class Game {
     }
 
     #addEvent(eventName, callback, ...args) {
-        this.#canvas.addEventListener(eventName, callback.bind(this, ...args));
-        Object.assign(this.#events, {"name": eventName,"callback": callback})
+        // this.#canvas.addEventListener(eventName, callback, true).bind(this, ...args), true);
+        this.#canvas.addEventListener(eventName, callback);
+        this.#events[eventName] = callback;
     }
 
     #removeEvents() {
-        for (const event of this.#events) {
-            this.#canvas.removeEventListener(event.name, event.callback)
-        }
+        console.log("Holaa")
+        this.#canvas = this.canvasCopy;
+        // Object.keys(this.#events).forEach(name => {
+        //     this.#canvas.removeEventListener(name, this.#events[name], true)
+        //     console.log(name, this.#events[name])
+        // })
     }
 
 }

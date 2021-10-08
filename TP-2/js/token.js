@@ -53,6 +53,11 @@ class Token {
         grd.addColorStop(0.0, "rgba(0, 0, 0, 0)");
         grd.addColorStop(0.001, "black");
         let lineWidth = 2; 
+        if(this.#animation == "winner") {
+             grd = this.#ctx.createRadialGradient(this.#x, this.#y, this.#size, this.#x, this.#y, this.#size+ 10);
+            grd.addColorStop(0.0, "rgba(0, 0, 0, 0)");
+            grd.addColorStop(0.001, "white");
+        }
  
         this.#ctx.lineWidth = lineWidth;
         this.#ctx.strokeStyle = (grd ?? "black");

@@ -14,15 +14,16 @@ document.addEventListener("DOMContentLoaded", ()=> {
     const img = new Image()
     img.src = "../TP-2/img/token_1.png"
     img.addEventListener("load", ()=> {     
-        const game = instantiateGame(5, 4, "red", "blue", img);
+        const game = instantiateGame(12, 7, 4, "red", "blue", img);
         
         game.startGame();
 
     });
 
-    function instantiateGame(tileNum, lineTokenNumber, player1Color, player2Color, img) {
-        tileNum =  (tileNum < lineTokenNumber) ? lineTokenNumber : tileNum; 
-        let {tileSize, tokenSize, gameBoardSquareCoordinate, player1SquareCoordinate, player2SquareCoordinate} = calculateObjectSize(tileNum);
+    function instantiateGame(xTileNumber, yTileNumber, lineTokenNumber, player1Color, player2Color, img) {
+        xTileNumber = (xTileNumber < lineTokenNumber) ? lineTokenNumber : xTileNumber; 
+        yTileNumber = (yTileNumber < lineTokenNumber) ? lineTokenNumber : yTileNumber; 
+        let {tileSize, tokenSize, gameBoardSquareCoordinate, player1SquareCoordinate, player2SquareCoordinate} = calculateObjectSize(xTileNumber, yTileNumber);
 
         let instantiateToken = (cant, coordinates, color, img) => {
             let tokens = [];
@@ -33,42 +34,43 @@ document.addEventListener("DOMContentLoaded", ()=> {
             return tokens
         };
 
-        let numTile  = tileNum * tileNum;
+        let numTile  = xTileNumber * yTileNumber;
         let playerTokenNum = numTile/2 + (numTile % 2 == 0 ?  0 : 1);
 
         let player1 = instantiateToken(playerTokenNum, player1SquareCoordinate, player1Color, img);
         let player2 = instantiateToken(playerTokenNum, player2SquareCoordinate, player2Color, img);
-        let gameBoard =  new GameBoard(gameBoardSquareCoordinate, tileNum, tileNum, tileSize, lineTokenNumber, null, 0, ctx);
+        let gameBoard =  new GameBoard(gameBoardSquareCoordinate, xTileNumber,  yTileNumber, tileSize, lineTokenNumber, null, 0, ctx);
         
         return new Game(canvas, gameBoard, player1, player2); 
     }
 
-    function calculateObjectSize(tileNum) {
-        let gameBoardIsHorizontal =  width > height;
-        let minSize = gameBoardIsHorizontal ? height : width;
-        let maxSize = gameBoardIsHorizontal ? width  : height;
-        let tileSize = minSize / tileNum;
-        let tokenSize = (tileSize - 1) / 2;
-        let gameBoardSize = (tileSize * tileNum);
-
+    function calculateObjectSize(xTileNumber, yTileNumber) {
+        let gameBoardAspectRatio =  xTileNumber / yTileNumber;
+        let canvasAspectRatio    =  width / height;
+        let cavasIsHorizontal = canvasAspectRatio >= 1.5
+        let tileSize = (cavasIsHorizontal ? height : width) / ((canvasAspectRatio < gameBoardAspectRatio) ? xTileNumber  + 2: yTileNumber + 2);
+        let tokenSize = tileSize / 2;
+        let gameBoardWidth  = tileSize * xTileNumber;
+        let gameBoardHeight = tileSize * yTileNumber;
+        
         let gameBoardSquareCoordinate = {
-            x1: (gameBoardIsHorizontal ?  ((maxSize - gameBoardSize)/2) : 0), 
-            x2: (gameBoardIsHorizontal ? (((maxSize - gameBoardSize)/2) + gameBoardSize) : gameBoardSize), 
-            y1: 0,
-            y2: gameBoardSize,
+            x1: ( ((width - gameBoardWidth)/2)), 
+            x2: ((((width - gameBoardWidth)/2) + gameBoardWidth)), 
+            y1: (cavasIsHorizontal ?  ((height - gameBoardHeight)/2) : 0), 
+            y2: (cavasIsHorizontal ? (((height - gameBoardHeight)/2) + gameBoardHeight) : gameBoardHeight),
         };
 
         let player1SquareCoordinate = {
             x1: 0,
-            x2: (gameBoardIsHorizontal ? gameBoardSquareCoordinate.x1 : width/2),
-            y1: (gameBoardIsHorizontal ? 0 : gameBoardSize),
+            x2: (cavasIsHorizontal ? gameBoardSquareCoordinate.x1 : width/2),
+            y1: (cavasIsHorizontal ? 0 : gameBoardHeight),
             y2: height 
         };
 
         let player2SquareCoordinate = {
-            x1: (gameBoardIsHorizontal ? gameBoardSquareCoordinate.x2 : width/2),
+            x1: (cavasIsHorizontal ? gameBoardSquareCoordinate.x2 : width/2),
             x2: width,
-            y1: (gameBoardIsHorizontal ? 0 : gameBoardSize),
+            y1: (cavasIsHorizontal ? 0 : gameBoardHeight),
             y2: height 
         };
         return {tileSize, tokenSize, gameBoardSquareCoordinate, player1SquareCoordinate, player2SquareCoordinate};

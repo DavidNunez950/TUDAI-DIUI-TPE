@@ -69,7 +69,7 @@ class GameBoard {
         if(tokenX > 0 && tokenX < size) {
             if(tokenY > 0 && tokenY < size) {
                 let {col, row} = this.#calculateColumn(tokenX, tokenY);
-                for (let i = this.#numTileX-1; i >= col; i--) {
+                for (let i = this.#numTileY-1; i >= col; i--) {
                     if(this.#tokens[i][row] == null) {
                         this.#tokens[i][row] = token;
                         token.setX(this.#squareCoordinates.x1 + ((row * this.#tileSize) + (this.#tileSize/2)))
@@ -93,8 +93,8 @@ class GameBoard {
         let size = this.#squareCoordinates.x2 - this.#squareCoordinates.x1;
         // let col = Math.floor((x / this.#size) * this.#numTileX) - 1;
         // let row = Math.floor((y / this.#size) * this.#numTileX) - 1;
-        let row = Math.floor((x / size) * this.#numTileX);
-        let col = Math.floor((y / size) * this.#numTileX);
+        let row = Math.floor((x / (this.#numTileX*this.#tileSize)) * this.#numTileX);
+        let col = Math.floor((y / (this.#numTileY*this.#tileSize)) * this.#numTileY);
         return {col, row};
     } 
     
@@ -127,76 +127,134 @@ class GameBoard {
                     })()
                 }
 
-                let mayor  = (a, b)=> {return a > b}; 
-                let mennor = (a, b)=> {return a < b};
-
-                function increment (index, max) {
-                    return generator(index, 1, max, mennor);
-                }
-                function decrement (index, min) {
-                    return generator(index, -1, min, mayor);
-                }
-
-                let getLineToken = (xIterator, yIterator) => {
-                    let isLineFormed = false;   
-                    this.lineFormed = [];
-                    let xAux = xIterator.next();
-                    let yAux = yIterator.next();
-                    let x = xAux.value;
-                    let y = yAux.value;
-                    while(!xAux.done || !yAux.done) {
-                        console.log(x, y);
-                        const t = this.#tokens[y][x];
-                        if(t  != null && t .getPlayerColor() == playerColor) {
-                            this.lineFormed.push(t );
-                            isLineFormed = this.lineFormed.length === this.#numLine;
-                            if(isLineFormed) { break; }
-                        } else {
-                            this.lineFormed = [];
+                let increment = (index, max) => generator(index,  1, max, (a, b)=> {return a <  b});
+                let decrement = (index, min) => generator(index, -1, min, (a, b)=> {return a >= b});
+                let nothing   = (index)      => generator(index,  0,   0, ()=> {return true});
+                
+                let it = (itX, itY)=> { 
+                    return (function*() {
+                        let x = itX.next(), y = itY.next();
+                        while (!x.done && !y.done) {
+                            yield {"x": x.value, "y": y.value};
+                            x = itX.next(); y = itY.next();
                         }
-                        xAux = xIterator.next();
-                        yAux = yIterator.next();
-                        x = (xAux.value != undefined) ? xAux.value : x;
-                        y = (yAux.value != undefined) ? yAux.value : y;
-                    }
+                    })();
+                }
+                let geSameToken = (it, line, playerColor) => {
+                    while(true) {
+                        let val = it.next()
+                        if(!val.done) {
+                            let {x, y} = val.value;
+                            console.log(y, x)
+                            const t = this.#tokens[y][x];
+                            if(t != null && t.getPlayerColor() == playerColor) {
+                                line.push(t);
+                                geSameToken(it, line, playerColor)
+                            } else {
+                                break;
+                            }
+                        } else {
+                            break;
+                        }
+                    } 
+                    return line;
+                }
+
+                let getLineToken = (itf, its) => {
+                    let isLineFormed = false;   
+                    console.log(this.lineFormed)
+                    this.lineFormed = [];   
+                    console.log("test");  
+                    console.log(col, row)
+                    this.lineFormed.push(...geSameToken(itf, [], playerColor));
+                    this.lineFormed.push(...geSameToken(its, [], playerColor));
+                    isLineFormed = this.lineFormed.length === this.#numLine;
                     if(!isLineFormed) { this.lineFormed = [];}
                     return isLineFormed; 
-                }; 
+                };    
 
-                let calculeteInitialPositionForDiagonals = (col, row, a= 0) => {
-                    let x =0, y = a-1;
-                    if(col != row) {
-                        if(col > row) {
-                            y = col - row;
-                        } else if(col < row) {
-                            x = row - col;
-                        }
-                    }
-                    return [x, y];
-                };
+                return(
+                    getLineToken(
+                        it(decrement(row, 0),nothing(col, col)),
+                        it(increment(row+1, this.#numTileX),nothing(col, col))
+                        ) ||
+                    
+                    getLineToken(
+                        it(nothing(row, row),decrement(col, 0)),
+                        it(nothing(row, row),increment(col+1, this.#numTileY))
+                        ) ||
+
+                    getLineToken(
+                        it(decrement(row, 0),increment(col, this.#numTileY)),
+                        it(increment(row+1, this.#numTileX),decrement(col-1, 0))
+                        ) ||
+
+                    getLineToken(
+                        it(decrement(row, 0),decrement(col, 0)),
+                        it(increment(row+1, this.#numTileX),increment(col+1, this.#numTileY))
+                        )
+                    );
+                // let getLineToken = (xIterator, yIterator) => {
+                //     let isLineFormed = false;   
+                //     this.lineFormed = [];
+                //     let xAux = xIterator.next();
+                //     let yAux = yIterator.next();
+                //     let x = xAux.value;
+                //     let y = yAux.value;
+                //     console.log("test");  
+                //     while(!xAux.done && !yAux.done) {
+                //         console.log(x, y);  
+                //         const t = this.#tokens[y][x];
+                //         if(t  != null && t .getPlayerColor() == playerColor) {
+                //             this.lineFormed.push(t );
+                //             isLineFormed = this.lineFormed.length === this.#numLine;
+                //             if(isLineFormed) { break; }
+                //         } else {
+                //             this.lineFormed = [];
+                //         }
+                //         xAux = xIterator.next();
+                //         yAux = yIterator.next();
+                //         x = (xAux.value != undefined) ? xAux.value : x;
+                //         y = (yAux.value != undefined) ? yAux.value : y;
+                //     }
+                //     if(!isLineFormed) { this.lineFormed = [];}
+                //     return isLineFormed; 
+                // }; 
+
+                // let calculeteInitialPositionForDiagonals = (col, row, a= 0) => {
+                //     let x =0, y = a-1;
+                //     if(col != row) {
+                //         if(col > row) {
+                //             y = col - row;
+                //         } else if(col < row) {
+                //             x = row - col;
+                //         }
+                //     }
+                //     return [x, y];
+                // };
                 
-                let x = 0, y = 0;
-                // if(getLineToken(increment(x, this.#numTileX - 1),
-                // increment(col, col+1))) {
+                // let x = 0, y = 0;
+                // if(getLineToken(increment(x, this.#numTileX),nothing(col, col))) {
                 //     return true;
                 // }
-                // if( getLineToken(increment(row, row+1), increment(y, this.#numTileX))) {
+                // if(getLineToken(nothing(row, row), increment(y, this.#numTileY))) {
                 //      return true;
                 // }
                 // [x, y] = calculeteInitialPositionForDiagonals(col, row);
-                // if(getLineToken(increment(x, this.#numTileX - 1), increment(y, this.#numTileX - 1))) {
+                // if(getLineToken(increment(x, this.#numTileX), increment(y, this.#numTileY))) {
                 //     return true;
                 // }
                 // x = 0; y = this.#numTileX; //col = this.#numTileX - col;
-                // [x, y] = calculeteInitialPositionForDiagonals(this.#numTileX - col, row, this.#numTileX);
-                // console.log(y)
-                // if(getLineToken(increment(x, this.#numTileX - 1), decrement(y, 0))) {
+                // [x, y] = calculeteInitialPositionForDiagonals(this.#numTileX - col, row, this.#numTileY);
+                // if(getLineToken(increment(x, this.#numTileX), decrement(y, this.#numTileY))) {
                 //     return true;
                 // }
             }
         }
         return false;
     }
+
+    getLineFormed() { return this.lineFormed}
 
     isFull() {
         return this.#tileUsed == this.#numTileX * this.#numTileX; 
