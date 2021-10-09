@@ -81,7 +81,7 @@ class Game {
         this.#addEvent("mousemove", this.#onMouseMove);
         
         // Game events:
-        this.#addEvent("gameover", this.#removeEvents.bind(this));
+        this.#addEvent("gameover", this.removeEvents.bind(this));
 
         this.drawGame();
 
@@ -255,7 +255,7 @@ class Game {
         this.#events[eventName] = callback.bind(this);
     }
 
-    #removeEvents() {
+    removeEvents() {
         let parentElement = this.#canvas.parentElement;
         let copyImage = this.#ctx.getImageData(0, 0, this.#width, this.#height);
         console.log(copyImage)

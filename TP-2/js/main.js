@@ -39,13 +39,43 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
         const game = instantiateGame(gameBoardWidth, gameBoardHeight, lineTokeNumber, p1Color, p2Color, img1, img2, time);
         
+        document.getElementById("btn-settings").innerHTML = `
+                <div class="row">
+                    <div class="col">
+                        <button id="btn-restart" class="btn btn-warning rounded-circle text-white">
+                            <i class="fas fa-undo"></i>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button id="btn-back-menu" class="btn btn-danger rounded-circle">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </div>`;
+        
         canvas.addEventListener("game-changeturn", (e) => {
             let imageTurn = document.querySelector("#img-turn"); 
             imageTurn.style.backgroundColor = e.detail.playerColor;
             imageTurn.setAttribute("src", e.detail.playerImage.src);
         })
+        console.log(time)
+        // let 
+        let curretTime = 60 * time; 
+        setInterval(() => {
+            document.getElementById("game-timer").innerText = Math.floor((curretTime) /60)+":"+curretTime%60;
+            curretTime -= 1;
+        }, 1000)
 
-        document.getElementById("restart").addEventListener("click", game.restartGame.bind(game))
+        document.getElementById("btn-restart").addEventListener("click", ()=>{
+             game.restartGame.bind(game)
+             curretTime = 60 * time;
+        })
+        document.getElementById("btn-back-menu").addEventListener("click", ()=> {
+            game.removeEvents.bind(game);
+            document.getElementById("btn-settings").innerHTML = "";
+            screenStart.classList.toggle("d-none");
+            screenGame .classList.toggle("d-none");
+        });
 
         game.startGame();
     });
