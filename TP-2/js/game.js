@@ -108,8 +108,8 @@ class Game {
     }
 
     #onMouseMove(e) {
-        this.mouse.x = e.clientX - this.#canvas.offsetLeft;
-        this.mouse.y = e.clientY - this.#canvas.offsetTop ;
+        this.mouse.x = e.layerX;
+        this.mouse.y = e.layerY;
         if(this.mouse.clicked) {
             if(this.mouse.lastClicked!=null) {
                 let token = this.mouse.lastClicked;
@@ -146,11 +146,9 @@ class Game {
      *  Inform who is the winner  
      */
     #endGame(token) {
-        console.log(this.#events)
         let isTheGameOver = false;
         if(this.#isLineCompleted(token)) {
             let tokensLine = this.#gameBoard.getLineFormed();
-            console.log(tokensLine)
             tokensLine.forEach( token => {
                 token.setAnimation(token.getAnimations().winner);
             });
@@ -248,7 +246,6 @@ class Game {
     }
 
     #removeEvents() {
-        console.log("Holaa")
         this.#canvas = this.canvasCopy;
         // Object.keys(this.#events).forEach(name => {
         //     this.#canvas.removeEventListener(name, this.#events[name], true)
