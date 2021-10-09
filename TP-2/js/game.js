@@ -154,32 +154,38 @@ class Game {
                 token.setAnimation(token.getAnimations().winner);
             });
             this.#emmitEvent(
-                new Event("gameover-winnerfound", {detail: { message: "The winner lol!!!" }})
+                new CustomEvent("gameover", {
+                    detail: { 
+                    message: "El juego ha terminado: hay un gandor",
+                    playerColor: tokensLine[0].getPlayerColor(),
+                    playerImage: tokensLine[0].getImage(),  
+                }})
             );
             isTheGameOver = true;
         } else if (this.#isPlayersWithOutTokens()) {
             this.#emmitEvent(
-                new Event("gameover-tie", {detail: { message: "The game end in a tie" }})
+                new CustomEvent("gameover", {detail: { message: "El juego termino en empate :/" }})
             );  
             isTheGameOver = true;
         } else if(this.#isTimeUp()){
             this.#emmitEvent(
-                new Event("gameover-endtime", {detail: { message: "The time is over" }})
+                new CustomEvent("gameover", {detail: { message: "Se acabo el tiempo!" }})
             );
             isTheGameOver = true;
         }
 
-        if(isTheGameOver) {
-            this.#emmitEvent(
-                new Event("gameover", {detail: { message: "The time is over" }})
-            );
-        }
+        // if(isTheGameOver) {
+        //     this.#emmitEvent(
+        //         new Event("gameover", {detail: { message: "The time is over" }})
+        //     );
+        // }
     }
     
     /** 
      *  Restart the game
      */
     restartGame() {
+        console.log("test")
         for (let i = 0; i < this.#player1.length; i++) {
             this.#player1[i].setUsed(false);
             this.#player2[i].setUsed(false);

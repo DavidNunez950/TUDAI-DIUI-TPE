@@ -66,9 +66,9 @@ document.addEventListener("DOMContentLoaded", ()=> {
             curretTime -= 1;
         }, 1000)
 
-        document.getElementById("btn-restart").addEventListener("click", ()=>{
-             game.restartGame.bind(game)
-             curretTime = 60 * time;
+        document.getElementById("btn-restart").addEventListener("click", function(){
+            curretTime = 60 * time;
+             game.restartGame();
         })
         document.getElementById("btn-back-menu").addEventListener("click", ()=> {
             game.removeEvents.bind(game);
@@ -77,7 +77,18 @@ document.addEventListener("DOMContentLoaded", ()=> {
             screenGame .classList.toggle("d-none");
         });
 
+        canvas.addEventListener("gameover", (e)=> {
+            console.log(e);
+            document.querySelector("#gamemessage > p").innerText = e.detail.message;
+            console.log(e.detail)
+            if(e.detail.playerColor) {
+                document.getElementById("img-winner").style.backgroundColor = e.detail.playerColor;
+                document.getElementById("img-winner").setAttribute("src",  e.detail.playerImage.getAttribute("src"));
+            } 
+            document.getElementById("gamemessage").classList.toggle("d-none");
+        });
         game.startGame();
+
     });
 
     function instantiateGame(xTileNumber, yTileNumber, lineTokenNumber, p1Color, p2Color, p1Img, p2Img, time) {
