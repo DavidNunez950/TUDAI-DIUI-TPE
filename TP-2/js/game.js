@@ -13,16 +13,17 @@ import { Token } from "./token.js";
 
 /** The Game class */
 class Game {
+    #playerWithTurn;
     #gameBoard;
     #player1;
     #player2;
     #canvas;
+    #events;
     #height;
     #width;
     #timer;
+    #mouse;
     #ctx;
-    #events;
-    mouse;
 
     /**
      * Constructor
@@ -31,6 +32,7 @@ class Game {
      * @param {number}    timer The maximum time the game can last, expressed in seconds 
      */
     constructor(canvas, gameBoard, player1, player2, timer = 300) { 
+        this.#playerWithTurn = player1;
         this.#gameBoard = gameBoard;
         this.#player1   = player1   
         this.#player2   = player2
@@ -40,8 +42,12 @@ class Game {
         this.#timer     = timer;
         this.#ctx       = canvas.getContext('2d');
         this.#events = {};
-        this.canvasCopy = this.#canvas.cloneNode(true);
-
+        this.#mouse = {
+            clicked: false,
+            lastClicked: null,
+            x: null, 
+            y: null
+        };
     }
 
     /** 
@@ -62,34 +68,12 @@ class Game {
      *  When a winner is found, or time is up, or there is a player without chips, it calls to endGame 
      */
     startGame() {
-        let playerIterator = 
-            function*() {
-                let aux = true;
-                while (true) {
-                    yield ((aux) ? this.#player1 : this.#player2)
-                    aux = !aux;
-                }
-            }.apply(this);
-        
-        const players = {
-            player: null, 
-            nextPlayer: function(){ this.player =  playerIterator.next().value}
-        } 
-        
-        players.nextPlayer()
 
-        const mouse = {
-            clicked: false,
-            lastClicked: null,
-            x: null, 
-            y: null
-        }
-        this.mouse = mouse
 
         // Mouse events 
-        this.#addEvent("mouseout",  this.#onMouseOut.bind(this, mouse));
-        this.#addEvent("mousedown", this.#onMouseDown.bind(this, mouse, players));
-        this.#addEvent("mouseup",   this.#onMouseUp.bind(this, mouse, players));
+        this.#addEvent("mouseout",  this.#onMouseOut.bind(this));
+        this.#addEvent("mousedown", this.#onMouseDown.bind(this));
+        this.#addEvent("mouseup",   this.#onMouseUp.bind(this));
         this.#addEvent("mousemove", this.#onMouseMove.bind(this));
         
         // this.#canvas.addEventListener("mousemove", this.#onMouseMove.bind(this));
@@ -100,45 +84,48 @@ class Game {
 
      }
 
-    #onMouseOut(mouse) {
-        mouse.clicked = false;
-        mouse.lastClicked = null;
-        mouse.x = null;
-        mouse.y = null;
+    #onMouseOut() {
+        this.#mouse.clicked = false;
+        this.#mouse.lastClicked = null;
+        this.#mouse.x = null;
+        this.#mouse.y = null;
     }
 
     #onMouseMove(e) {
-        this.mouse.x = e.layerX;
-        this.mouse.y = e.layerY;
-        if(this.mouse.clicked) {
-            if(this.mouse.lastClicked!=null) {
-                let token = this.mouse.lastClicked;
-                token.setX(this.mouse.x); token.setY(this.mouse.y);
+        this.#mouse.x = e.layerX;
+        this.#mouse.y = e.layerY;
+        if(this.#mouse.clicked) {
+            if(this.#mouse.lastClicked!=null) {
+                let token = this.#mouse.lastClicked;
+                token.setX(this.#mouse.x); token.setY(this.#mouse.y);
             }
         }
     }
 
-    #onMouseDown(mouse, players) {
-        let player = players.player;
-        mouse.clicked = true;
-        mouse.lastClicked = this.selectToken(player, mouse.x, mouse.y);
-        if(mouse.lastClicked != null) {
-            mouse.lastClicked.setAnimation(mouse.lastClicked.getAnimations().selected);
+    #onMouseDown(players) {
+        this.#mouse.clicked = true;
+        this.#mouse.lastClicked = this.selectToken(this.#playerWithTurn, this.#mouse.x, this.#mouse.y);
+        if(this.#mouse.lastClicked != null) {
+            this.#mouse.lastClicked.setAnimation(this.#mouse.lastClicked.getAnimations().selected);
         }
     }
 
-    #onMouseUp(mouse, players) {
-        mouse.clicked = false;
-        if(mouse.lastClicked) {
-            if (this.#addTokenToGameBoard(mouse.lastClicked)) {
-                players.nextPlayer();
+    #onMouseUp(players) {
+        this.#mouse.clicked = false;
+        if(this.#mouse.lastClicked != null) {
+            if (this.#addTokenToGameBoard(this.#mouse.lastClicked)) {
+                this.#changeTurn();
             }
+            this.#mouse.lastClicked.setAnimation(this.#mouse.lastClicked.getAnimations().default);
+            this.#endGame(this.#mouse.lastClicked);
         }
-        if(mouse.lastClicked != null) {
-            mouse.lastClicked.setAnimation(mouse.lastClicked.getAnimations().default);
-            this.#endGame(mouse.lastClicked);
-        }
-        mouse.lastClicked = null;
+        this.#mouse.lastClicked = null;
+    }
+
+    #changeTurn() {
+        this.#playerWithTurn = 
+        this.#playerWithTurn[0].getPlayerColor() != this.#player1[0].getPlayerColor() ?
+        this.#player1 : this.#player2;
     }
 
     /** 
