@@ -121,4 +121,8 @@ class Token {
         this.#animation =  animation;
     }
 
+    getImage() {
+        return this.#image;
+    }
+
 }

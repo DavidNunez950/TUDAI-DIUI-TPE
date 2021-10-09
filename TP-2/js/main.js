@@ -39,8 +39,13 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
         const game = instantiateGame(gameBoardWidth, gameBoardHeight, lineTokeNumber, p1Color, p2Color, img1, img2, time);
         
-        game.startGame();
+        canvas.addEventListener("game-changeturn", (e) => {
+            let imageTurn = document.querySelector("#img-turn"); 
+            imageTurn.style.backgroundColor = e.detail.playerColor;
+            imageTurn.setAttribute("src", e.detail.playerImage.src);
+        })
         
+        game.startGame();
     });
 
     function instantiateGame(xTileNumber, yTileNumber, lineTokenNumber, p1Color, p2Color, p1Img, p2Img, time) {
@@ -127,5 +132,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
             });
         });
     })();
+
+
 
 });

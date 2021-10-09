@@ -32,7 +32,7 @@ class Game {
      * @param {number}    timer The maximum time the game can last, expressed in seconds 
      */
     constructor(canvas, gameBoard, player1, player2, timer = 300) { 
-        this.#playerWithTurn = player1;
+        this.#playerWithTurn = null;
         this.#gameBoard = gameBoard;
         this.#player1   = player1   
         this.#player2   = player2
@@ -68,7 +68,7 @@ class Game {
      *  When a winner is found, or time is up, or there is a player without chips, it calls to endGame 
      */
     startGame() {
-
+        this.#changeTurn();
 
         // Mouse events 
         this.#addEvent("mouseout",  this.#onMouseOut.bind(this));
@@ -102,7 +102,7 @@ class Game {
         }
     }
 
-    #onMouseDown(players) {
+    #onMouseDown() {
         this.#mouse.clicked = true;
         this.#mouse.lastClicked = this.selectToken(this.#playerWithTurn, this.#mouse.x, this.#mouse.y);
         if(this.#mouse.lastClicked != null) {
@@ -110,7 +110,7 @@ class Game {
         }
     }
 
-    #onMouseUp(players) {
+    #onMouseUp() {
         this.#mouse.clicked = false;
         if(this.#mouse.lastClicked != null) {
             if (this.#addTokenToGameBoard(this.#mouse.lastClicked)) {
@@ -123,9 +123,19 @@ class Game {
     }
 
     #changeTurn() {
-        this.#playerWithTurn = 
-        this.#playerWithTurn[0].getPlayerColor() != this.#player1[0].getPlayerColor() ?
-        this.#player1 : this.#player2;
+        if(this.#playerWithTurn == null) {
+            this.#playerWithTurn = this.#player2;    
+        }
+        this.#playerWithTurn = ((this.#playerWithTurn[0].getPlayerColor() != this.#player1[0].getPlayerColor()) ? this.#player1 : this.#player2);
+        this.#emmitEvent(
+            new CustomEvent(
+                    "game-changeturn", {
+                    detail: {
+                        playerColor: this.#playerWithTurn[0].getPlayerColor(),
+                        playerImage: this.#playerWithTurn[0].getImage(),   
+                    }
+                })
+            );
     }
 
     /** 
