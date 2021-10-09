@@ -86,15 +86,10 @@ class Game {
         }
         this.mouse = mouse
 
-        // Mouse events
-        
-        this.#canvas.addEventListener(eventName, callback, true);
+        // Mouse events 
         this.#addEvent("mouseout",  this.#onMouseOut.bind(this, mouse));
         this.#addEvent("mousedown", this.#onMouseDown.bind(this, mouse, players));
         this.#addEvent("mouseup",   this.#onMouseUp.bind(this, mouse, players));
-        this.#addEvent("mouseup",   this.#onMouseUp.bind(this, mouse, players));
-        this.#addEvent("mousemove", (e)=>{this.#onMouseMove(e, mouse)});
-        this.#addEvent("mousemove", this.#onMouseMove.bind(this).apply(e, mouse));
         this.#addEvent("mousemove", this.#onMouseMove.bind(this));
         
         // this.#canvas.addEventListener("mousemove", this.#onMouseMove.bind(this));

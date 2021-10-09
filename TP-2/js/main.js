@@ -11,11 +11,28 @@ document.addEventListener("DOMContentLoaded", ()=> {
     canvas.width  = width;
     canvas.height = height;
     
-    const img = new Image()
-    img.src = "../TP-2/img/token_1.png"
-    img.addEventListener("load", ()=> {     
-        const game = instantiateGame(12, 7, 4, "red", "blue", img);
-        
+document.querySelector("#btn-start").addEventListener("click", ()=> {
+        let colors = {
+            success: "#198754",
+            danger: "#DC3545",
+            primary: "#0D6EFD",
+            warning: "#FFC107",
+            light: "#F8F9FA",
+            secondary: "#6C757D",
+        }
+        let gameBoardSize = document.querySelector("#input-game-board-size").value;
+        let lineTokeNumber = document.querySelector("#input-line-token-number").value;
+        let p1Color = document.querySelector("#player-1").getAttribute("data-color");
+        let p2Color = document.querySelector("#player-2").getAttribute("data-color");
+        let p1Img = "../TP-2/"+ document.querySelector("#player-1 .active img").getAttribute("src");
+        let p2Img = "../TP-2/"+ document.querySelector("#player-2 .active img").getAttribute("src");
+        const img1 = new Image();
+        img1.src = p1Img;
+        const img2 = new Image();
+        img2.src = p2Img;
+        console.log(gameBoardSize)
+        const game = instantiateGame(20,4, lineTokeNumber, colors[p1Color], colors[p2Color], img1, img2);
+
         game.startGame();
 
     });
@@ -29,7 +46,6 @@ document.addEventListener("DOMContentLoaded", ()=> {
             let tokens = [];
             for (let i = 0; i < cant; i++) {
                 tokens.push(new Token(coordinates, color, img, tokenSize, canvas.getContext('2d')));
-
             }
             return tokens
         };
@@ -75,5 +91,25 @@ document.addEventListener("DOMContentLoaded", ()=> {
         };
         return {tileSize, tokenSize, gameBoardSquareCoordinate, player1SquareCoordinate, player2SquareCoordinate};
     }
+    
+    (function() {
+        let colors = ["#198754", "#DC3545", "#0D6EFD", "#FFC107", "#F8F9FA", "#6C757D"];
+        const p1Img = document.querySelector("#player-1");
+        const p2img = document.querySelector("#player-2");
+        document.querySelectorAll(".color").forEach( btn => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                let newColor = e.target.getAttribute("data-color");
+               if(p1Img.getAttribute("data-color")!=newColor && p2img.getAttribute("data-color")!=newColor) {
+                   let playerId = e.currentTarget.getAttribute("data-color-target");
+                   let playerSelected = document.querySelector(playerId);
+                   let oldColor = playerSelected.getAttribute("data-color");
+                   playerSelected.setAttribute("data-color", newColor);
+                   document.querySelectorAll('.color > [data-color="'+oldColor+'"]').forEach(btn=>btn.classList.toggle("d-none"));
+                   document.querySelectorAll('.color > [data-color="'+newColor+'"]').forEach(btn=>btn.classList.toggle("d-none"));
+               }
+            });
+        });
+    })();
 
 });

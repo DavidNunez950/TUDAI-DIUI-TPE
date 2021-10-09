@@ -12,8 +12,187 @@
     <title>TUDAI - Interfaces</title>
 </head>
 <body class="bg-dark h-100">
-    <section class="container text-white h-100 2-100">
-        <canvas id="canvas"></canvas>
+    <nav class="navbar navbar-light bg-light  border border-5">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            4 En línea - El Juego
+          </a>
+        </div>
+    </nav>
+    <section id="screen-start" class="container text-white">
+        <div class="row">
+            <div class="col-4 rounded py-4 px-4">
+                <div class="row h6 bg-light p-2 rounded border border-5">
+                    <div class="col">
+                        <div class="row">
+                            <div class="input-group p-1">
+                                <span class="input-group-text" id="basic-addon1">Dimensiones</span>
+                                <select id="input-game-board-size" value="1" class="form-select form-select-sm">
+                                    <option value="1">7x8</option>
+                                    <option value="2">8x9</option>
+                                    <option value="3">10x12</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group p-1">
+                                <span class="input-group-text" id="basic-addon1">Fichas en línea</span>
+                                <select id="input-line-token-number" value="1" class="form-select form-select-sm">
+                                    <option value="2">6</option>
+                                    <option value="3">7</option>
+                                    <option value="4">8</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group p-1">
+                                <span class="input-group-text" id="basic-addon1">Tiempo máximo</span>
+                                <select id="input-max-time" value="1" class="form-select form-select-sm">
+                                    <option selected value="1">3</option>
+                                    <option value="2">4</option>
+                                    <option value="3">5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row h4  bg-light p-2 rounded border border-5">
+                    <div class="col-6">
+                        <p class="text-center">Player 1</p>
+                        <div id="carousel-1" class="carousel slide px-3">
+                            <div class="carousel-inner rounded-circle" id="player-1"  data-color="success">
+                                <div class="carousel-item active">
+                                    <img src="img/token_1.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_2.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_3.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_4.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_5.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_6.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_7.png" class="d-block w-100" alt="img-token">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-1" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carousel-1" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div id="carousel-1" class="color d-flex flex-wrap justify-content-evenly" data-color-target="#player-1">
+                            <button class="btn rounded-circle p-3 d-none" data-color="success"></button>
+                            <button class="btn rounded-circle p-3 d-none" data-color="danger"></button>
+                            <button class="btn rounded-circle p-3" data-color="primary"></button>
+                            <button class="btn rounded-circle p-3" data-color="warning"></button>
+                            <button class="btn rounded-circle p-3" data-color="light"></button>
+                            <button class="btn rounded-circle p-3" data-color="secondary"></button>
+                        </div>
+                    </div>
+                
+                    <div class="col-6">
+                        <p class="text-center">Player 2</p>
+                        <div id="carousel-2" class="carousel slide px-3">
+                            <div class="carousel-inner rounded-circle" id="player-2" data-color="danger">
+                                <div class="carousel-item active">
+                                    <img src="img/token_1.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_2.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_3.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_4.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_5.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_6.png" class="d-block w-100" alt="img-token">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/token_7.png" class="d-block w-100" alt="img-token">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-2" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carousel-2" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div class="color d-flex flex-wrap justify-content-evenly" data-color-target="#player-2">
+                            <button class="btn rounded-circle p-3 d-none" data-color="success"></button>
+                            <button class="btn rounded-circle p-3 d-none" data-color="danger"></button>
+                            <button class="btn rounded-circle p-3" data-color="primary"></button>
+                            <button class="btn rounded-circle p-3" data-color="warning"></button>
+                            <button class="btn rounded-circle p-3" data-color="light"></button>
+                            <button class="btn rounded-circle p-3" data-color="secondary"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row bg-light p-2 rounded border border-5">
+                    <div class="col">
+                        <div class="d-grid gap-2">
+                            <button id="btn-start" type="button" class="btn btn btn-outline-dark p-3">START</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8 py-4 px-4">
+                <div class="row h-100 bg-light p-4 rounded  border border-5">
+                    
+                </div>
+            </div>
+        </div>
     </section>
+    
+    <section id="screen-game" class="container text-center text-dark">
+        <div class="row text-center">
+            <div class="col-2 rounded py-4 px-4">
+                <div class="row h4 bg-light p-2 rounded border border-5">
+                    <p>Turno:</p>
+                    <div class="">
+                        <img src="img/token_1.png" class="img-fluid rounded-circle bg-danger" alt="token">
+                    </div>
+                </div>
+                <div class="row h4 bg-light p-2 rounded border border-5">
+                    <div class="col-6 text-center w-100">
+                        <p>Tiempo:</p>
+                        <div class="w-100 py-5 bg-secondary rounded-circle text-center ">
+                            <p id="game-timer" class="w-100">0:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-10 py-4 px-4">
+                <div class="row h-100 bg-light p-4 rounded  border border-5">
+                </div>
+            </div>
+        </div>
+    </section> 
+
+    <section id="screen-game" class="container text-center text-dark">
+        <div class="row text-center  bg-light p-2 rounded border border-5">
+
+        </div>
+    </section> 
+   
 </body>
 </html>
