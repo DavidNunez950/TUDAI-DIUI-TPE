@@ -195,6 +195,14 @@ class GameBoard {
         return false;
     }
 
+    clear() {
+        for (let i = 0; i < this.#numTileY; i++) {
+           for (let j = 0; j < this.#numTileX; j++) {
+               this.#tokens[i][j] = null;
+           } 
+        }
+    }
+
     getLineFormed() { return this.lineFormed}
 
     isFull() {
@@ -223,4 +231,5 @@ class GameBoard {
         }
     } 
 
+    setContext(ctx) {this.#ctx = ctx}
 }

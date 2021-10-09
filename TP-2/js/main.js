@@ -44,7 +44,9 @@ document.addEventListener("DOMContentLoaded", ()=> {
             imageTurn.style.backgroundColor = e.detail.playerColor;
             imageTurn.setAttribute("src", e.detail.playerImage.src);
         })
-        
+
+        document.getElementById("restart").addEventListener("click", game.restartGame.bind(game))
+
         game.startGame();
     });
 

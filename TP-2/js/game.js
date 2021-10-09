@@ -14,14 +14,16 @@ import { Token } from "./token.js";
 /** The Game class */
 class Game {
     #playerWithTurn;
+    #gameInitTime
+    #gameMaxTime;
     #gameBoard;
     #player1;
     #player2;
     #canvas;
+    #canvasCopy;
     #events;
     #height;
     #width;
-    #timer;
     #mouse;
     #ctx;
 
@@ -39,15 +41,17 @@ class Game {
         this.#canvas    = canvas;
         this.#height    = canvas.height;
         this.#width     = canvas.width;
-        this.#timer     = timer;
+        this.#gameMaxTime     = timer / 1000;
         this.#ctx       = canvas.getContext('2d');
         this.#events = {};
+        this.#gameInitTime = null;
         this.#mouse = {
             clicked: false,
             lastClicked: null,
             x: null, 
             y: null
         };
+        this.#canvasCopy = canvas.cloneNode();
     }
 
     /** 
@@ -69,14 +73,13 @@ class Game {
      */
     startGame() {
         this.#changeTurn();
-
+        this.#gameInitTime = Date.now();
         // Mouse events 
-        this.#addEvent("mouseout",  this.#onMouseOut.bind(this));
-        this.#addEvent("mousedown", this.#onMouseDown.bind(this));
-        this.#addEvent("mouseup",   this.#onMouseUp.bind(this));
-        this.#addEvent("mousemove", this.#onMouseMove.bind(this));
+        this.#addEvent("mouseout",  this.#onMouseOut );
+        this.#addEvent("mousedown", this.#onMouseDown);
+        this.#addEvent("mouseup",   this.#onMouseUp  );
+        this.#addEvent("mousemove", this.#onMouseMove);
         
-        // this.#canvas.addEventListener("mousemove", this.#onMouseMove.bind(this));
         // Game events:
         this.#addEvent("gameover", this.#removeEvents.bind(this));
 
@@ -126,6 +129,7 @@ class Game {
         if(this.#playerWithTurn == null) {
             this.#playerWithTurn = this.#player2;    
         }
+        console.log(this.#playerWithTurn, this.#player2)
         this.#playerWithTurn = ((this.#playerWithTurn[0].getPlayerColor() != this.#player1[0].getPlayerColor()) ? this.#player1 : this.#player2);
         this.#emmitEvent(
             new CustomEvent(
@@ -175,7 +179,24 @@ class Game {
     /** 
      *  Restart the game
      */
-    restartGame() {  }
+    restartGame() {
+        for (let i = 0; i < this.#player1.length; i++) {
+            this.#player1[i].setUsed(false);
+            this.#player2[i].setUsed(false);
+            this.#player1[i].backToOrigin();
+            this.#player2[i].backToOrigin();
+        }
+        this.#gameBoard.clear();
+        this.#gameInitTime = Date.now();
+        this.#playerWithTurn = null;
+        this.#mouse = {
+            clicked: false,
+            lastClicked: null,
+            x: null, 
+            y: null
+        };
+        this.startGame();
+    }
     
     /**
      * Select a token with the x and y mouese coordiantes
@@ -216,15 +237,7 @@ class Game {
     }
 
     #isTimeUp() {
-        // Date.now().timeactual() -timeiniciojeugo > timpoMaxJuego
-        setTimeout(() => {
-            this.#canvas.dispatchEvent(
-                new Event(
-                        "Time Over", {
-                        detail: { message: "The time is over" }
-                    })
-                );
-        }, (this.#timer * 1000));
+        return this.#gameInitTime - this.#gameMaxTime < 0;
     }
 
     #isPlayersWithOutTokens() {
@@ -238,16 +251,28 @@ class Game {
 
     #addEvent(eventName, callback, ...args) {
         // this.#canvas.addEventListener(eventName, callback, true).bind(this, ...args), true);
-        this.#canvas.addEventListener(eventName, callback);
-        this.#events[eventName] = callback;
+        this.#canvas.addEventListener(eventName, callback.bind(this));
+        this.#events[eventName] = callback.bind(this);
     }
 
     #removeEvents() {
-        this.#canvas = this.canvasCopy;
-        // Object.keys(this.#events).forEach(name => {
-        //     this.#canvas.removeEventListener(name, this.#events[name], true)
-        //     console.log(name, this.#events[name])
-        // })
+        let parentElement = this.#canvas.parentElement;
+        let copyImage = this.#ctx.getImageData(0, 0, this.#width, this.#height);
+        console.log(copyImage)
+        parentElement.innerHTML = "";
+        this.#canvas = this.#canvasCopy.cloneNode()
+        this.#ctx = this.#canvas.getContext("2d");
+        parentElement.appendChild(this.#canvas);
+        this.#ctx.putImageData(copyImage, 100, 100);
+        for (let i = 0; i < this.#player1.length; i++) {
+            this.#player1[i].setContext(this.#ctx);
+            this.#player1[i].draw();
+            this.#player2[i].setContext(this.#ctx);
+            this.#player2[i].draw();
+        }
+
+        this.#gameBoard.setContext(this.#ctx)
+        this.#gameBoard.drawGameBoard();
     }
 
 }

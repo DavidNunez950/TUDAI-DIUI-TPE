@@ -18,6 +18,8 @@ class Token {
     #size;
     #used;
     #ctx;
+    #xBaseCoordinate;
+    #yBaseCoordinate;
     #x;
     #y;
 
@@ -37,8 +39,10 @@ class Token {
         this.#animation = "default";
         this.#used       = false;
         this.#ctx        = ctx;
-        this.#x = Math.random() * ((this.#squareCoordinates.x2 - this.#squareCoordinates.x1) - this.#size * 2) + (this.#squareCoordinates.x1 + this.#size)
-        this.#y = Math.random() * ((this.#squareCoordinates.y2 - this.#squareCoordinates.y1) - this.#size * 2) + (this.#squareCoordinates.y1 + this.#size)
+        this.#xBaseCoordinate = Math.random() * ((this.#squareCoordinates.x2 - this.#squareCoordinates.x1) - this.#size * 2) + (this.#squareCoordinates.x1 + this.#size)
+        this.#yBaseCoordinate = Math.random() * ((this.#squareCoordinates.y2 - this.#squareCoordinates.y1) - this.#size * 2) + (this.#squareCoordinates.y1 + this.#size)
+        this.#x = this.#xBaseCoordinate;
+        this.#y = this.#yBaseCoordinate;
     }
 
     /**
@@ -80,6 +84,11 @@ class Token {
         let dx = this.#x - x;
         let dy = this.#y - y;
         return (Math.sqrt((dx * dx + dy * dy)) < this.#size);
+    }
+
+    backToOrigin() {
+        this.#x = this.#xBaseCoordinate;
+        this.#y = this.#yBaseCoordinate;
     }
 
     
@@ -125,4 +134,5 @@ class Token {
         return this.#image;
     }
 
+    setContext(ctx) {this.#ctx = ctx}
 }
