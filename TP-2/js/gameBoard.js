@@ -127,9 +127,9 @@ class GameBoard {
                     })()
                 }
 
-                let increment = (index, max) => generator(index,  1, max, (a, b)=> {return a <  b});
-                let decrement = (index, min) => generator(index, -1, min, (a, b)=> {return a >= b});
-                let nothing   = (index)      => generator(index,  0,   0, ()=> {return true});
+                let increment = (index, max) => generator(index,  1, max, (a, b) => (a <  b));
+                let decrement = (index, min) => generator(index, -1, min, (a, b) => (a >= b));
+                let nothing   = (index)      => generator(index,  0,   0,     () => ( true ));
                 
                 let it = (itX, itY)=> { 
                     return (function*() {
@@ -141,52 +141,52 @@ class GameBoard {
                     })();
                 }
                 let geSameToken = (it, line, playerColor) => {
-                    while(true) {
-                        let val = it.next()
+                    let val = it.next()
+                    if(line.length < (this.#numLine - 1)) {
                         if(!val.done) {
                             let {x, y} = val.value;
                             const t = this.#tokens[y][x];
                             if(t != null && t.getPlayerColor() == playerColor) {
                                 line.push(t);
                                 geSameToken(it, line, playerColor)
-                            } else {
-                                break;
-                            }
-                        } else {
-                            break;
-                        }
-                    } 
+                            } 
+                        } 
+                    }
                     return line;
                 }
 
                 let getLineToken = (itf, its) => {
                     let isLineFormed = false;   
                     this.lineFormed = [];   
-                    this.lineFormed.push(...geSameToken(itf, [], playerColor));
-                    this.lineFormed.push(...geSameToken(its, [], playerColor));
-                    isLineFormed = this.lineFormed.length === this.#numLine;
-                    if(!isLineFormed) { this.lineFormed = [];}
+                    geSameToken(itf, this.lineFormed, playerColor);
+                    geSameToken(its, this.lineFormed, playerColor);
+                    isLineFormed = this.lineFormed.length == (this.#numLine - 1);
+                    if(!isLineFormed) { 
+                        this.lineFormed = [];
+                    } else {
+                        this.lineFormed.push(token)
+                    }
                     return isLineFormed; 
-                };    
-
+                };  
+                  
                 return(
                     getLineToken(
-                        it(decrement(row, 0),nothing(col, col)),
+                        it(decrement(row-1, 0)             ,nothing(col, col)),
                         it(increment(row+1, this.#numTileX),nothing(col, col))
                         ) ||
                     
                     getLineToken(
-                        it(nothing(row, row),decrement(col, 0)),
-                        it(nothing(row, row),increment(col+1, this.#numTileY))
+                        it(  nothing(row, row),decrement(col-1, 0)),
+                        it(  nothing(row, row),increment(col+1, this.#numTileY))
                         ) ||
 
                     getLineToken(
-                        it(decrement(row, 0),increment(col, this.#numTileY)),
+                        it(decrement(row-1, 0),             increment(col+1, this.#numTileY)),
                         it(increment(row+1, this.#numTileX),decrement(col-1, 0))
                         ) ||
 
                     getLineToken(
-                        it(decrement(row, 0),decrement(col, 0)),
+                        it(decrement(row-1, 0),             decrement(col-1, 0)),
                         it(increment(row+1, this.#numTileX),increment(col+1, this.#numTileY))
                         )
                     );
