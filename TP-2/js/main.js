@@ -41,55 +41,15 @@ document.addEventListener("DOMContentLoaded", ()=> {
         img3.src = imgTile;
 
         const game = instantiateGame(gameBoardWidth, gameBoardHeight, lineTokeNumber, p1Color, p2Color,  img1, img2, img3, time);
-        
-        document.getElementById("btn-settings").innerHTML = `
-                <div class="row">
-                    <div class="col">
-                        <button id="btn-restart" class="btn btn-warning rounded-circle text-white">
-                            <i class="fas fa-undo"></i>
-                        </button>
-                    </div>
-                    <div class="col">
-                        <button id="btn-back-menu" class="btn btn-danger rounded-circle">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </button>
-                    </div>
-                </div>`;
-        
-        canvas.addEventListener("game-changeturn", (e) => {
-            let imageTurn = document.querySelector("#img-turn"); 
-            imageTurn.style.backgroundColor = e.detail.playerColor;
-            imageTurn.setAttribute("src", e.detail.playerImage.src);
-        })
-        console.log(time)
-        // let 
+       
         let curretTime = 60 * time; 
         setInterval(() => {
             document.getElementById("game-timer").innerText = Math.floor((curretTime) /60)+":"+curretTime%60;
             curretTime -= 1;
         }, 1000)
 
-        document.getElementById("btn-restart").addEventListener("click", function(){
-            curretTime = 60 * time;
-             game.restartGame();
-        })
-        document.getElementById("btn-back-menu").addEventListener("click", ()=> {
-            game.removeEvents.bind(game);
-            document.getElementById("btn-settings").innerHTML = "";
-            screenStart.classList.toggle("d-none");
-            screenGame .classList.toggle("d-none");
-        });
-
-        canvas.addEventListener("gameover", (e)=> {
-            console.log(e);
-            document.querySelector("#gamemessage > p").innerText = e.detail.message;
-            console.log(e.detail)
-            if(e.detail.playerColor) {
-                document.getElementById("img-winner").style.backgroundColor = e.detail.playerColor;
-                document.getElementById("img-winner").setAttribute("src",  e.detail.playerImage.getAttribute("src"));
-            } 
-            document.getElementById("gamemessage").classList.toggle("d-none");
-        });
+        addSettingButtons(game);
+        
         game.startGame();
 
     });
@@ -98,7 +58,6 @@ document.addEventListener("DOMContentLoaded", ()=> {
         xTileNumber = (xTileNumber < lineTokenNumber) ? lineTokenNumber : xTileNumber; 
         yTileNumber = (yTileNumber < lineTokenNumber) ? lineTokenNumber : yTileNumber; 
         let {tileSize, tokenSize, gameBoardSquareCoordinate, player1SquareCoordinate, player2SquareCoordinate} = calculateObjectSize(xTileNumber, yTileNumber);
-        console.log(canvas)
         let instantiateToken = (cant, coordinates, color, img) => {
             let tokens = [];
             for (let i = 0; i < cant; i++) {
@@ -152,17 +111,17 @@ document.addEventListener("DOMContentLoaded", ()=> {
         return {tileSize, tokenSize, gameBoardSquareCoordinate, player1SquareCoordinate, player2SquareCoordinate};
     }
     
-    function updateColor() {
-        document.querySelectorAll("div[data-color], button[data-color]").
-        forEach( 
-            
-            tag => { tag.style.backgroundColor = tag.getAttribute("data-color");
-        });
-    }
+    (function addInterfaceEvents() {
+        function updateColor() {
+            document.querySelectorAll("div[data-color], button[data-color]").
+            forEach( 
+                tag => { tag.style.backgroundColor = tag.getAttribute("data-color");
+            });
+        }
+        
+        updateColor();
 
-    updateColor();
-
-    (function() {
+        // Eventos para cambiar los colores de los players
         document.querySelectorAll("#player-1, #player-2").forEach( player => {
             let img = player.querySelector(".carousel-inner")
             let btns = player.querySelector(".color")
@@ -177,8 +136,54 @@ document.addEventListener("DOMContentLoaded", ()=> {
                 }
             });
         });
-    })();
 
+        // Eventos para cambiar la imagen que indica de quién es el turno
+        canvas.addEventListener("game-changeturn", (e) => {
+            let imageTurn = document.querySelector("#img-turn"); 
+            imageTurn.style.backgroundColor = e.detail.playerColor;
+            imageTurn.setAttribute("src", e.detail.playerImage.src);
+        })
 
+        // Eventos para mostrar quién es el ganador
+        canvas.addEventListener("gameover", (e)=> {
+            document.querySelector("#gamemessage > p").innerText = e.detail.message;
+            if(e.detail.playerColor) {
+                document.getElementById("img-winner").style.backgroundColor = e.detail.playerColor;
+                document.getElementById("img-winner").setAttribute("src",  e.detail.playerImage.getAttribute("src"));
+            } 
+            document.getElementById("gamemessage").classList.toggle("d-none");
+        });
+    }());
+
+    // Función para añadir los botones del menú, para poder remover los eventos
+    function addSettingButtons(game) {
+        document.getElementById("btn-settings").innerHTML = `
+            <div class="row">
+                <div class="col">
+                    <button id="btn-restart" class="btn btn-warning rounded-circle text-white">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+                <div class="col">
+                    <button id="btn-back-menu" class="btn btn-danger rounded-circle">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>`;
+
+        // Eventos para restaurar una partida
+        document.getElementById("btn-restart").addEventListener("click", function(){
+            curretTime = 60 * time;
+                game.restartGame();
+        });
+
+        // Eventos para volver al menú principal
+        document.getElementById("btn-back-menu").addEventListener("click", ()=> {
+            game.removeEvents.bind(game);
+            document.getElementById("btn-settings").innerHTML = "";
+            screenStart.classList.toggle("d-none");
+            screenGame .classList.toggle("d-none");
+        });
+    }
 
 });

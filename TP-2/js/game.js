@@ -100,7 +100,6 @@ class Game {
         if(this.#playerWithTurn == null) {
             this.#playerWithTurn = this.#player2;    
         }
-        console.log(this.#playerWithTurn, this.#player2)
         this.#playerWithTurn = ((this.#playerWithTurn[0].getPlayerColor() != this.#player1[0].getPlayerColor()) ? this.#player1 : this.#player2);
         this.#emmitEvent(
             new CustomEvent(
