@@ -168,7 +168,7 @@ class GameBoard {
                     }
                     return isLineFormed; 
                 };  
-                  
+
                 return(
                     getLineToken(
                         it(decrement(row-1, 0)             ,nothing(col, col)),
@@ -213,22 +213,23 @@ class GameBoard {
      * Draw the column and rows and fill them with the tile image 
      */
     drawGameBoard() {
-        let aux = false;
+        this.#ctx.beginPath();
+        this.#ctx.moveTo(this.#squareCoordinates.x1+20,this.#squareCoordinates.y1-10);
+        this.#ctx.arcTo(this.#squareCoordinates.x1-10,this.#squareCoordinates.y1-10, this.#squareCoordinates.x1-10,this.#squareCoordinates.y1, 30);
+        this.#ctx.arcTo(this.#squareCoordinates.x1-10,this.#squareCoordinates.y2+10,this.#squareCoordinates.x1,this.#squareCoordinates.y2+10, 30);
+        this.#ctx.arcTo(this.#squareCoordinates.x2+10,this.#squareCoordinates.y2+10, this.#squareCoordinates.x2+10,this.#squareCoordinates.y2, 30);
+        this.#ctx.arcTo(this.#squareCoordinates.x2+10,this.#squareCoordinates.y1-10,this.#squareCoordinates.x2,this.#squareCoordinates.y1-10, 30);
+        this.#ctx.fillStyle = "#5bb0ff";
+        this.#ctx.fill();
         for (let i = 0; i < this.#numTileY; i++) {
-            aux = !aux;
-           for (let j = 0; j < this.#numTileX; j++) {
-            aux = !aux;
-            this.#ctx.beginPath()
-            this.#ctx.fillStyle = (aux) ? "#FAC88A" : "#5E412F";
-            // this.#ctx.fillStyle = (aux) ? "#ffffff" : "#000000";
-            this.#ctx.fillRect(
-                this.#squareCoordinates.x1 + this.#tileSize * j,
-                this.#squareCoordinates.y1 + this.#tileSize * i ,
-                this.#tileSize,
-                this.#tileSize
-            );
-           } 
-        }
+            for (let j = 0; j < this.#numTileX; j++) {
+                if(!this.#tokens[i][j]) {
+                    let x = this.#squareCoordinates.x1 + this.#tileSize * j; 
+                    let y = this.#squareCoordinates.y1 + this.#tileSize * i;
+                    this.#ctx.drawImage(this.#tile, x, y, this.#tileSize, this.#tileSize)
+                }
+            } 
+        }        
     } 
 
     setContext(ctx) {this.#ctx = ctx}

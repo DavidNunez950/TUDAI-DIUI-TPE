@@ -30,14 +30,17 @@ document.addEventListener("DOMContentLoaded", ()=> {
         let p2Color = gameInputP2Color.getAttribute("data-color");
         let p1Image = "../TP-2/"+gameInputP1Image.getAttribute("src");
         let p2Image = "../TP-2/"+gameInputP2Image.getAttribute("src");
+        let imgTile = "../TP-2/img/game_board_tile.png";
         let time    = gameInputTime.selectedOptions[0].getAttribute("data-time");
 
         const img1 = new Image();
         const img2 = new Image();
+        const img3 = new Image();
         img1.src = p1Image;
         img2.src = p2Image;
+        img3.src = imgTile;
 
-        const game = instantiateGame(gameBoardWidth, gameBoardHeight, lineTokeNumber, p1Color, p2Color, img1, img2, time);
+        const game = instantiateGame(gameBoardWidth, gameBoardHeight, lineTokeNumber, p1Color, p2Color,  img1, img2, img3, time);
         
         document.getElementById("btn-settings").innerHTML = `
                 <div class="row">
@@ -91,7 +94,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
     });
 
-    function instantiateGame(xTileNumber, yTileNumber, lineTokenNumber, p1Color, p2Color, p1Img, p2Img, time) {
+    function instantiateGame(xTileNumber, yTileNumber, lineTokenNumber, p1Color, p2Color, p1Img, p2Img, imgTile, time) {
         xTileNumber = (xTileNumber < lineTokenNumber) ? lineTokenNumber : xTileNumber; 
         yTileNumber = (yTileNumber < lineTokenNumber) ? lineTokenNumber : yTileNumber; 
         let {tileSize, tokenSize, gameBoardSquareCoordinate, player1SquareCoordinate, player2SquareCoordinate} = calculateObjectSize(xTileNumber, yTileNumber);
@@ -108,7 +111,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         let playerTokenNum = numTile/2 + (numTile % 2 == 0 ?  0 : 1);
         let player1 = instantiateToken(playerTokenNum, player1SquareCoordinate, p1Color, p1Img);
         let player2 = instantiateToken(playerTokenNum, player2SquareCoordinate, p2Color, p2Img);
-        let gameBoard =  new GameBoard(gameBoardSquareCoordinate, xTileNumber,  yTileNumber, tileSize, lineTokenNumber, null, 0, ctx);
+        let gameBoard =  new GameBoard(gameBoardSquareCoordinate, xTileNumber,  yTileNumber, tileSize, lineTokenNumber, imgTile, 0, ctx);
         
         return new Game(canvas, gameBoard, player1, player2); 
     }
