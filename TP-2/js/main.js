@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         let playerTokenNum = numTile/2 + (numTile % 2 == 0 ?  0 : 1);
         let player1 = instantiateToken(playerTokenNum, player1SquareCoordinate, p1Color, p1Img);
         let player2 = instantiateToken(playerTokenNum, player2SquareCoordinate, p2Color, p2Img);
-        let gameBoard =  new GameBoard(gameBoardSquareCoordinate, xTileNumber,  yTileNumber, tileSize, lineTokenNumber, imgTile, 0, ctx);
+        let gameBoard =  new GameBoard(gameBoardSquareCoordinate, xTileNumber,  yTileNumber, tileSize, lineTokenNumber, imgTile, ctx);
         
         return new Game(canvas, gameBoard, player1, player2); 
     }

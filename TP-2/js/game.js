@@ -13,15 +13,16 @@ import { Token } from "./token.js";
 
 /** The Game class */
 class Game {
+
+    //#region properties&&constructor
     #playerWithTurn;
     #gameInitTime
     #gameMaxTime;
+    #canvasCopy;
     #gameBoard;
     #player1;
     #player2;
     #canvas;
-    #canvasCopy;
-    #events;
     #height;
     #width;
     #mouse;
@@ -29,33 +30,36 @@ class Game {
 
     /**
      * Constructor
+     * @param {HTMLCanvasElement}  canvas The canvas HTML
      * @param {GameBoard} gameBoard The num of tile in x axis
-     * @param {HTMLCanvasElement}  canvas The token background image 
-     * @param {number}    timer The maximum time the game can last, expressed in seconds 
+     * @param {Token[]} player1 The player one's tokens
+     * @param {Token[]} player2 The player two's tokens
+     * @param {number}    timer The maximum time the game can last, expressed in minutes 
      */
     constructor(canvas, gameBoard, player1, player2, timer = 300) { 
+        this.#gameMaxTime    = timer / 1000; 
+        this.#gameInitTime   = null;
         this.#playerWithTurn = null;
+        this.#canvasCopy = canvas.cloneNode();
         this.#gameBoard = gameBoard;
         this.#player1   = player1   
         this.#player2   = player2
         this.#canvas    = canvas;
         this.#height    = canvas.height;
         this.#width     = canvas.width;
-        this.#gameMaxTime     = timer / 1000;
         this.#ctx       = canvas.getContext('2d');
-        this.#events = {};
-        this.#gameInitTime = null;
         this.#mouse = {
             clicked: false,
             lastClicked: null,
             x: null, 
             y: null
         };
-        this.#canvasCopy = canvas.cloneNode();
     }
+    //#endregion
 
+    //#region draw function
     /** 
-     *  draw the Game Board and the Tokens
+     *  Draw the Game Board and the Tokens
      */
      drawGame() {
         this.#ctx.clearRect(0, 0, this.#width, this.#height)
@@ -66,7 +70,9 @@ class Game {
         }
         requestAnimationFrame(this.drawGame.bind(this));
      }
+     //#endregion
 
+    //#region Function to manage the flow of the game
     /** 
      *  Start the game
      *  When a winner is found, or time is up, or there is a player without chips, it calls to endGame 
@@ -87,45 +93,10 @@ class Game {
 
      }
 
-    #onMouseOut() {
-        this.#mouse.clicked = false;
-        this.#mouse.lastClicked = null;
-        this.#mouse.x = null;
-        this.#mouse.y = null;
-    }
-
-    #onMouseMove(e) {
-        this.#mouse.x = e.layerX;
-        this.#mouse.y = e.layerY;
-        if(this.#mouse.clicked) {
-            if(this.#mouse.lastClicked!=null) {
-                let token = this.#mouse.lastClicked;
-                token.setX(this.#mouse.x); token.setY(this.#mouse.y);
-            }
-        }
-    }
-
-    #onMouseDown() {
-        this.#mouse.clicked = true;
-        this.#mouse.lastClicked = this.selectToken(this.#playerWithTurn, this.#mouse.x, this.#mouse.y);
-        if(this.#mouse.lastClicked != null) {
-            this.#mouse.lastClicked.setAnimation(this.#mouse.lastClicked.getAnimations().selected);
-        }
-    }
-
-    #onMouseUp() {
-        this.#mouse.clicked = false;
-        if(this.#mouse.lastClicked != null) {
-            if (this.#addTokenToGameBoard(this.#mouse.lastClicked)) {
-                this.#changeTurn();
-            }
-            this.#mouse.lastClicked.setAnimation(this.#mouse.lastClicked.getAnimations().default);
-            this.#endGame(this.#mouse.lastClicked);
-        }
-        this.#mouse.lastClicked = null;
-    }
-
-    #changeTurn() {
+    /** 
+     * Pass the turn to the next player 
+     */
+     #changeTurn() {
         if(this.#playerWithTurn == null) {
             this.#playerWithTurn = this.#player2;    
         }
@@ -143,8 +114,10 @@ class Game {
     }
 
     /** 
-     *  Finish the game
-     *  Inform who is the winner  
+     * Finish the game:
+     * Using the last token added to the board, it informs if there is a winner, 
+     * or if it is a tie, in case the tile has occupied the last free tile on the board. 
+     * @param {Token} token The last token added to gameboard   
      */
     #endGame(token) {
         let isTheGameOver = false;
@@ -173,22 +146,17 @@ class Game {
             );
             isTheGameOver = true;
         }
-
-        // if(isTheGameOver) {
-        //     this.#emmitEvent(
-        //         new Event("gameover", {detail: { message: "The time is over" }})
-        //     );
-        // }
     }
     
     /** 
-     *  Restart the game
+     * Restart the game
      */
     restartGame() {
-        console.log("test")
         for (let i = 0; i < this.#player1.length; i++) {
             this.#player1[i].setUsed(false);
             this.#player2[i].setUsed(false);
+            this.#player1[i].setAnimation("default");
+            this.#player2[i].setAnimation("default");
             this.#player1[i].backToOrigin();
             this.#player2[i].backToOrigin();
         }
@@ -205,11 +173,11 @@ class Game {
     }
     
     /**
-     * Select a token with the x and y mouese coordiantes
+     * Select a token with the x and y mouese coordiantes relatives to canvas
      * @param {Token[]} tokens The player's tokens  
-     * @param {number} x The x position of the token 
-     * @param {number} y The y position of the token 
-     * @return {token} a token if it finds it, or null if it doesn't  
+     * @param {number} x The x position of the mouse 
+     * @param {number} y The y position of the mouse 
+     * @return {Token} a token if it finds it, or null if it doesn't  
      */
     selectToken(tokens, x, y) {
         let returned = null;
@@ -222,7 +190,7 @@ class Game {
     }
 
     /** 
-     * Añade una ficha al tablero si es posible
+     * Add a token to the board if possible 
      * @param {Token} token The token to add to the game board 
      */
     #addTokenToGameBoard(token) {
@@ -249,27 +217,77 @@ class Game {
     #isPlayersWithOutTokens() {
         return this.#gameBoard.isFull();
     }
+    //#endregion
 
-    // Handle Events:
+    //#region Mouse Events: The events added to the canvas
+    /**
+     * Callback from mouse out event
+     **/
+    #onMouseOut() {
+        this.#mouse.clicked = false;
+        this.#mouse.lastClicked = null;
+        this.#mouse.x = null;
+        this.#mouse.y = null;
+    }
+
+    /**
+     * Callback from mouse move event
+     * @param {MouseEvent} e The EventMouse passes from the eventlistenner
+     **/
+    #onMouseMove(e) {
+        this.#mouse.x = e.layerX;
+        this.#mouse.y = e.layerY;
+        if(this.#mouse.clicked) {
+            if(this.#mouse.lastClicked!=null) {
+                let token = this.#mouse.lastClicked;
+                token.setX(this.#mouse.x); token.setY(this.#mouse.y);
+            }
+        }
+    }
+
+    /**
+     * Callback from mouse down event
+     **/
+    #onMouseDown() {
+        this.#mouse.clicked = true;
+        this.#mouse.lastClicked = this.selectToken(this.#playerWithTurn, this.#mouse.x, this.#mouse.y);
+        if(this.#mouse.lastClicked != null) {
+            this.#mouse.lastClicked.setAnimation(this.#mouse.lastClicked.getAnimations().selected);
+        }
+    }
+
+
+    /**
+     * Callback from mouse up event
+     **/
+    #onMouseUp() {
+        this.#mouse.clicked = false;
+        if(this.#mouse.lastClicked != null) {
+            if (this.#addTokenToGameBoard(this.#mouse.lastClicked)) {
+                this.#changeTurn();
+            }
+            this.#mouse.lastClicked.setAnimation(this.#mouse.lastClicked.getAnimations().default);
+            this.#endGame(this.#mouse.lastClicked);
+        }
+        this.#mouse.lastClicked = null;
+    }
+    //#endregion
+
+    //#region Handle Events:
     #emmitEvent(event) {
         this.#canvas.dispatchEvent(event);
     }
 
-    #addEvent(eventName, callback, ...args) {
-        // this.#canvas.addEventListener(eventName, callback, true).bind(this, ...args), true);
+    #addEvent(eventName, callback) {
         this.#canvas.addEventListener(eventName, callback.bind(this));
-        this.#events[eventName] = callback.bind(this);
     }
 
     removeEvents() {
         let parentElement = this.#canvas.parentElement;
-        let copyImage = this.#ctx.getImageData(0, 0, this.#width, this.#height);
-        console.log(copyImage)
         parentElement.innerHTML = "";
         this.#canvas = this.#canvasCopy.cloneNode()
         this.#ctx = this.#canvas.getContext("2d");
         parentElement.appendChild(this.#canvas);
-        this.#ctx.putImageData(copyImage, 100, 100);
         for (let i = 0; i < this.#player1.length; i++) {
             this.#player1[i].setContext(this.#ctx);
             this.#player1[i].draw();
@@ -280,5 +298,6 @@ class Game {
         this.#gameBoard.setContext(this.#ctx)
         this.#gameBoard.drawGameBoard();
     }
+    //#endregion 
 
 }
