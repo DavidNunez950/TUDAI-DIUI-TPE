@@ -187,19 +187,17 @@ document.addEventListener("DOMContentLoaded", ()=> {
                     document.querySelector(".toast").classList.toggle("d-none")
                 }
                 toggleToast();
-                document.getElementById("toast-bg").className = bgColor[e.detail.status]
-                document.getElementById("toast-img").style.backgroundColor = e.detail.playerColor;
                 let bgColor = {
                     1: "bg-success",
                     2: "bg-warning",
                     3: "bg-secondary"
                 }
+                document.getElementById("toast-bg").className = bgColor[e.detail.status]
+                document.getElementById("toast-img").style.backgroundColor = e.detail.playerColor;
                 if(e.detail.playerColor) {
-                    document.getElementById("toast-img").classList.remove("d-none")
                     document.getElementById("toast-img").setAttribute("src",  e.detail.playerImage.getAttribute("src"));
                     document.getElementById("toast-close-btn").addEventListener("click", toggleToast)
-                } 
-                // document.getElementById("gamemessage").classList.toggle("d-none");
+                }
             });
         }
         addCanvasEvents() 
