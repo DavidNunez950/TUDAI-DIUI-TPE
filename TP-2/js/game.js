@@ -16,7 +16,8 @@ class Game {
 
     //#region properties&&constructor
     #playerWithTurn;
-    #gameInitTime
+    #gameTimeElpased;
+    #setTimeOutId;
     #gameMaxTime;
     #canvasCopy;
     #gameBoard;
@@ -36,11 +37,11 @@ class Game {
      * @param {Token[]} player2 The player two's tokens
      * @param {number}    timer The maximum time the game can last, expressed in minutes 
      */
-    constructor(canvas, gameBoard, player1, player2, timer = 300) { 
-        this.#gameMaxTime    = timer / 1000; 
-        this.#gameInitTime   = null;
-        this.#playerWithTurn = null;
-        this.#canvasCopy = canvas.cloneNode();
+    constructor(canvas, gameBoard, player1, player2, timer = 4) { 
+        this.#gameMaxTime     = timer * 60; 
+        this.#gameTimeElpased = timer * 60;
+        this.#playerWithTurn  = null;
+        this.#canvasCopy = canvas.cloneNode(true);
         this.#gameBoard = gameBoard;
         this.#player1   = player1   
         this.#player2   = player2
@@ -79,7 +80,6 @@ class Game {
      */
     startGame() {
         this.#changeTurn();
-        this.#gameInitTime = Date.now();
         // Mouse events 
         this.#addEvent("mouseout",  this.#onMouseOut );
         this.#addEvent("mousedown", this.#onMouseDown);
@@ -87,8 +87,10 @@ class Game {
         this.#addEvent("mousemove", this.#onMouseMove);
         
         // Game events:
-        this.#addEvent("gameover", this.removeEvents.bind(this));
-
+        this.#addEvent("gameover", this.removeEvents);
+        
+        this.#setTimeOutForGame();
+        
         this.drawGame();
 
      }
@@ -119,31 +121,27 @@ class Game {
      * @param {Token} token The last token added to gameboard   
      */
     #endGame(token) {
-        let isTheGameOver = false;
-        if(this.#isLineCompleted(token)) {
+        let isTheGameOver = false, detail = {};
+        if(token!=null&&this.#gameBoard.isLineFormed(token)) {
             let tokensLine = this.#gameBoard.getLineFormed();
             tokensLine.forEach( token => {
                 token.setAnimation(token.getAnimations().winner);
             });
+            detail = { 
+                status: 1,
+                message: "El juego ha terminado: hay un gandor",
+                playerColor: tokensLine[0].getPlayerColor(),
+                playerImage: tokensLine[0].getImage(),  
+            }
+            isTheGameOver = true;
+        } else if (this.#gameBoard.isFull()) {
+            detail = { status: 2, message: "El juego termino en empate :/" };
+            isTheGameOver = true;
+        }
+        if(isTheGameOver) {
             this.#emmitEvent(
-                new CustomEvent("gameover", {
-                    detail: { 
-                    message: "El juego ha terminado: hay un gandor",
-                    playerColor: tokensLine[0].getPlayerColor(),
-                    playerImage: tokensLine[0].getImage(),  
-                }})
+                new CustomEvent("gameover", {"detail":  detail})
             );
-            isTheGameOver = true;
-        } else if (this.#isPlayersWithOutTokens()) {
-            this.#emmitEvent(
-                new CustomEvent("gameover", {detail: { message: "El juego termino en empate :/" }})
-            );  
-            isTheGameOver = true;
-        } else if(this.#isTimeUp()){
-            this.#emmitEvent(
-                new CustomEvent("gameover", {detail: { message: "Se acabo el tiempo!" }})
-            );
-            isTheGameOver = true;
         }
     }
     
@@ -151,6 +149,10 @@ class Game {
      * Restart the game
      */
     restartGame() {
+        this.removeEvents();
+        if(this.#setTimeOutId != null){
+            clearInterval(this.#setTimeOutId);
+        }
         for (let i = 0; i < this.#player1.length; i++) {
             this.#player1[i].setUsed(false);
             this.#player2[i].setUsed(false);
@@ -159,8 +161,8 @@ class Game {
             this.#player1[i].backToOrigin();
             this.#player2[i].backToOrigin();
         }
+        this.#gameTimeElpased = this.#gameMaxTime;
         this.#gameBoard.clear();
-        this.#gameInitTime = Date.now();
         this.#playerWithTurn = null;
         this.#mouse = {
             clicked: false,
@@ -201,21 +203,32 @@ class Game {
         }
     }
 
-
-    #isLineCompleted(token) {
-        if(token != null) {
-            return this.#gameBoard.isLineFormed(token);
+    #setTimeOutForGame() {
+        function secondPassed() {
+            this.#gameTimeElpased--;
+            if(0 <= this.#gameTimeElpased) {
+                this.#emmitEvent(
+                    new CustomEvent("game-second-passed", {
+                        detail: { 
+                            minutes: Math.floor((this.#gameTimeElpased)/60), 
+                            seconds: (this.#gameTimeElpased%60)
+                        }
+                    })
+                );
+            } else {
+                this.#emmitEvent(
+                    new CustomEvent("gameover", {
+                        detail: { 
+                            status: 3,
+                            message: "Se acabo el tiempo!" 
+                        }
+                    })
+                );
+            }
         }
-        return false;
+        this.#setTimeOutId = setInterval(secondPassed.bind(this), 1000);
     }
 
-    #isTimeUp() {
-        return this.#gameInitTime - this.#gameMaxTime < 0;
-    }
-
-    #isPlayersWithOutTokens() {
-        return this.#gameBoard.isFull();
-    }
     //#endregion
 
     //#region Mouse Events: The events added to the canvas
@@ -282,6 +295,8 @@ class Game {
     }
 
     removeEvents() {
+        clearInterval(this.#setTimeOutId);
+        this.#setTimeOutId = null;
         let parentElement = this.#canvas.parentElement;
         parentElement.innerHTML = "";
         this.#canvas = this.#canvasCopy.cloneNode()

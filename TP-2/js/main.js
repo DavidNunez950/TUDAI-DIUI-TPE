@@ -3,14 +3,13 @@ import { Game } from "./game.js";
 import { Token } from "./token.js";
 
 document.addEventListener("DOMContentLoaded", ()=> {
-    
-    const canvas  = document.getElementById("canvas");
-    const ctx     = canvas.getContext("2d");
 
     const screenStart = document.querySelector("#screen-start");
     const screenGame  = document.querySelector("#screen-game");
     
     document.querySelector("#btn-start").addEventListener("click", ()=> {
+    
+        let canvas  = document.getElementById("canvas");
 
         screenStart.classList.toggle("d-none");
         screenGame .classList.toggle("d-none");
@@ -40,21 +39,18 @@ document.addEventListener("DOMContentLoaded", ()=> {
         img2.src = p2Image;
         img3.src = imgTile;
 
-        const game = instantiateGame(gameBoardWidth, gameBoardHeight, lineTokeNumber, p1Color, p2Color,  img1, img2, img3, time);
-       
-        let curretTime = 60 * time; 
-        setInterval(() => {
-            document.getElementById("game-timer").innerText = Math.floor((curretTime) /60)+":"+curretTime%60;
-            curretTime -= 1;
-        }, 1000)
-
-        addSettingButtons(game);
+        const game = instantiateGame(3, 3, lineTokeNumber, p1Color, p2Color,  img1, img2, img3, time);
         
+        addSettingButtons(game);
+
         game.startGame();
+        
 
     });
 
-    function instantiateGame(xTileNumber, yTileNumber, lineTokenNumber, p1Color, p2Color, p1Img, p2Img, imgTile, time) {
+    function instantiateGame(xTileNumber, yTileNumber, lineTokenNumber, p1Color, p2Color, p1Img, p2Img, imgTile, time) {    
+        let canvas  = document.getElementById("canvas");
+        let ctx     = canvas.getContext("2d");
         xTileNumber = (xTileNumber < lineTokenNumber) ? lineTokenNumber : xTileNumber; 
         yTileNumber = (yTileNumber < lineTokenNumber) ? lineTokenNumber : yTileNumber; 
         let {tileSize, tokenSize, gameBoardSquareCoordinate, player1SquareCoordinate, player2SquareCoordinate} = calculateObjectSize(xTileNumber, yTileNumber);
@@ -72,10 +68,11 @@ document.addEventListener("DOMContentLoaded", ()=> {
         let player2 = instantiateToken(playerTokenNum, player2SquareCoordinate, p2Color, p2Img);
         let gameBoard =  new GameBoard(gameBoardSquareCoordinate, xTileNumber,  yTileNumber, tileSize, lineTokenNumber, imgTile, ctx);
         
-        return new Game(canvas, gameBoard, player1, player2); 
+        return new Game(canvas, gameBoard, player1, player2, time); 
     }
 
     function calculateObjectSize(xTileNumber, yTileNumber) {
+        let canvas = document.querySelector("canvas")
         let canvasWidth   = canvas.parentElement.clientWidth ;
         let canvasHeight  = canvas.parentElement.clientHeight;
         canvas.width  = canvasWidth;
@@ -136,23 +133,6 @@ document.addEventListener("DOMContentLoaded", ()=> {
                 }
             });
         });
-
-        // Eventos para cambiar la imagen que indica de quién es el turno
-        canvas.addEventListener("game-changeturn", (e) => {
-            let imageTurn = document.querySelector("#img-turn"); 
-            imageTurn.style.backgroundColor = e.detail.playerColor;
-            imageTurn.setAttribute("src", e.detail.playerImage.src);
-        })
-
-        // Eventos para mostrar quién es el ganador
-        canvas.addEventListener("gameover", (e)=> {
-            document.querySelector("#gamemessage > p").innerText = e.detail.message;
-            if(e.detail.playerColor) {
-                document.getElementById("img-winner").style.backgroundColor = e.detail.playerColor;
-                document.getElementById("img-winner").setAttribute("src",  e.detail.playerImage.getAttribute("src"));
-            } 
-            document.getElementById("gamemessage").classList.toggle("d-none");
-        });
     }());
 
     // Función para añadir los botones del menú, para poder remover los eventos
@@ -173,17 +153,43 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
         // Eventos para restaurar una partida
         document.getElementById("btn-restart").addEventListener("click", function(){
-            curretTime = 60 * time;
                 game.restartGame();
+                addCanvasEvents();
         });
 
         // Eventos para volver al menú principal
         document.getElementById("btn-back-menu").addEventListener("click", ()=> {
-            game.removeEvents.bind(game);
+            game.removeEvents();
             document.getElementById("btn-settings").innerHTML = "";
             screenStart.classList.toggle("d-none");
             screenGame .classList.toggle("d-none");
         });
+        function addCanvasEvents() {
+            let canvas = document.querySelector("#canvas");
+
+            //Eventos para el timer
+            canvas.addEventListener("game-second-passed", (e) => {
+                document.getElementById("game-timer").innerText = e.detail.minutes+":"+e.detail.seconds;
+            });
+
+            // Eventos para cambiar la imagen que indica de quién es el turno
+            canvas.addEventListener("game-changeturn", (e) => {
+                let imageTurn = document.querySelector("#img-turn"); 
+                imageTurn.style.backgroundColor = e.detail.playerColor;
+                imageTurn.setAttribute("src", e.detail.playerImage.src);
+            })
+
+            // Eventos para mostrar quién es el ganador
+            canvas.addEventListener("gameover", (e)=> {
+                document.querySelector("#gamemessage > p").innerText = e.detail.message;
+                if(e.detail.playerColor) {
+                    document.getElementById("img-winner").style.backgroundColor = e.detail.playerColor;
+                    document.getElementById("img-winner").setAttribute("src",  e.detail.playerImage.getAttribute("src"));
+                } 
+                document.getElementById("gamemessage").classList.toggle("d-none");
+            });
+        }
+        addCanvasEvents() 
     }
 
 });

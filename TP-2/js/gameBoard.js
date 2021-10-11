@@ -60,6 +60,7 @@ class GameBoard {
      * Remove all the tokens in the board
      */
      clear() {
+        this.#tileUsed = 0;
         for (let i = 0; i < this.#numTileY; i++) {
            for (let j = 0; j < this.#numTileX; j++) {
                this.#tokens[i][j] = null;
