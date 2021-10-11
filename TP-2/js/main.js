@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         img2.src = p2Image;
         img3.src = imgTile;
 
-        const game = instantiateGame(3, 3, lineTokeNumber, p1Color, p2Color,  img1, img2, img3, time);
+        const game = instantiateGame(gameBoardWidth, gameBoardHeight, lineTokeNumber, p1Color, p2Color,  img1, img2, img3, time);
         
         addSettingButtons(game);
 
@@ -181,12 +181,25 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
             // Eventos para mostrar quién es el ganador
             canvas.addEventListener("gameover", (e)=> {
-                document.querySelector("#gamemessage > p").innerText = e.detail.message;
+                document.querySelector("#toast-message").innerText = e.detail.message;
+                let toggleToast = () => {
+                    document.querySelector(".toast").classList.toggle("d-block")
+                    document.querySelector(".toast").classList.toggle("d-none")
+                }
+                toggleToast();
+                document.getElementById("toast-bg").className = bgColor[e.detail.status]
+                document.getElementById("toast-img").style.backgroundColor = e.detail.playerColor;
+                let bgColor = {
+                    1: "bg-success",
+                    2: "bg-warning",
+                    3: "bg-secondary"
+                }
                 if(e.detail.playerColor) {
-                    document.getElementById("img-winner").style.backgroundColor = e.detail.playerColor;
-                    document.getElementById("img-winner").setAttribute("src",  e.detail.playerImage.getAttribute("src"));
+                    document.getElementById("toast-img").classList.remove("d-none")
+                    document.getElementById("toast-img").setAttribute("src",  e.detail.playerImage.getAttribute("src"));
+                    document.getElementById("toast-close-btn").addEventListener("click", toggleToast)
                 } 
-                document.getElementById("gamemessage").classList.toggle("d-none");
+                // document.getElementById("gamemessage").classList.toggle("d-none");
             });
         }
         addCanvasEvents() 

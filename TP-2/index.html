@@ -26,12 +26,22 @@
             </div>
         </div>
     </nav>
-    <div class="alert alert-warning alert-dismissible fade show d-none" id="gamemessage" role="alert">
-        <p></p>
-        <div>
-            <img src="img/token_1.png" id="img-winner" width="50" height="50" class="rounded-circle" alt="token">
+    <div class="row position-relative">
+        <div class="col position-absolute">
+            <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
+                <div class="toast display-absolute d-none" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div id="toast-bg">
+                        <div class="toast-header w-100 d-flex flex-row flex-nowrap justify-content-between">
+                            <strong id="toast-message">Message</strong>
+                            <button id="toast-close-btn"type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body d-flex justify-content-around">
+                            <img src="" id="toast-img" width="50" height="50" class="rounded-circle" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <section id="screen-start" class="container text-white">
         <div class="row">
