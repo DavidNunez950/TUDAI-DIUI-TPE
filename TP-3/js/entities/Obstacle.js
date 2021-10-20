@@ -1,4 +1,5 @@
 import { Entity } from "./Entity.js";
+import { Player } from "./player.js";
 
 export { Obstacle };
 
@@ -18,5 +19,14 @@ class Obstacle extends Entity{
     //#endregion
 
     //#region methods
+    /**
+     * 
+     * @param {Function} remove 
+     * @param {Player} player 
+     */
+    collide(remove, player) {
+        player.lifes -= 1;
+        setTimeout(()=> {remove(this.html)}, 1000)
+    }
     //#endregion
 }

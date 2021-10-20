@@ -18,5 +18,17 @@ class Colectionable extends Entity{
     //#endregion
 
     //#region methods
+    /**
+     * 
+     * @param {Function} remove 
+     * @param {Player} player 
+     */
+    collide(remove, player) {
+        player.score += 1;
+        this.html.classList.add("coin-dissapear");
+        setTimeout(()=> {remove(this.html)}, 1000)
+        let up = ()=>setTimeout(()=>{this.y+=10;up()}, 10)
+        up();
+    }
     //#endregion
 }

@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    background: rgb(129, 129, 129);
+}
+
+.game {
+    background: rgb(255, 255, 255);
+    width: 600px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    transform: scale(1, -1);
+}
+
+.game-container {
+    width: 100%;
+    height: 100%;
+    background: rgb(129, 129, 129);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player {
+    position: absolute;
+    background: black;
+}
+
+.obstacle {
+    position: absolute;
+    background: red;
+}
+
+.colectionable {
+    position: absolute;
+    background: rgb(255, 207, 51);
+    border-radius: 100%;
+}
+
+.coin-dissapear {
+    animation: after-hit .5s infinite;
+}
+
+@keyframes go-up {
+    0% {}
+}
+
+@keyframes after-hit {
+    0%   { background-color: rgb(255, 207, 51); }
+    50%  { background-color: rgb(251, 255, 0);  }
+    100% { background-color: rgb(255, 207, 51); }
+}
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */

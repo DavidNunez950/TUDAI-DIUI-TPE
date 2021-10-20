@@ -46,8 +46,13 @@ class Entity {
     //#endregion
 
     //#region methods
-    update();
-    collide();
+    update() {
+        this.#html.style.top    = this.#y+"px";
+        this.#html.style.left   = this.#x+"px";
+        this.#html.style.width  = this.#w+"px";
+        this.#html.style.height = this.#h+"px";
+    };
+    collide() {};
 
     get x()    {return this.#x}
     get y()    {return this.#y}
