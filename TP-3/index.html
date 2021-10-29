@@ -21,6 +21,9 @@
                         GO!!!
                     </button>
                 </div>
+                <button class="btn-game btn-game-circle red question"  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    ?
+                </button>
                 <div class="w-100 h-50 position-relative d-flex justify-content-around align-items-center bg-transparent game-character-container">
                     <button class="btn-game btn-game-circle yellow" type="button">
                         <div class="entity player maskdude idle" data-character="maskdude"></div>
@@ -48,5 +51,25 @@
             </div>
         </div>
     </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">How to play?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            • Click or touch on the screen to jump<br>
+            • If you already clicked on the screen, click or touch again to double jump<br>
+            • Collect fruits to get coins<br>
+            • Don't touch the slime<br>
+            • Hitboxes are bigger than you think 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
