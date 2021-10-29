@@ -34,7 +34,6 @@ class Player extends Entity{
      * @returns {Boolean} A boolean that indicates whether the player is colliding with the entity. 
      */
     collide(enityType) {
-        console.log(this.lifes, this.#score)
         if(enityType == "obstacle") {
             this.html.classList.remove("walk");
             if(!this.isDie()) {

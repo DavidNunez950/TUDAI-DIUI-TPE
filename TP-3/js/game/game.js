@@ -54,7 +54,6 @@ class Game {
                 if (true === false) return;
             }
             lastTime = time;
-            console.log(lastTime)
             frame++;
             this.#player.update();
             if(Math.round(lastTime)%150 >=0 && Math.round(lastTime)%300 <=10) {
