@@ -22,6 +22,10 @@ class Entity {
      * @private @property @type {number}  
      */
     /**
+     * @public @property @type {String}  
+     */
+    #type
+    /**
      * @private @property @type {HTMLElement}  
      */
     #html
@@ -36,29 +40,34 @@ class Entity {
      * @param {number} w 
      * @param {HTMLElement} html 
      */
-    constructor(x, y, h, w, html) {
+    constructor(x, y, h, w, type, html) {
+        this.#html = html;
+        this.#html.classList.add("entity");
         this.#x    = x; 
         this.#y    = y; 
-        this.#h    = h; 
-        this.#w    = w; 
-        this.#html = html;
+        // this.#html.style.top    = this.#y+"px";
+        // this.#html.style.left   = this.#x+"px";
+        this.#type =  type;
     }
     //#endregion
 
     //#region methods
     update() {
-        this.#html.style.top    = this.#y+"px";
-        this.#html.style.left   = this.#x+"px";
-        this.#html.style.width  = this.#w+"px";
-        this.#html.style.height = this.#h+"px";
+        // this.#html.style.top    = this.#y+"px";
+        // this.#html.style.left   = this.#x+"px";
+        // this.#html.style.width  = this.#w+"px";
+        // this.#html.style.height = this.#h+"px";
+        this.#w = this.#html.clientWidth ;
+        this.#h = this.#html.clientHeight;
     };
     collide() {};
 
-    get x()    {return this.#x}
-    get y()    {return this.#y}
+    get x()    {return parseInt(window.getComputedStyle(this.html).getPropertyValue("left"))}
+    get y()    {return parseInt(window.getComputedStyle(this.html).getPropertyValue("top"))}
     get h()    {return this.#h}
     get w()    {return this.#w}
     get html() {return this.#html}
+    get type() {return this.#type}
     
     set x(x) {this.#x = x}
     set y(y) {this.#y = y}

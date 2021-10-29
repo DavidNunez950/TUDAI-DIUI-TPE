@@ -14,7 +14,8 @@ class Obstacle extends Entity{
      * @param {HTMLElement} html 
      */
     constructor(x, y, h, w, html) {
-        super(x, y, h, w, html);
+        super(x, y, h, w, "obstacle", html);
+        this.html.classList.add("obstacle");
     }
     //#endregion
 
@@ -27,6 +28,10 @@ class Obstacle extends Entity{
     collide(remove, player) {
         player.lifes -= 1;
         setTimeout(()=> {remove(this.html)}, 1000)
+    }
+    
+    update() {
+        super.update();
     }
     //#endregion
 }
