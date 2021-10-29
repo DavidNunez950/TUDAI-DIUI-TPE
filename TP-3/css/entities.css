@@ -1,0 +1,263 @@
+/* Spreadsheet Key frame animation */
+@keyframes enemy-walk-displace-spreadsheet          { 100% { background-position: calc(-440px * var(--game-scale)); } } 
+@keyframes player-jump-displace-spreadsheet         { 100% { background-position: calc( -64px * var(--game-scale)); } } 
+@keyframes player-idle-displace-spreadsheet         { 100% { background-position: calc(-352px * var(--game-scale)); } } 
+@keyframes player-walk-displace-spreadsheet         { 100% { background-position: calc(-384px * var(--game-scale)); } }
+@keyframes player-hitted-displace-spreadsheet       { 100% { background-position: calc(-224px * var(--game-scale)); } }
+@keyframes player-doublejump-displace-spreadsheet   { 100% { background-position: calc(-192px * var(--game-scale)); } }
+@keyframes colectionable-fruit-displace-spreadsheet { 100% { background-position: calc(-544px * var(--game-scale)); } }
+
+/* Motion Key frame animation */
+@keyframes player-jump {
+    0%, 100% { top: calc(var(--game-bottom-edge) * 1px +  0px);}
+         50% { top: calc(var(--game-bottom-edge) * 1px + var(--game-tile-size) * 4px); }
+}
+
+@keyframes player-die {
+      0% {z-index: 10;}
+     10% { top: calc(var(--game-bottom-edge) * 1px +   var(--game-tile-size) * 4px ); rotate: 90deg;}
+     80% { top: calc(var(--game-bottom-edge) * 1px +   var(--game-tile-size) * 4px ); rotate: 90deg;}
+    100% { top: -100px; rotate: 360deg;}
+}
+
+@keyframes player-doublejump {
+      0% { top: calc(var(--player-current-y) * 1px +  0px);}
+     50% { top: calc(var(--player-current-y) * 1px + var(--game-tile-size) * 4px); }
+    100% { top: calc(var(--game-bottom-edge) * 1px +  0px); }
+}
+
+@keyframes move-left {
+      0% { left:  calc(var(--game-right-edge) * 1px + var(--entity-width)); }
+    100% { left: calc(-1 * var(--entity-width)); }
+}
+
+
+
+
+/** Entities */
+.entity {
+    position: absolute; 
+    width:  var(--entity-width);
+    height: var(--entity-height);
+    top:    calc(var(--game-bottom-edge) * 1px);
+    left:   calc(var(--game-right-edge)  * 1px);
+    transform: scale(1, -1);
+    background-image: var(--entity-image, none);
+    filter: contrast(150%) ;
+    background-size: cover;    
+    transition: top 2s;   
+}
+
+/** Player */
+.entity.player,.player {        
+    --entity-width:  calc(var(--game-tile-size) * 2px);
+    --entity-height: calc(var(--game-tile-size) * 2px);
+    background-color: transparent;
+    left:   calc(var(--game-bottom-edge) * 1px);
+    --entity-motion-animation: none;
+    --entity-spreadsheet-animation: none;
+    --entity-background-image: none;
+    background-image: var(--entity-background-image);
+    animation: var(--entity-spreadsheet-animation), var(--entity-motion-animation);
+}
+
+
+
+/* Player general animation settings */
+.entity.player.idle{
+    --entity-spreadsheet-animation: player-idle-displace-spreadsheet  0.5s steps(11) infinite;
+}
+.entity.player.walk {
+    --entity-spreadsheet-animation: player-walk-displace-spreadsheet  0.5s steps(12) infinite;
+}
+.entity.player.jump {
+    --entity-spreadsheet-animation: player-jump-displace-spreadsheet  1s steps(2) infinite;
+    --entity-motion-animation: player-jump 1s cubic-bezier( 0, 0, 1, 1 ) var(--animation-play-state);
+}
+.entity.player.jump.doublejump, 
+.entity.player.doublejump  {
+    --player-current-y: 0;
+    --entity-spreadsheet-animation: player-doublejump-displace-spreadsheet 0.25s steps(6) infinite;
+    --entity-motion-animation: player-doublejump 1s cubic-bezier( 0, 0, 1, 1 ) var(--animation-play-state);
+}
+.entity.player.hitted, .player.jump.player.hitted  {
+    --entity-spreadsheet-animation: player-hitted-displace-spreadsheet  1s steps(7) 0s infinite;
+}
+.entity.player.die  {
+    --entity-spreadsheet-animation: player-hitted-displace-spreadsheet  1s steps(7) 0s infinite;
+    --entity-motion-animation: player-die 3s linear 0s forwards var(--animation-play-state);
+}
+
+
+
+/* Player backgrounds */
+
+/* Player: Mask Dude */
+.entity.player.idle.maskdude {
+    --entity-background-image: url("../img/Main Characters/Mask Dude/Idle (32x32).png");
+}
+.entity.player.walk.maskdude {
+    --entity-background-image: url("../img/Main Characters/Mask Dude/Run (32x32).png");
+}
+.entity.player.jump.maskdude {
+    --entity-background-image: url("../img/Main Characters/Mask Dude/Jump (32x32).png");
+}
+.entity.player.jump.doublejump.maskdude, 
+.entity.player.doublejump.maskdude  {
+    --entity-background-image: url("../img/Main Characters/Mask Dude/Double Jump (32x32).png");
+}
+.entity.player.hitted.maskdude, .player.jump.hitted.maskdude  {
+    --entity-background-image: url("../img/Main Characters/Mask Dude/Hit (32x32).png");
+}
+.entity.player.die.maskdude  {
+    --entity-background-image: url("../img/Main Characters/Mask Dude/Hit (32x32).png");
+}
+
+/* Player: Ninja frog */
+.entity.player.idle.ninjafrog {
+    --entity-background-image: url("../img/Main Characters/Ninja Frog/Idle (32x32).png");
+}
+.entity.player.walk.ninjafrog {
+    --entity-background-image: url("../img/Main Characters/Ninja Frog/Run (32x32).png");
+}
+.entity.player.jump.ninjafrog {
+    --entity-background-image: url("../img/Main Characters/Ninja Frog/Jump (32x32).png");
+}
+.entity.player.jump.doublejump.ninjafrog, 
+.entity.player.doublejump.ninjafrog  {
+    --entity-background-image: url("../img/Main Characters/Ninja Frog/Double Jump (32x32).png");
+}
+.entity.player.hitted.ninjafrog, .player.jump.player.hitted.ninjafrog  {
+    --entity-background-image: url("../img/Main Characters/Ninja Frog/Hit (32x32).png");
+}
+.entity.player.die.ninjafrog  {
+    --entity-background-image: url("../img/Main Characters/Ninja Frog/Hit (32x32).png");
+}
+
+/* Player: Pink Man */
+.entity.player.die.pinkman  {
+    --entity-background-image: url("../img/Main Characters/Pink Man/Hit (32x32).png");
+}
+.entity.player.idle.pinkman {
+    --entity-background-image: url("../img/Main Characters/Pink Man/Idle (32x32).png");
+}
+.entity.player.walk.pinkman {
+    --entity-background-image: url("../img/Main Characters/Pink Man/Run (32x32).png");
+}
+.entity.player.jump.pinkman {
+    --entity-background-image: url("../img/Main Characters/Pink Man/Jump (32x32).png");
+}
+.entity.player.jump.doublejump.pinkman, 
+.entity.player.doublejump.pinkman  {
+    --entity-background-image: url("../img/Main Characters/Pink Man/Double Jump (32x32).png");
+}
+.entity.player.hitted.pinkman, .player.jump.player.hitted.pinkman  {
+    --entity-background-image: url("../img/Main Characters/Pink Man/Hit (32x32).png");
+}
+.entity.player.die.pinkman  {
+    --entity-background-image: url("../img/Main Characters/Pink Man/Hit (32x32).png");
+}
+
+
+/* Player: Virtual Guy */
+.entity.player.die.virtualguy  {
+    --entity-background-image: url("../img/Main Characters/Virtual Guy/Hit (32x32).png");
+}
+.entity.player.idle.virtualguy {
+    --entity-background-image: url("../img/Main Characters/Virtual Guy/Idle (32x32).png");
+}
+.entity.player.walk.virtualguy {
+    --entity-background-image: url("../img/Main Characters/Virtual Guy/Run (32x32).png");
+}
+.entity.player.jump.virtualguy {
+    --entity-background-image: url("../img/Main Characters/Virtual Guy/Jump (32x32).png");
+}
+.entity.player.jump.doublejump.virtualguy, 
+.entity.player.doublejump.virtualguy  {
+    --entity-background-image: url("../img/Main Characters/Virtual Guy/Double Jump (32x32).png");
+}
+.entity.player.hitted.virtualguy, .player.jump.player.hitted.virtualguy  {
+    --entity-background-image: url("../img/Main Characters/Virtual Guy/Hit (32x32).png");
+}
+.entity.player.die.virtualguy  {
+    --entity-background-image: url("../img/Main Characters/Virtual Guy/Hit (32x32).png");
+}
+
+
+
+
+
+
+
+
+
+
+.entity.colectionable, .entity.enemy {
+    --entity-move-left: move-left calc(var(--game-total-time) * 1s) linear 0s forwards;
+}
+
+
+
+/** Colectionables */
+.colectionable {
+    background: rgb(255, 207, 51);
+    border-radius: 100%;
+    background-image: var(--entity-image, none);
+    width:  var(--entity-width);
+    height: var(--entity-height);
+}
+.colectionable.fruit {
+    background-color: transparent;
+    border-radius: 0px;
+    background-size: cover;
+    animation: colectionable-fruit-displace-spreadsheet 1s steps(17) infinite,  var(--entity-move-left);
+}
+.colectionable.fruit.apple {
+    background-image: url("../img/Items/Fruits/Apple.png");
+}
+.colectionable.fruit.banana {
+    background-image: url("../img/Items/Fruits/Bananas.png");
+}
+.colectionable.fruit.cherries {
+    background-image: url("../img/Items/Fruits/Cherries.png");
+}
+.colectionable.fruit.kiwi {
+    background-image: url("../img/Items/Fruits/Kiwi.png");
+}
+.colectionable.fruit.melon {
+    background-image: url("../img/Items/Fruits/Melon.png");
+}
+.colectionable.fruit.orange {
+    background-image: url("../img/Items/Fruits/Orange.png");
+}
+.colectionable.fruit.pineapple {
+    background-image: url("../img/Items/Fruits/Pineapple.png");
+}
+.colectionable.fruit.strawberry {
+    background-image: url("../img/Items/Fruits/Strawberry.png");
+}
+.colectionable.fruit.collected {
+    background-image: url("../img/Items/Fruits/Collected.png");
+}
+
+
+
+
+
+/** Obstacles or enemies*/
+.obstacle {
+    background: red;
+}
+.obstacle.enemy {
+    background: transparent;
+    background-image: var(--entity-image, none);
+    --entity-width:  calc(var(--game-tile-size) * calc(40/16) * 1px);
+    --entity-height: calc(var(--game-tile-size) * calc(30/16) * 1px);
+    width:  var(--entity-width)  ;
+    height: var(--entity-height) ;
+    background-size: cover;
+    animation: enemy-walk-displace-spreadsheet  1s steps(10) infinite, var(--entity-move-left);
+}
+.obstacle.enemy.slime {
+    background-image: url("../img/Enemies/Slime/Idle-Run (44x30).png");
+} 

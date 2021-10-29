@@ -1,0 +1,53 @@
+
+@media (min-width:200px) {  
+    :root {
+        --game-scale: 0.5;
+    }
+ }
+@media (min-width:481px) {  
+    :root {
+        --game-scale: 1;
+    }
+ }
+@media (min-width:641px) {  
+    :root {
+        --game-scale: 1.2;
+    }
+ }
+@media (min-width:961px) {  
+    :root {
+        --game-scale: 1.3;
+    }
+ }
+@media (min-width:1025px) {  
+    :root {
+        --game-scale: 1.4;
+    }
+ }
+ 
+ html, body {
+     height: 100%;
+ }
+
+ :root {
+    /** Game vars*/
+    --game-tile-size: calc(16 * var(--game-scale));
+    --game-dist-speed: calc(16 * var(--game-scale));
+    --game-time-speed: 0.09;
+    --game-width: calc(var(--game-tile-size) * 40px);
+    --game-height: calc(var(--game-tile-size) * 25px);
+    --game-right-edge: calc(var(--game-tile-size) * 40);
+    --game-left-edge: -100;
+    --game-bottom-edge: var(--game-tile-size);
+    --game-total-time: calc(var(--game-right-edge) * (var(--game-time-speed) / var(--game-dist-speed)));
+    --entity-width:  calc(var(--game-tile-size) * 1px);
+    --entity-height: calc(var(--game-tile-size) * 1px);
+    --animation-play-state: running;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    background: rgb(129, 129, 129);
+    font-family: 'Press Start 2P', cursive;
+}

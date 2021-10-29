@@ -1,0 +1,16 @@
+
+@import url(entities.css);
+@import url(background.css);
+@import url(game-style.css);
+@import url(game-vars.css);
+
+/* 
+    Entre los 3 archivos hay aproximadamente entre 600 y 700 líneas de código. Por tal motivo, se decidió separar 
+todo en varios archivos para hacer más fácil su lectura. Entonces, en cada archivo se encuentra lo siguiente:
+    • Entities: tiene las animaciones key frame, las cuales se encuentran al principio del archivo para encontrarlas 
+      de forma más fácil, y las clases de los jugadores, obstáculos y coleccionables
+    • Backgrounds: tiene las clases para el efecto paralax
+    • Game-vars: contiene las variables globales y estilos globales a toda la página
+    • Game-style: contiene los estilos generales de la página que no están relacionados con lo que pide la consigna
+    */
+
