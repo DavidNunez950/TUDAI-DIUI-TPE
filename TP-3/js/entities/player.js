@@ -19,12 +19,23 @@ class Player extends Entity{
         this.#jumping = false;
         this.#immunity = false;
         this.html.classList.add("player");
-        this.a = 0;
+        this.animationJumpId = 0;
     }
     //#endregion
 
+    /**
+     * Indicates whether the player is dia
+     * Collides with an entity 
+     * @returns {Boolean} 
+     */
     isDie() { return this.#lifes<=0; }
 
+    /**
+     * Indicates whether the player is colliding with the entity. 
+     * Collides with an entity 
+     * @param {Entity} enity 
+     * @returns {Boolean} A boolean that indicates whether the player is colliding with the entity. 
+     */
     isCollide(entity) { 
         return (
             (this.x < entity.x && this.x + this.w > entity.x || this.x < entity.w + entity.x && this.x + this.w > entity.w + entity.x) &&
@@ -34,9 +45,8 @@ class Player extends Entity{
 
     //#region methods
     /**
-     * Indicates whether the player is colliding with the entity. 
-     * @param {Entity} enity 
-     * @returns {Boolean} A boolean that indicates whether the player is colliding with the entity. 
+     * Collides with an entity 
+     * @param {string} enityType 
      */
     collide(enityType) {
         if(enityType == "obstacle" && !this.#immunity) {
@@ -56,12 +66,15 @@ class Player extends Entity{
         }
     }
 
+    /**
+     * Players's jump
+     */
     jump() {
         if(!this.#jumping) {
             this.#jumping = true;
             this.html.classList.remove("walk");
             this.html.classList.add("jump");
-            this.a = setTimeout(()=> {
+            this.animationJumpId = setTimeout(()=> {
                 this.html.classList.remove("jump"); 
                 this.html.classList.add("walk");
                 this.#jumping = false;
@@ -72,7 +85,7 @@ class Player extends Entity{
                 this.html.style.setProperty("--player-current-y", this.y)
                 this.html.classList.remove("jump");
                 this.html.classList.add("doublejump"); 
-                window.clearTimeout(this.a);
+                window.clearTimeout(this.animationJumpId);
                 setTimeout(()=> {
                     this.html.classList.remove("doublejump"); 
                     this.html.classList.add("walk");

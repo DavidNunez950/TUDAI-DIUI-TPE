@@ -20,7 +20,7 @@ class Colectionable extends Entity{
 
     //#region methods
     /**
-     * 
+     * Collides with an entity 
      * @param {Function} remove 
      * @param {Player} player 
      */
@@ -35,10 +35,6 @@ class Colectionable extends Entity{
         setTimeout(()=> {
             remove(this.html);
         }, 1000);
-    }
-
-    update() {
-        super.update();
     }
     //#endregion
 }

@@ -45,12 +45,11 @@ class Game {
         let elapsed  = null;
         let loop = (time) => {
             if (startTime === null) {
-                // let elapsed = Math.min(time - startTime, 100) / 1000;
                 startTime = time;
             }
             elapsed = Math.round(time - startTime, 100 / 1000);
             if(Math.random()>0.5) {
-                if(elapsed%1000 <=20) {
+                if(elapsed%1000 <=10) {
                     this.#addEntity("obstacle")
                 }
                 if(elapsed%100 <=15) {
@@ -74,12 +73,7 @@ class Game {
                 if(!this.#player.isDie()) { 
                     requestAnimationFrame(loop); 
                 } else {
-                    let screenContainer = document.querySelector("#screen-container");
-                    let restartBtn = document.querySelector("#btn-restart");
-                    restartBtn.classList.toggle("d-none");
-                    restartBtn.parentElement.classList.toggle("d-none");
-                    screenContainer.classList.toggle("d-none")
-                    screenContainer.classList.toggle("hide-up")
+                    this.#dom.parentElement.dispatchEvent(new Event("game-end"));
                 }
         }
         requestAnimationFrame(loop);

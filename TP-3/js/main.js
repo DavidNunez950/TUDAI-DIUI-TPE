@@ -3,15 +3,7 @@ import { Game } from "./game/game.js";
 let game = new Game();
 
 
-// # parallax
-// # Inmunidad depués de srecibir un golper
-// # intefaces para el juego y para la página
-// # elegir personaje
-// # matar enmigo?
-// # lógica para que aparezcan los enigos 
-// # animaciones
-
-
+let gameContainer = document.querySelector(".game-container");
 let playerBtn = document.querySelectorAll(".game-character-container > .btn-game-circle");
 let screenContainer = document.querySelector("#screen-container");
 let screenStart = document.querySelector("#screen-start");
@@ -41,6 +33,16 @@ goBtn.addEventListener("click", () => {
         }, 200);
         game.gameStart(playerName)
     }
+});
+
+
+// let screenContainer = document.querySelector("#screen-container");
+// let restartBtn = document.querySelector("#btn-restart");
+gameContainer.addEventListener("game-end", ()=> {
+    restartBtn.classList.toggle("d-none");
+    restartBtn.parentElement.classList.toggle("d-none");
+    screenContainer.classList.toggle("d-none")
+    screenContainer.classList.toggle("hide-up")
 });
 restartBtn.addEventListener("click", () => {   
     restartBtn.classList.toggle("d-none");

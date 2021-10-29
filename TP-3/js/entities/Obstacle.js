@@ -21,7 +21,7 @@ class Obstacle extends Entity{
 
     //#region methods
     /**
-     * 
+     * collides with an entity 
      * @param {Function} remove 
      * @param {Player} player 
      */
