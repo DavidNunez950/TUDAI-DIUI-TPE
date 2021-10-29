@@ -46,6 +46,6 @@ restartBtn.addEventListener("click", () => {
     restartBtn.classList.toggle("d-none");
     restartBtn.parentElement.classList.toggle("d-none");
     screenStart.classList.toggle("d-none")
-    game.removeHtml();
+    game.restartGame();
 });
 

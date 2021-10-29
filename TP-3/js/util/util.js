@@ -13,8 +13,6 @@ export { Util };
     classes.forEach(cssClass => elt.classList.add(cssClass));
     childs.forEach( child => {
         if((typeof(child)) == "string"){ child = document.createElement(child)};
-
-        console.log(child)
         elt.appendChild(child) 
     });
     if(parent) parent.appendChild(elt);

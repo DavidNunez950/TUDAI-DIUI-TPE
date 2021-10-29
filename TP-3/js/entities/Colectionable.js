@@ -12,8 +12,8 @@ class Colectionable extends Entity{
      * @param {number} w 
      * @param {HTMLElement} html 
      */
-    constructor(x, y, h, w, html) {
-        super(x, y, h, w, "colectionable", html);
+    constructor(html) {
+        super("colectionable", html);
         this.html.classList.add("colectionable");
     }
     //#endregion

@@ -16,10 +16,6 @@ class Game {
      */
     #entities
     /**
-     * @private @property @type {number}   
-     */
-    #gameSpeed
-    /**
     * @private @property @type {HTMLElement}   
     */
     #dom
@@ -27,9 +23,8 @@ class Game {
 
     //#region constructor
     constructor(gameContainer = document.querySelector(".game-container")) {    
-        this.addHtml(gameContainer);
+        this.#createHtml(gameContainer);
         this.#entities = [];
-        this.#gameSpeed = 2;
    }
 
     gameStart(player = "maskdude") {
@@ -38,42 +33,43 @@ class Game {
         this.#player.score = 0;
         Object.values(this.#dom.children).forEach(child => child.classList.remove("hide"));
         this.#entities = [];
-        this.#gameSpeed = 2;
         this.gameLoop();
     }
     //#endregion
 
     //#region methods
     gameLoop() {
-        this.#addEventListner()
+        this.#dom.addEventListener("click", this.#player.jump.bind(this.#player))
+        let startTime = null;
         let lastTime = null;
-        let frame = 0;
+        let elapsed  = null;
         let loop = (time) => {
-            if (lastTime != null) {
-                let timeStep = Math.min(time - lastTime, 100) / 1000;
-                if (true === false) return;
+            if (startTime === null) {
+                // let elapsed = Math.min(time - startTime, 100) / 1000;
+                startTime = time;
             }
-            lastTime = time;
-            frame++;
-            this.#player.update();
-            if(Math.round(lastTime)%150 >=0 && Math.round(lastTime)%300 <=10) {
-                this.#addEntity()
+            elapsed = Math.round(time - startTime, 100 / 1000);
+            if(Math.random()>0.5) {
+                if(elapsed%1000 <=20) {
+                    this.#addEntity("obstacle")
+                }
+                if(elapsed%100 <=15) {
+                    this.#addEntity("colectianable")
+                }
             }
             for (let i = 0; i < this.#entities.length; i++) {
                 const entity = this.#entities[i];
-                    if(entity.x > -20) {
-                        entity.x -= this.#gameSpeed;
-                    } else {
+                    let playerColliding = this.#player.isCollide(entity);
+                    if(entity.x + entity.w < 0 || playerColliding) {
                         this.#entities.splice(i, 1);
                         i--;
+                        if(playerColliding) {
+                            entity.collide(this.#dom.removeChild.bind(this.#dom), this.#player);
+                            this.#player.collide(entity.type);
+                        } else {
+                            this.#dom.removeChild(entity.html)
+                        }
                     }
-                    if(this.#player.isCollide(entity)) {
-                        this.#entities.splice(i, 1);
-                        i--;
-                        entity.collide(this.#dom.removeChild.bind(this.#dom), this.#player);
-                        this.#player.collide(entity.type);
-                    }
-                    entity.update()
                 } 
                 if(!this.#player.isDie()) { 
                     requestAnimationFrame(loop); 
@@ -89,15 +85,13 @@ class Game {
         requestAnimationFrame(loop);
     };
     
-    removeHtml() {
+    restartGame() {
         let gameContainer =  this.#dom.parentElement;
         gameContainer.removeChild(this.#dom);
-        Object.values(gameContainer.children).forEach( child => {
-        });
-        this.addHtml(gameContainer);
+        this.#createHtml(gameContainer);
     }
-    addHtml(gameContainer) {
-        this.#player =  new Player(20, 20, 78, 56, Util.elt("div", ["walk", "hide"])),
+    #createHtml(gameContainer) {
+        this.#player =  new Player(Util.elt("div", ["walk", "hide"])),
         this.#dom = 
         Util.elt("div", ["game"], 
         [   
@@ -112,27 +106,20 @@ class Game {
             Util.elt("div", ["layer", "layer-6", "hide"])
         ], gameContainer); 
     }
-    #addEntity() {
+    #addEntity(type) {
         let entity;
-        if(Math.random()>0.8) {
-            if(Math.random()>0.5) {
-                let fruitTypes = ["apple", "banana", "cherries", "kiwi", "melon", "orange", "pineapple", "strawberry"];
-                let fruitType = fruitTypes[Math.floor(Math.random()*fruitTypes.length)]
-                entity = new Colectionable(600, 20, 15, 15, Util.elt("div",["fruit",fruitType,"displacing-left"],[],this.#dom));
-            } else {
-                entity = new Obstacle     (600, 20, 15, 15, Util.elt("div", ["enemy","slime","displacing-left"],[],this.#dom));
+            switch (type) {
+                case "colectianable":
+                    let fruitTypes = ["apple", "banana", "cherries", "kiwi", "melon", "orange", "pineapple", "strawberry"];
+                    let fruitType = fruitTypes[Math.floor(Math.random()*fruitTypes.length)]
+                    entity = new Colectionable(Util.elt("div",["fruit",fruitType,"displacing-left"],[],this.#dom));
+                    break;
+                case "obstacle":
+                    entity = new Obstacle     (Util.elt("div", ["enemy","slime","displacing-left"],[],this.#dom));
+                default:
+                    break;
             }
             this.#entities.push(entity);
-        }
     }
-
-    #addEventListner() {
-        [{"name": "click", "callback": this.#player.jump.bind(this.#player)}]
-        .forEach(e => this.#dom.addEventListener(e.name, e.callback) );
-    };
-    #removeEventListner() {
-        [{"name": "click", "callback": ()=>{}}]
-        .forEach(e => this.#dom.removeEventListener(e.name, e.callback) );
-    };
     //#endregion
 }
