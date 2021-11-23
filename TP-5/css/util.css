@@ -1,0 +1,59 @@
+/* Flex */
+.d-flex {
+    display: flex;
+}
+.flex-row {
+    flex-flow: row nowrap;
+}
+.flex-col {
+    flex-flow: column nowrap;
+}
+.align-items-center {
+    align-items: center;
+}
+.justify-content-around {
+    justify-content: space-around;
+}
+
+
+
+/* Grid */
+.d-grid {
+    display: grid;
+}
+.col-12 {
+    grid-template-columns: var(--grid-col);
+}
+
+
+
+/* Posiciones */
+.position-absolute {
+    position: absolute;
+}
+.position-end {
+    right: 0;
+}
+.position-middle {
+    top: 25%;
+}
+.position-relative {
+    position: relative;
+}
+
+
+
+/* Width&&height */
+.h-100 {
+    height: 100%;
+}
+.w-100 {
+    width: 100%;
+}
+
+
+
+/* Sombras */
+.shadow {
+    box-shadow: 0px 0px  8px -0px rgb(95, 95, 95);
+}

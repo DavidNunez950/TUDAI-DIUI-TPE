@@ -1,0 +1,28 @@
+/* Variables */
+:root {
+    --blaco  : #ffffff;
+    --negro  : #333333;
+    --gris-1 : #DBDBDB;
+    --gris-2 : #AFAFAF;
+    --rojo   : #FF6B6B;
+    --verde  : #80ED99;
+    --celeste: #85DFFC;
+    --grid-col: repeat(12, 1fr);
+}
+
+
+
+/* Global */
+* {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+input, button, button[type="submit"] {
+  border:none;
+}
+a {
+    color: inherit;
+    text-decoration: inherit;
+}

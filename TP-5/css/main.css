@@ -1,0 +1,21 @@
+/* Variable y más */
+@import url(variables.css);
+/* Clases basadas en bootstrap */
+@import url(util.css);
+/* Clases basadas en los átomos de figma */
+@import url(atomos.css);
+
+
+
+/* Navbar */
+.navbar {
+    flex-direction: row no-wrap;
+    grid-template-columns: var(--grid-col);
+    grid-template-areas: ". navbar-logo navbar-logo navbar-logo navbar-logo  . . . navbar-menu navbar-menu navbar-menu  .";
+}
+.navbar > div { 
+    grid-area: navbar-logo;
+}
+.navbar div + div{ 
+    grid-area: navbar-menu;
+}

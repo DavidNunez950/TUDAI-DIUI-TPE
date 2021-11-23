@@ -1,0 +1,124 @@
+/* Tamaño de fuentes */
+.font-header-1 {
+    font-size: 39.81px;
+}
+.font-header-2 {
+    font-size:  33.18px;
+}
+.font-header-3 {
+    font-size: 27.65px;
+}
+.font-body-1 {
+    font-size: 23.04px;
+}
+.font-body-2 {
+    font-size: 20px;
+}
+.font-body-3 {
+    font-size: 16px;
+}
+.font-body-4 {
+    font-size: 13.33px;
+}
+.font-body-4 {
+    font-size: 9.26px;
+}
+
+
+
+/* Tamaño de íconos */
+.icon-size-1 {
+    font-size: 50px;
+}
+.icon-size-2 {
+    font-size: 24px;
+}
+.icon-size-3 {
+    font-size: 16px;
+}
+.text-center {
+    text-align: center;
+}
+
+
+
+/* Color de la fuente */
+.font-color-blanco {
+    color: var(--blanco);
+}
+.font-color-negro {
+    color: var(--negro);
+}
+.font-color-gris-1 {
+    color: var(--gris-1);
+}
+.font-color-gris-2 {
+    color: var(--gris-2);
+}
+.font-color-verde {
+    color: var(--verde);
+}
+.font-color-rojo {
+    color: var(--rojo);
+}
+.font-color-celetes {
+    color: var(--celeste);
+}
+
+
+
+/* Color del background */
+.bg-color-blanco {
+    background-color: var(--blanco);
+}
+.bg-color-negro {
+    background-color: var(--negro);
+}
+.bg-color-gris-1 {
+    background-color: var(--gris-1);
+}
+.bg-color-gris-2 {
+    background-color: var(--gris-2);
+}
+.bg-color-verde {
+    background-color: var(--verde);
+}
+.bg-color-rojo {
+    background-color: var(--rojo);
+}
+.bg-color-celetes {
+    background-color: var(--celeste);
+}
+
+
+
+/* Tamaño de imágenes */
+.img-size-1 {
+    width: 101px;
+}
+.img-size-2 {
+    width: 82px;
+}
+.img-size-3 {
+    width: 77px;
+}
+
+
+
+/* Bordes */
+.rounded-1 {
+    border-radius: 8px;
+}
+.rounded-2 {
+    border-radius: 50px;
+}
+
+
+
+/* Padding&Margin */
+.padding {
+    padding: 15px;
+}
+.margin {
+    margin: 10px;
+}
