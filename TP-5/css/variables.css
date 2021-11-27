@@ -1,12 +1,13 @@
 /* Variables */
 :root {
-    --blaco  : #ffffff;
+    --blanco  : #ffffff;
     --negro  : #333333;
-    --gris-1 : #DBDBDB;
-    --gris-2 : #AFAFAF;
+    --gris-1 : #DBDBDB; /** Fondo de la página*/
+    --gris-2 : #c5c5c5; /** Fondo de cualquier cosa*/
+    --gris-3 : #595959; /** Letras grises */
     --rojo   : #FF6B6B;
     --verde  : #80ED99;
-    --celeste: #85DFFC;
+    --celeste: #5DB8FA;
     --grid-col: repeat(12, 1fr);
 }
 

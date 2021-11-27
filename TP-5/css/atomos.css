@@ -55,13 +55,16 @@
 .font-color-gris-2 {
     color: var(--gris-2);
 }
+.font-color-gris-3 {
+    color: var(--gris-3);
+}
 .font-color-verde {
     color: var(--verde);
 }
 .font-color-rojo {
     color: var(--rojo);
 }
-.font-color-celetes {
+.font-color-celeste {
     color: var(--celeste);
 }
 
@@ -80,13 +83,19 @@
 .bg-color-gris-2 {
     background-color: var(--gris-2);
 }
+.bg-color-gris-3 {
+    background-color: var(--gris-3);
+}
+.bg-color-gris-4 {
+    background-color: var(--gris-4);
+}
 .bg-color-verde {
     background-color: var(--verde);
 }
 .bg-color-rojo {
     background-color: var(--rojo);
 }
-.bg-color-celetes {
+.bg-color-celeste {
     background-color: var(--celeste);
 }
 
@@ -112,13 +121,101 @@
 .rounded-2 {
     border-radius: 50px;
 }
-
+/* Color del background */
+.border-blanco {
+    border: var(--blanco) solid 2px;
+}
+.border-negro {
+    border: var(--negro) solid 2px;
+}
+.border-gris-1 {
+    border: var(--gris-1) solid 2px;
+}
+.border-gris-2 {
+    border: var(--gris-2) solid 2px;
+}
+.border-gris-3 {
+    border: var(--gris-3) solid 2px;
+}
+.border-gris-4 {
+    border: var(--gris-4) solid 2px;
+}
+.border-verde {
+    border: var(--verde) solid 2px;
+}
+.border-color-rojo {
+    border: var(--rojo) solid 2px;
+}
+.border-color-celetes {
+    border: var(--celeste) solid 2px;
+}
 
 
 /* Padding&Margin */
-.padding {
+.p-15 {
     padding: 15px;
 }
-.margin {
+.p-l-15 {
+    padding-left: 15px;
+}
+.p-t-15 {
+    padding-top: 15px;
+}
+.p-r-15 {
+    padding-right: 15px;
+}
+.p-b-15 {
+    padding-bottom: 15px;
+}
+.p-10 {
+    padding: 10px;
+}
+.p-l-10 {
+    padding-left: 10px;
+}
+.p-t-10 {
+    padding-top: 10px;
+}
+.p-r-10 {
+    padding-right: 10px;
+}
+.p-b-10 {
+    padding-bottom: 10px;
+}
+
+.m-15 {
+    margin: 15px;
+}
+.m-l-15 {
+    margin-left: 15px;
+}
+.m-t-15 {
+    margin-top: 15px;
+}
+.m-r-15 {
+    margin-right: 15px;
+}
+.m-b-15 {
+    margin-bottom: 15px;
+}
+.m-10 {
     margin: 10px;
+}
+.m-l-10 {
+    margin-left: 10px;
+}
+.m-t-10 {
+    margin-top: 10px;
+}
+.m-r-10 {
+    margin-right: 10px;
+}
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+/* Línea  */
+.line {
+    height: 2px;
+    width: 100%;
 }
