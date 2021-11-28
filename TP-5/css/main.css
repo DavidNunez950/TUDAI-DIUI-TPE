@@ -11,7 +11,8 @@
 .navbar {
     flex-direction: row no-wrap;
     grid-template-columns: var(--grid-col);
-    grid-template-areas: ". navbar-logo navbar-logo navbar-logo navbar-logo  . . . navbar-menu navbar-menu navbar-menu  .";
+    /* grid-template-areas: ". navbar-logo navbar-logo navbar-logo navbar-logo  . . . navbar-menu navbar-menu navbar-menu  ."; */
+    grid-template-areas: ". navbar-logo navbar-logo navbar-logo . . . . . navbar-menu navbar-menu .";
 }
 .navbar > div { 
     grid-area: navbar-logo;
@@ -21,33 +22,27 @@
 }
 
 
-
 /* Login */
 .login-steps-step {
     border-radius: 100%;
     height: 65px;
     width: 65px;
 }
-
 .login-steps-step-pending {
     background-color: var(--gris-1);
 }
-
 .login-steps-step-prosecing {
     border:  var(--celeste) 3px solid;
     background-color: var(--blanco);
 }
-
 .login-steps-step-done {
     background-color: var(--celeste);
 }
-
 .login-steps-bar {
     background-color: var(--celeste);
     width: 100%;
     height: 20px;
 }
-
 .container-login {
     grid-template-columns: var(--grid-col);
     /* grid: template-ro2; */
@@ -57,7 +52,97 @@
         ". . login login login login login login login login . ." 
         " . . . . . . . . . . . . ";   
 }
-
 .container-login > div {
     grid-area: login;
 }
+
+
+/* Mensajes */
+.container-messages {
+    grid-template-columns: var(--grid-col);
+    /* grid: template-ro2; */
+    grid-template-rows: 15px 73% 0;
+    grid-template-areas: 
+        " . . . . . . . . . . . . " 
+        ". message message message chat chat chat chat chat chat  chat ."
+        " . . . . . . . . . . . . ";   
+}
+.container-messages div.messages {
+    grid-area: message;
+}
+.container-messages div.chat {
+    grid-area: chat;
+}
+
+.container-search-message{
+    grid-template-rows: 20px auto;
+}
+
+
+/* Muro de Noticias*/
+.container-inicio {
+    grid-template-columns: var(--grid-col);
+    /* grid: template-ro2; */
+    grid-template-rows: 15px 80% 0;
+    grid-template-areas: 
+        ". . . . . . . . . . . ."
+        ". container-posts container-posts container-posts container-posts container-posts container-posts container-posts friend-list friend-list friend-list ."
+        ". . . . . . . . . . . .";   
+}
+.container-inicio div.container-posts {
+    grid-area: container-posts;
+}
+.container-inicio div.friend-list {
+    grid-area: friend-list;
+}
+
+/*Columna lista de amigos, publicidad y footer*/
+.friend-list{
+    grid-template-rows: 30% auto auto;
+    grid-template-areas: 
+        "friends"
+        "publicidad"
+        "footer";
+}
+.friend-list div.friends {
+    grid-area: friends;
+}
+.friend-list div.publicidad {
+    grid-area: publicidad;
+}
+.friend-list div.footer {
+    grid-area: footer;
+}
+
+/*Columna contenido*/
+.container-posts{
+    grid-template-rows: 30% auto auto;
+    grid-template-areas: 
+        "create-post"
+        "posts";
+}
+.container-posts div.create-post {
+    grid-area: create-post;
+}
+.container-posts div.posts {
+    grid-area: posts;
+}
+
+
+/*Hover*/
+.scroll > li:hover{
+    background-color: var(--blanco); /*ver que color ponerle porque no queda lindo*/
+}
+/* button.btn-post:hover{
+    background-color: var(--gris-1);
+}*/
+
+/*Hover*/
+.active{
+    background-color: var(--celeste); /*ver que color ponerle porque no queda lindo*/
+}
+
+.active > div > div > p.font-color-gris-2{
+    color: var(--blanco);
+}
+

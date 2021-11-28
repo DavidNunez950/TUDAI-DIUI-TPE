@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <title>VetTech</title>
+</head>
+<body class="bg-color-gris-2">
+    <header class="navbar d-grid bg-color-blanco shadow">
+        <div class="d-flex flex-row align-items-center text-center font-color-negro">
+            <div>
+                <div>
+                    <img src="img/logo.jpg" class="img-size-4 p-5" alt="logo">
+                </div>
+                <h1 class="header-1 font-body-3 font-color-negro">
+                    VetTech
+                </h1>
+            </div>
+            <div class="d-flex rounded-2 p-5 m-r-15 bg-color-gris-2 w-75 justify-content-around">
+                <input class="bg-color-gris-2" type="text" name="buscar" placeholder="Buscar...">
+                <i class="fa fa-search font-color-negro icon-size-2 icon-input"></i>
+            </div>
+            <!-- <div class="position-relative w-100">
+                <input class="rounded-2 p-10 bg-color-gris-2 w-100" type="text" name="buscar" placeholder="Busca...">
+                <i class="fa fa-search  font-color-negro icon-size-2 icon-input position-absolute top-25 position-end"></i>
+            </div> -->
+        </div>  
+        <div>
+            <ul class="d-flex flex-row h-100 text-center align-items-center justify-content-around">
+                <li >
+                    <a href="inicio">    
+                        <div>
+                            <i class="fas fa-home font-color-negro icon-size-2"></i>
+                            <p class="font-color-negro font-body-4">
+                                Inicio
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="notificaciones">    
+                        <div>
+                            <i class="fas fa-bell font-color-negro icon-size-2"></i>
+                            <p class="font-color-negro font-body-4">
+                                Notificaciones
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="Mensajes">    
+                        <div>
+                            <i class="fas fa-comment-alt font-color-negro icon-size-2"></i>
+                            <p class="font-color-negro font-body-4">
+                                Mensajes
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="perfil">    
+                        <div>
+                            <i class="fas fa-user font-color-negro icon-size-2"></i>
+                            <p class="font-color-negro font-body-4">
+                                Perfil
+                            </p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div> 
+    </header>
+    <section class="d-grid h-100 container-inicio">
+        <div class="container-posts d-flex flex-col m-r-15 ">
+            <!-- faltan alinear divs -->
+            <div class="d-flex flex-col align-items-center create-post p-10 bg-color-blanco rounded-1 ">
+                <div class="d-flex justify-content-center w-100">
+                    <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                    <div class="w-75 m-10">
+                        <input class="rounded-2 p-10 bg-color-gris-2 w-100" type="text" name="publicacion" placeholder="¿Qué estas pensando?...">
+                    </div>
+                </div>
+                <div class="w-100 d-flex justify-content-between border-top">
+                    <button class="btn-post p-15"><i class="fas fa-link icon-size-3 icon-input p-5"></i>link </button>
+                    <button class="btn-post p-15"><i class="fas fa-image icon-size-3 icon-input p-5"></i>imagen</button>
+                    <button class="btn-post p-15"><i class="fas fa-file-video icon-size-3 icon-input p-5"></i>video</button>
+                </div>
+            </div>    
+
+            <div class="posts m-t-10 p-10 bg-color-blanco rounded-1">
+                posts
+            </div>
+        </div>
+        <div class="friend-list d-flex flex-col font-color-negro"> 
+            <div class="friends rounded-1 bg-color-gris-1 ">
+                <div class=" bg-color-blanco p-15 m-b-15 rounded-top">
+                    <div class="d-flex justify-content-center p-10">
+                        <h3>Amigos</h3>
+                    </div>
+                    <div class="w-100 d-flex align-items-center justify-content-around">
+                        <input class="rounded-2 p-10 m-r-10 bg-color-gris-2 w-100" type="text" name="buscar" placeholder="Buscar amigo...">
+                        <i class="fa fa-search font-color-celeste icon-size-2 icon-input"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex justify-content-center p-10">
+                        <h4>Sugerencias</h4>
+                    </div>
+                    <ul class="scroll">  <!--VER SCROLL-->
+                        <li class="d-flex align-items-center margin-r-l border-top-bottom">
+                            <div class="p-5 m-r-10 m-l-10">
+                                <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                            </div >
+                            <div class="d-flex w-100 align-items-center justify-content-around">
+                                <p class="font-body-3 font-color-gris-3">Juan Perez</p>
+                                <i class="fas fa-user-plus font-color-celeste icon-size-2"></i>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-center margin-r-l border-top-bottom">
+                            <div class="p-5 m-r-10 m-l-10">
+                                <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                            </div >
+                            <div class="d-flex w-100 align-items-center justify-content-around">
+                                <p class="font-body-3 font-color-gris-3">Juan Perez</p>
+                                <i class="fas fa-user-plus font-color-celeste icon-size-2"></i>
+                            </div>
+                        </li>  
+                        <li class="d-flex align-items-center margin-r-l border-top-bottom">
+                            <div class="p-5 m-r-10 m-l-10">
+                                <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                            </div >
+                            <div class="d-flex w-100 align-items-center justify-content-around">
+                                <p class="font-body-3 font-color-gris-3">Juan Perez</p>
+                                <i class="fas fa-user-plus font-color-celeste icon-size-2"></i>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-center margin-r-l border-top-bottom">
+                            <div class="p-5 m-r-10 m-l-10">
+                                <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                            </div >
+                            <div class="d-flex w-100 align-items-center justify-content-around">
+                                <p class="font-body-3 font-color-gris-3">Juan Perez</p>
+                                <i class="fas fa-user-plus font-color-celeste icon-size-2"></i>
+                            </div>
+                        </li>                           
+                    </ul>   
+                </div>
+            </div>
+            <div class="publicidad rounded-1 bg-color-gris-1 m-t-10 p-10">
+                publicidad
+            </div>
+            <div class="footer rounded-1 bg-color-gris-1 m-t-10 p-10">
+                footer
+            </div>
+        </div>           
+    </section>
+</body>
+</html>

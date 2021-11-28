@@ -20,8 +20,19 @@
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+/* body{
+    overflow-y: hidden;
+} */
 input, button, button[type="submit"] {
   border:none;
+}
+button{
+    cursor: pointer;
+    background-color: transparent;
+}
+input:focus {
+    outline:none;
 }
 a {
     color: inherit;
