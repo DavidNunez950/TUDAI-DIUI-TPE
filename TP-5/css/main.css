@@ -42,7 +42,6 @@
     width: 100%;
     height: 20px;
 }
-<<<<<<< HEAD
 
 .login-steps-step-prosecing + .login-steps-step-pending + .login-steps-step-pending + .login-steps-load-bar >.login-steps-bar{
     background: rgb(0,0,0);
@@ -59,8 +58,6 @@
     background: linear-gradient(90deg, var(--celeste) 85%, var(--gris-1) 86%);
 }
 
-=======
->>>>>>> d38fe4adc692933d92844d84063d6ff8166bc645
 .container-login {
     grid-template-columns: var(--grid-col);
     grid-template-rows: 15px auto 15px;
@@ -73,8 +70,6 @@
     grid-area: login;
 }
 
-
-<<<<<<< HEAD
 
 /** Layer */
 .layer {
@@ -95,7 +90,6 @@
     animation: scroll 50s  infinite linear;
 }
 @keyframes scroll { 100% { background-position-x: -2898px; } }
-=======
 /* Mensajes */
 .container-messages {
     grid-template-columns: var(--grid-col);
@@ -185,4 +179,3 @@
     color: var(--blanco);
 }
 
->>>>>>> d38fe4adc692933d92844d84063d6ff8166bc645
