@@ -32,11 +32,14 @@
                     Crea tu cuenta
                 </h2>
             </div>
+            <h2 class="header-2 font-color-negro text-center">
+                Datos personales
+            </h2>
             <div class="login-steps text-center d-flex align-items-center justify-content-around  position-relative ">
-                <span class="login-steps-step login-steps-step-prosecing      d-flex align-items-center justify-content-around z-index-2">
+                <span class="login-steps-step login-steps-step-done      d-flex align-items-center justify-content-around z-index-2">
                     1
                 </span>
-                <span class="login-steps-step login-steps-step-pending      d-flex align-items-center justify-content-around z-index-2">
+                <span class="login-steps-step login-steps-step-prosecing      d-flex align-items-center justify-content-around z-index-2">
                     2
                 </span>
                 <span class="login-steps-step login-steps-step-pending d-flex align-items-center justify-content-around z-index-2">
@@ -46,31 +49,28 @@
                     <div class="login-steps-bar w-100  rounded-1"></div>
                 </div>
             </div>
-            <h2 class="header-2 font-color-negro text-center">
-                Datos personales
-            </h2>
             <form action="#">
                 <div class="p-10 d-flex flex-col">
-                    <label class="m-l-10 font-body-2" for="name">Nombre <span class="font-color-rojo">*</span></label>
-                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="name" placeholder="Ingresa tu nombre">
-                    <p class="m-l-10 font-body-3">No se admiten un nombre vacio</p>
+                    <label class="m-l-10 font-body-2" for="fecha-nacimiento">Fecha de nacimiento</label>
+                    <input class="p-10 border-negro rounded-1 font-body-2" type="date" name="fecha-nacimiento" placeholder="Ingresa tu faecha de nacimiento">
                 </div>
                 <div class="p-10 d-flex flex-col">
-                    <label class="m-l-10" for="name">Email <span class="font-color-rojo">*</span></label>
-                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="name" placeholder="Ingresa tu email">
-                    <p class="m-l-10 font-body-3">Ingresa un mail con el formato “nombre”@dominio.com</p>
+                    <label class="m-l-10" for="trabajo-ocupacion">Cúal es tu trabajo u ocupación</label>
+                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="trabajo-ocupacion" placeholder="Ingresa tu trabajo u ocupación">
                 </div>
                 <div class="p-10 d-flex flex-col">
-                    <label class="m-l-10" for="name">Contraseña <span class="font-color-rojo">*</span></label>
-                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="name" placeholder="Ingresa tu contraseña">
-                    <p class="m-l-10 font-body-3">La contraseña debe contener...</p>
+                    <label class="m-l-10" for="localidad">Localidad donde vives</label>
+                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="localidad" placeholder="Ingresa la localidad donde vives">
                 </div>
                 <div class="p-10 d-flex flex-col">
-                    <label class="m-l-10" for="name">Repetir contraseña <span class="font-color-rojo">*</span></label>
-                    <input class="p-10 border-negro font-color-gris-3 rounded-1 font-body-2" type="text" name="name" placeholder="Vuelva a Ingresa su contraseña">
-                    <p class="m-l-10 font-body-3">La contraseña debe ser igual a la que ya ingreso</p>
+                    <label class="m-l-10" for="donde-estudio">Dónde estudiate</label>
+                    <input class="p-10 border-negro font-color-gris-3 rounded-1 font-body-2" type="text" name="donde-estudio" placeholder="Ingresa el lugar dónde estudiate">
                 </div>
-                <div class="p-10 w-100">
+                <div class="p-10 d-flex flex-col">
+                    <label class="m-l-10" for="contacto">Número o email de contacto</label>
+                    <input class="p-10 border-negro font-color-gris-3 rounded-1 font-body-2" type="text" name="contacto" placeholder="Ingresa tu número o email de contacto">
+                </div>
+                <div class="p-10 ">
                     <button class="bg-color-celeste p-15 text-center w-100 rounded-2 font-color-blanco font-body-2">
                         Siguiente
                     </button>
