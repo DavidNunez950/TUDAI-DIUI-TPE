@@ -166,6 +166,9 @@
 .border-top{
     border-top: var(--celeste) solid 1px;
 }
+.border-bottom{
+    border-bottom: var(--celeste) solid 1px;
+}
 
 
 /* Padding&Margin */

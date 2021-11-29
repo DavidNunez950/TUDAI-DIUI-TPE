@@ -164,7 +164,7 @@
 
 /*Hover*/
 .scroll > li:hover{
-    background-color: var(--blanco); /*ver que color ponerle porque no queda lindo*/
+    background-color: var(--gris-2); /*ver que color ponerle porque no queda lindo*/
 }
 /* button.btn-post:hover{
     background-color: var(--gris-1);
@@ -179,3 +179,7 @@
     color: var(--blanco);
 }
 
+.contenido-publicacion p{
+    line-height: 1.5;
+    text-align: justify;
+}

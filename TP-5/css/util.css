@@ -23,7 +23,20 @@
 .justify-content-between {
     justify-content: space-between;
 }
+.flex-wrap{
+    flex-wrap:wrap;
+}
 
+/*Texto*/
+.text-align-justify{
+    text-align: justify;
+}
+.interlineado{
+    line-height: 1.5;
+}
+.bold{
+    font-weight: bold;
+}
 
 /* Grid */
 .d-grid {
@@ -75,6 +88,9 @@
 }
 .w-50 {
     width: 50%;
+}
+.w-45{
+    width: 45%;
 }
 
 
