@@ -8,6 +8,9 @@
 .flex-col {
     flex-flow: column nowrap;
 }
+.flex-wrap {
+    flex-flow: wrap;
+}
 .align-items-center {
     align-items: center;
 }
@@ -53,6 +56,13 @@
 }
 .top-10 {
     top: 9%;
+}
+.bottom-0 {
+    bottom: 0px;
+}
+
+.bottomn-10 {
+    bottom: -45px;
 }
 
 
@@ -107,6 +117,9 @@
 .hidden{
     visibility: hidden;
 }
+.text-no-wrap {
+    white-space: nowrap;
+}
 
 .text-overflow{
     white-space: nowrap;
@@ -118,3 +131,8 @@
 .overflow-y{
     overflow-y: hidden;
 }
+
+/* Micelaneo */
+.d-none {
+    display: none;
+} 
