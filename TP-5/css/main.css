@@ -179,7 +179,23 @@
     color: var(--blanco);
 }
 
+.like{
+    color: var(--celeste);
+}
+
 .contenido-publicacion p{
     line-height: 1.5;
     text-align: justify;
+}
+
+.container-ver-mas{
+    position: relative;
+    text-align: center;
+}
+
+.ver-mas{
+    position: absolute;
+    top: 100px;
+    left: 177px;
+    z-index: 20;
 }
