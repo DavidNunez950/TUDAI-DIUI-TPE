@@ -22,30 +22,43 @@
         </div>   
     </header>
     <div class="loggin bg-color-blanco m-15 p-15 rounded-1 shadow d-flex flex-col">
+        <div class="p-15 bg-color-blanco  rounded-top">
+            <h3 class="font-color-negro font-body-2">Filtros</h3>
+        </div>
         <div class="d-flex flex-row  align-items-center">
-            <div class="p-10 d-flex flex-col">
-                <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="name" placeholder="Ingresa lo que estas buscando">
+            <div class="p-10 d-flex flex-col align-items-center select">
+                <select class="p-10 font-body-2 rounded-1 border-negro">
+                    <option value="1">El nombre de usuario</option>
+                    <option value="2">El email</option>
+                    <option value="3">El número de telefono</option>
+                    <option value="4">La fecha de nacimiento</option>
+                    <option value="5">El trabajo</option>
+                    <option value="6">La localidad donde vives</option>
+                    <option value="7">El lugar donde estudio</option>
+                    <option value="8">El úmero de contacto</option>
+                    <option value="9">El mail de contacto</option>
+                    <option value="0">El nombre de mascota</option>
+                    <option value="0">El nombre de mascota</option>
+                    <option value="0">El animal favorito</option>
+                </select>
+                <!-- <i class="fas fa-chevron-down p-10"></i>
+                <i class="fas fa-chevron-up   p-10"></i> -->
             </div>
-            <div class="p-10 d-flex flex-col">
-                <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="name" placeholder="Ingresa lo que estas buscando">
+            <div class="p-10 d-flex flex-col align-items-center select">
+                <select class="p-10 font-body-2 rounded-1 border-negro">
+                    <option value="1">Es</option>
+                    <option value="2">Contiene</option>
+                    <option value="3">No es</option>
+                    
+                    <option value="1">Es</option>
+                    <option value="2">Está entre</option>
+                    <option value="3">No es</option>
+                    <option value="4">Es menor a</option>
+                    <option value="5">Es mayor a</option>
+                </select>
             </div>
-            <div class="p-10 d-flex flex-col w-100">
-                <div class="select">
-                    <select>
-                      <option value="1">Pure CSS Select</option>
-                      <option value="2">No JS</option>
-                      <option value="3">Nice!</option>
-                    </select>
-                    <i class="fas fa-chevron-down"></i>
-                    <i class="fas fa-chevron-up   "></i>
-                  </div>
-                  <!-- <div class="select">
-                    <select>
-                      <option value="1">Pure CSS Select</option>
-                      <option value="2">No JS</option>
-                      <option value="3">Nice!</option>
-                    </select>
-                  </div> -->
+            <div class="p-10 d-flex flex-col w-50">
+                <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="name" placeholder="Ingresa lo que estas buscando">
             </div>
             <div class="p-10 d-flex flex-col">
                 <button class="rounded-1 font-body-2 bg-color-celeste p-10 d-flex align-items-center justify-content-center">

@@ -26,6 +26,9 @@
 .justify-content-between {
     justify-content: space-between;
 }
+.flex-basis-max-content {
+    flex-basis: max-content;
+}
 
 
 /* Grid */
