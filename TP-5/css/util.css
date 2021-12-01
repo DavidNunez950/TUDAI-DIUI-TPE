@@ -118,3 +118,7 @@
 .overflow-y{
     overflow-y: hidden;
 }
+
+.d-none {
+    display: none;
+}

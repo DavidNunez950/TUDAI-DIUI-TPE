@@ -153,10 +153,10 @@
 .border-verde {
     border: var(--verde) solid 2px;
 }
-.border-color-rojo {
+.border-rojo {
     border: var(--rojo) solid 2px;
 }
-.border-color-celetes {
+.border-celetes {
     border: var(--celeste) solid 2px;
 }
 .border-top-bottom{
