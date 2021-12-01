@@ -26,6 +26,9 @@
 .justify-content-between {
     justify-content: space-between;
 }
+.justify-content-evenly {
+    justify-content: space-evenly;
+}
 .flex-basis-max-content {
     flex-basis: max-content;
 }
@@ -137,5 +140,5 @@
 
 /* Micelaneo */
 .d-none {
-    display: none;
+    display: none!important;
 } 
