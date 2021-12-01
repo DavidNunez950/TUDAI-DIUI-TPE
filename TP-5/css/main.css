@@ -199,3 +199,10 @@
     left: 177px;
     z-index: 20;
 }
+
+.notificaciones{
+    width: 25%;
+    position: absolute;
+    right: 96px;
+    top: 66px;
+}
