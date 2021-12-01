@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
     <title>VetTech</title>
+    
 </head>
 <body class="bg-color-gris-2">
     <header class="navbar d-grid bg-color-blanco shadow">
@@ -21,11 +22,11 @@
             </div>
             <div class="d-flex rounded-2 p-5 m-r-15 bg-color-gris-2 w-75 justify-content-around">
                 <input class="bg-color-gris-2" type="text" name="buscar" placeholder="Buscar...">
-                <i class="fa fa-search font-color-negro icon-size-2 icon-input"></i>
+                <i class="fa fa-search font-color-negro icon-size-2"></i>
             </div>
             <!-- <div class="position-relative w-100">
                 <input class="rounded-2 p-10 bg-color-gris-2 w-100" type="text" name="buscar" placeholder="Busca...">
-                <i class="fa fa-search  font-color-negro icon-size-2 icon-input position-absolute top-25 position-end"></i>
+                <i class="fa fa-search  font-color-negro icon-size-2 position-absolute top-25 position-end"></i>
             </div> -->
         </div>  
         <div>
@@ -41,14 +42,14 @@
                     </a>
                 </li>
                 <li>
-                    <a href="notificaciones">    
+                    <a id="btn-notificaciones" href="#">    
                         <div>
                             <i class="fas fa-bell font-color-negro icon-size-2"></i>
                             <p class="font-color-negro font-body-4">
                                 Notificaciones
                             </p>
                         </div>
-                    </a>
+                    </a>                    
                 </li>
                 <li>
                     <a href="Mensajes">    
@@ -73,27 +74,417 @@
             </ul>
         </div> 
     </header>
+    <!--container de notificaciones-->
+    <div id="notificaciones" class="notificaciones display">
+        <ul class="d-flex flex-col align-items-center m-5 bg-color-blanco scroll shadow">
+            <li class="font-header-4 p-t-15 font-color-negro bold">Notificaciones</li>
+            <li class="d-flex align-items-center m-5 bg-color-gris-1">
+                <div class="p-5 m-r-10 m-l-10">
+                    <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                </div >
+                <div class="d-flex flex-col p-15">
+                    <p class="font-body-3 font-color-gris-3">A <span class="bold">Juan Perez</span> le gusta tu comentario.</p>
+                    <p class="font-body-4 font-color-gris-3">Hace 2 horas</p>                
+                </div>
+            </li>
+            <li class="d-flex align-items-center m-5 bg-color-gris-1">
+                <div class="p-5 m-r-10 m-l-10">
+                    <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                </div >
+                <div class="d-flex flex-col p-15">
+                    <p class="font-body-3 font-color-gris-3">A <span class="bold">Juan Perez</span> le gusta tu comentario.</p>
+                    <p class="font-body-4 font-color-gris-3">Hace 2 horas</p>                
+                </div>
+            </li>
+            <li class="d-flex align-items-center m-5 bg-color-gris-1">
+                <div class="p-5 m-r-10 m-l-10">
+                    <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                </div >
+                <div class="d-flex flex-col p-15">
+                    <p class="font-body-3 font-color-gris-3">A <span class="bold">Juan Perez</span> le gusta tu comentario.</p>
+                    <p class="font-body-4 font-color-gris-3">Hace 2 horas</p>                
+                </div>
+            </li>
+            <li class="d-flex align-items-center m-5 bg-color-gris-1">
+                <div class="p-5 m-r-10 m-l-10">
+                    <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                </div >
+                <div class="d-flex flex-col p-15">
+                    <p class="font-body-3 font-color-gris-3">A <span class="bold">Juan Perez</span> le gusta tu comentario.</p>
+                    <p class="font-body-4 font-color-gris-3">Hace 2 horas</p>                
+                </div>
+            </li>
+            <li class="d-flex align-items-center  m-5 bg-color-gris-1">
+                <div class="p-5 m-r-10 m-l-10">
+                    <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                </div >
+                <div class="d-flex flex-col p-15">
+                    <p class="font-body-3 font-color-gris-3">A <span class="bold">Juan Perez</span> le gusta tu comentario.</p>
+                    <p class="font-body-4 font-color-gris-3">Hace 2 horas</p>                
+                </div>
+            </li>
+            <li class="d-flex align-items-center m-5 bg-color-gris-1">
+                <div class="p-5 m-r-10 m-l-10">
+                    <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                </div >
+                <div class="d-flex flex-col p-15">
+                    <p class="font-body-3 font-color-gris-3">A <span class="bold">Juan Perez</span> le gusta tu comentario.</p>
+                    <p class="font-body-4 font-color-gris-3">Hace 2 horas</p>                
+                </div>
+            </li>
+            <li class="d-flex align-items-center m-5 bg-color-gris-1">
+                <div class="p-5 m-r-10 m-l-10">
+                    <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                </div >
+                <div class="d-flex flex-col p-15">
+                    <p class="font-body-3 font-color-gris-3">A <span class="bold">Juan Perez</span> le gusta tu comentario.</p>
+                    <p class="font-body-4 font-color-gris-3">Hace 2 horas</p>                
+                </div>
+            </li>
+            <li class="d-flex align-items-center m-5 bg-color-gris-1">
+                <div class="p-5 m-r-10 m-l-10">
+                    <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                </div >
+                <div class="d-flex flex-col p-15">
+                    <p class="font-body-3 font-color-gris-3">A <span class="bold">Juan Perez</span> le gusta tu comentario.</p>
+                    <p class="font-body-4 font-color-gris-3">Hace 2 horas</p>                
+                </div>
+            </li>
+        </ul>
+    </div>
     <section class="d-grid h-100 container-inicio">
         <div class="container-posts d-flex flex-col m-r-15 ">
-            <!-- faltan alinear divs -->
             <div class="d-flex flex-col align-items-center create-post p-10 bg-color-blanco rounded-1 ">
-                <div class="d-flex justify-content-center w-100">
+
+                <div class="d-flex justify-content-around m-b-10 w-100">
                     <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
                     <div class="w-75 m-10">
                         <input class="rounded-2 p-10 bg-color-gris-2 w-100" type="text" name="publicacion" placeholder="¿Qué estas pensando?...">
                     </div>
                 </div>
+                
                 <div class="w-100 d-flex justify-content-between border-top">
-                    <button class="btn-post p-15"><i class="fas fa-link icon-size-3 icon-input p-5"></i>link </button>
-                    <button class="btn-post p-15"><i class="fas fa-image icon-size-3 icon-input p-5"></i>imagen</button>
-                    <button class="btn-post p-15"><i class="fas fa-file-video icon-size-3 icon-input p-5"></i>video</button>
+                    <button class="d-flex align-items-center btn-post margin-r-l p-15"><i class="fas fa-link icon-size-2 p-5"></i>link</button>
+                    <button class="d-flex align-items-center btn-post margin-r-l p-15"><i class="fas fa-image icon-size-2 p-5"></i>imagen</button>
+                    <button class="d-flex align-items-center btn-post margin-r-l p-15"><i class="fas fa-file-video icon-size-2 p-5"></i>video</button>
                 </div>
-            </div>    
+            </div>  
+            <div class="posts">
+                
+                <!-- publicacion - video -->
+                <div class="m-t-10 p-10 bg-color-blanco rounded-1">
+                    <div class="d-flex justify-content-between align-items-center m-15">
+                        <div class="d-flex align-items-center">
+                            <img src="./images/perfil2.png" class="img-size-4" alt="avatar de usuarioa">
+                            <div class="p-15">
+                                <p class="font-body-2 font-color-gris-3">Juan Garcia</p>
+                                <p class="font-body-4 font-color-gris-3">28 nov - 20:39</p>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fas fa-ellipsis-v icon-size-3"></i>
+                        </div>
+                    </div>
+                    <div class="contenido-publicacion font-body-3 font-color-negro m-15">
+                        <p>
+                        ¿De qué forma están relacionadas la salud humana, la sanidad animal y la salud del medio ambiente? 
+                        El experto en inmunología Fernando Fariñas te invita a explorarlo hoy en el evento #HealthConnection 
+                        de Ceva Salud Animal. Una ocasión única para profundizar en el concepto #OneHealth o #UnaSolaSalud.</p>
+                        <p>Inscríbete <a href="">https://lnkd.in/d57bYzy8</a></p>
+                        <p><span class="bold">Dia:</span> 25 de noviembre</p>
+                        <p><span class="bold">Hora:</span> 15:30h</p>
+                        <p>Síguelo en directo vía streaming.</p>
+                    </div>
+                    <div class="m-15" >
+                        <video class="w-100" autoplay muted preload="metadata" controls src="https://dms.licdn.com/playlist/C4D05AQFOqVYVNbos7A/mp4-720p-30fp-crf28/0/1637831040044?e=1638230400&v=beta&t=-WngTt65mr_twResk8H0bP3_si_nMyjFffEHakloyo0"></video>
+                    </div>
+                    <div>
+                        <div class="d-flex justify-content-between  margin-r-l">
+                            <div>
+                                <p class="font-body-3 font-color-gris-3"><i class="fas fa-thumbs-up icon-size-3 font-color-gris-3 m-r-10"></i><span id="cantidad-likes">20</span></p>
+                            </div>
+                            <div class="d-flex align-items-center" >
+                                <p class="font-body-3 font-color-gris-3"><button id="btn-comentarios-video" class="font-body-3 font-color-gris-3">Ver 15 comentarios</button> - </p>                                
+                                <p class="font-body-3 font-color-gris-3"> 7 veces compartida</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between border-top-bottom margin-r-l">
+                            <button id="btn-like" class="d-flex align-items-center btn-post margin-r-l p-15"><i class="fas fa-thumbs-up icon-size-2 p-5"></i>Me gusta</button>
+                            <button id="btn-comentar" class="d-flex align-items-center btn-post margin-r-l p-15"><i class="fas fa-comment icon-size-2 p-5"></i>Comentar</button>
+                            <button class="d-flex align-items-center btn-post margin-r-l p-15"><i class="fas fa-share icon-size-2 p-5"></i>Compartir</button>
+                        </div>
+                    </div>
+                    <div id="container-input-comentar" class="d-flex justify-content-between m-15 display">
+                        <img class="img-size-4 m-r-15" src="./images/perfil3.png" alt="avatar de mensaje">
+                        <div class="d-flex align-items-center p-15 w-100 rounded-2 bg-color-gris-2">
+                            <input id="input-comentario"  class="bg-color-gris-2 w-100 " type="text" name="buscar" placeholder="Dejá tu comentario...">
+                            <button id="btn-enviar-comentario"><i class="fas fa-paper-plane font-color-negro icon-size-2"></i></button>
+                        </div>
+                    </div>
 
-            <div class="posts m-t-10 p-10 bg-color-blanco rounded-1">
-                posts
+                    <!--Comentarios-->
+                    <div id="comentarios-video" class="display">
+                        <div class="d-flex align-items-center">
+                            <img class="img-size-4 m-15" src="./images/perfil2.png" alt="avatar de mensaje">
+                            <div class="d-flex flex-col">
+                                <div class="p-10 rounded-1 bg-color-gris-2 m-t-15">
+                                    <p class="font-body-3 font-color-gris-3">Juan Perez</p>
+                                    <p class="font-body-2 font-color-negro text-align-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                </div>
+                                <div class="d-flex align-items-center" >
+                                    <a href="" class="font-body-4 font-color-gris-3 m-l-10 p-t-5 bold">Me gusta</a>                               
+                                    <a href="" class="font-body-4 font-color-gris-3 m-l-10 p-t-5 bold">Responder</a>
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5">26 min</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <img class="img-size-4 m-15" src="./images/perfil3.png" alt="avatar de mensaje">
+                            <div class="d-flex flex-col">
+                                <div class="p-10 rounded-1 bg-color-gris-2 m-t-15">
+                                    <p class="font-body-3 font-color-gris-3">Maria Garcia</p>
+                                    <p class="font-body-2 font-color-negro text-align-justify">Lorem ipsum dolor sit amet.</p>
+                                </div>
+                                <div class="d-flex align-items-center" >
+                                    <a href="" class="font-body-4 font-color-gris-3 m-l-10 p-t-5 bold">Me gusta</a>                               
+                                    <a href="" class="font-body-4 font-color-gris-3 m-l-10 p-t-5 bold">Responder</a>
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5">26 min</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <img class="img-size-4 m-15" src="./images/perfil2.png" alt="avatar de mensaje">
+                            <div class="d-flex flex-col">
+                                <div class="p-10 rounded-1 bg-color-gris-2 m-t-15">
+                                    <p class="font-body-3 font-color-gris-3">Juan Perez</p>
+                                    <p class="font-body-2 font-color-negro text-align-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                </div>
+                                <div class="d-flex align-items-center" >
+                                    <a href="" class="font-body-4 font-color-gris-3 m-l-10 p-t-5 bold">Me gusta</a>                               
+                                    <a href="" class="font-body-4 font-color-gris-3 m-l-10 p-t-5 bold">Responder</a>
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5">26 min</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- publicacion - link -->
+                <div class="m-t-10 p-10 bg-color-blanco rounded-1">
+                    <div class="d-flex justify-content-between align-items-center m-15">
+                        <div class="d-flex align-items-center">
+                            <img src="./images/perfil3.png" class="img-size-4" alt="avatar de usuarioa">
+                            <div class="p-15">
+                                <p class="font-body-2 font-color-gris-3">Maria Garcia</p>
+                                <p class="font-body-4 font-color-gris-3">28 nov - 20:39</p>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fas fa-ellipsis-v icon-size-3"></i>
+                        </div>
+                    </div>
+                    <div class="contenido-publicacion font-body-3 font-color-negro m-15">
+                        <p>Aparte de perros y gatos, han atendido a toda clase de animales como gallinas, 
+                            loros, conejos e incluso pavos reales que han llegado hasta las instalaciones 
+                            de acogida.</p>
+                    </div>
+                    <div class="m-15" >
+                        <div class="bg-color-gris-1">
+                            <a href="https://www.portalveterinaria.com/actualidad-veterinaria/actualidad/36856/los-veterinarios-voluntarios-que-trabajan-en-la-palma-han-atendido-ya-a-casi-3-500-animales.html">
+                                <img class="w-100" src="https://www.portalveterinaria.com/upload/20211123084512veterinarioslaspalmas.jpg" alt="veterinarios voluntarios" srcset="">
+                                <div class="p-10">
+                                    <h2 class="font-body-2 margin-t-b text-align-justify">Los veterinarios voluntarios que trabajan en La Palma han atendido ya a casi 3.500 animales | PortalVeterinaria</h2>
+                                    <h3 class="font-body-4 p-b-10">portalveterinaria.com</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="d-flex justify-content-between  margin-r-l">
+                            <div>
+                                <p class="font-body-3 font-color-gris-3"><i class="fas fa-thumbs-up icon-size-3 font-color-gris-3 m-r-10"></i>20</p>
+                            </div>
+                            <div class="d-flex align-items-center" >
+                                <p class="font-body-3 font-color-gris-3"><a href="" id="btn-comentarios-link" class="font-body-3 font-color-gris-3">Ver 15 comentarios</a> - </p>                                
+                                <p class="font-body-3 font-color-gris-3"> 7 veces compartida</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between border-top-bottom margin-r-l">
+                            <button class="d-flex align-items-center btn-post margin-r-l p-15"><i class="fas fa-thumbs-up icon-size-2 p-5"></i>Me gusta</button>
+                            <button class="d-flex align-items-center btn-post margin-r-l p-15"><i class="fas fa-comment icon-size-2 p-5"></i>Comentar</button>
+                            <button class="d-flex align-items-center btn-post margin-r-l p-15"><i class="fas fa-share icon-size-2 p-5"></i>Compartir</button>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between m-15 display">
+                        <img class="img-size-4 m-r-15" src="./images/perfil1.png" alt="avatar de mensaje">
+                        <div class="d-flex align-items-center p-15 w-100 rounded-2 bg-color-gris-2">
+                            <input class="bg-color-gris-2 w-100 " type="text" name="buscar" placeholder="Dejá tu comentario...">
+                            <button><i class="fas fa-paper-plane font-color-negro icon-size-2"></i></button>
+                        </div>
+                    </div>
+                    <!--Comentarios-->
+                    <div id="comentarios-link" class="display">
+                        <div class="d-flex align-items-center">
+                            <img class="img-size-4 m-15" src="./images/perfil2.png" alt="avatar de mensaje">
+                            <div class="d-flex flex-col">
+                                <div class="p-10 rounded-1 bg-color-gris-2 m-t-15">
+                                    <p class="font-body-3 font-color-gris-3">Juan Perez</p>
+                                    <p class="font-body-2 font-color-negro text-align-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                </div>
+                                <div class="d-flex align-items-center" >
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5"><a href="" class="font-body-4 font-color-gris-3 bold">Me gusta</a> - </p>                                
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5"><a href="" class="font-body-4 font-color-gris-3 bold">Responder</a> - </p>
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5">26 min</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <img class="img-size-4 m-15" src="./images/perfil3.png" alt="avatar de mensaje">
+                            <div class="d-flex flex-col">
+                                <div class="p-10 rounded-1 bg-color-gris-2 m-t-15">
+                                    <p class="font-body-3 font-color-gris-3">Maria Garcia</p>
+                                    <p class="font-body-2 font-color-negro text-align-justify">Lorem ipsum dolor sit amet.</p>
+                                </div>
+                                <div class="d-flex align-items-center" >
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5"><a href="" class="font-body-4 font-color-gris-3 bold">Me gusta</a> - </p>                                
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5"><a href="" class="font-body-4 font-color-gris-3 bold">Responder</a> - </p>
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5">26 min</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <img class="img-size-4 m-15" src="./images/perfil2.png" alt="avatar de mensaje">
+                            <div class="d-flex flex-col">
+                                <div class="p-10 rounded-1 bg-color-gris-2 m-t-15">
+                                    <p class="font-body-3 font-color-gris-3">Juan Perez</p>
+                                    <p class="font-body-2 font-color-negro text-align-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                </div>
+                                <div class="d-flex align-items-center" >
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5"><a href="" class="font-body-4 font-color-gris-3 bold">Me gusta</a> - </p>                                
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5"><a href="" class="font-body-4 font-color-gris-3 bold">Responder</a> - </p>
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5">26 min</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- publicacion - galeria -->
+                <div class="m-t-10 p-10 bg-color-blanco rounded-1">
+                    <div class="d-flex justify-content-between align-items-center m-15">
+                        <div class="d-flex align-items-center">
+                            <img src="./images/perfil2.png" class="img-size-4" alt="avatar de usuarioa">
+                            <div class="p-15">
+                                <p class="font-body-2 font-color-gris-3">Juan Garcia</p>
+                                <p class="font-body-4 font-color-gris-3">28 nov - 20:39</p>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fas fa-ellipsis-v icon-size-3"></i>
+                        </div>
+                    </div>
+                    <div class="contenido-publicacion font-body-3 font-color-negro m-15">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore qui sit rem sunt, voluptatem corporis nesciunt assumenda voluptate! Nostrum quaerat rem earum vero illo tempore non minus cupiditate repudiandae! Enim.</p>
+                    </div>
+                    <div class="d-flex flex-wrap justify-content-center m-10" >
+
+                        <div class="w-50">
+                            <img  class="w-100" src="./images/galeria1.jpg" alt="">
+                        </div>
+                        <div class="w-50">
+                            <img class="w-100" src="./images/galeria2.jpg" alt="">
+                        </div>
+                        <div class="w-50">
+                            <img  class="w-100" src="./images/galeria3.jpg" alt="">
+                        </div>
+                        <div class="container-ver-mas w-50 ">
+                            <img class="w-100 oscurecer" src="./images/galeria4.jpg" alt="">
+                            <a class="ver-mas bold font-color-blanco font-header-1" href="#">+3</a>
+                        </div>  
+                    </div>
+                    <div>
+                        <div class="d-flex justify-content-between  margin-r-l">
+                            <div>
+                                <p class="font-body-3 font-color-gris-3"><i class="fas fa-thumbs-up icon-size-3 font-color-gris-3 m-r-10"></i>20</p>
+                            </div>
+                            <div class="d-flex align-items-center" >
+                                <p class="font-body-3 font-color-gris-3"><button id="btn-comentarios-galeria" class="font-body-3 font-color-gris-3">Ver 15 comentarios</button> - </p>                                
+                                <p class="font-body-3 font-color-gris-3"> 7 veces compartida</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between border-top-bottom margin-r-l">
+                            <button class="d-flex align-items-center btn-post margin-r-l p-15"><i class="fas fa-thumbs-up icon-size-2 p-5"></i>Me gusta</button>
+                            <button class="d-flex align-items-center btn-post margin-r-l p-15"><i class="fas fa-comment icon-size-2 p-5"></i>Comentar</button>
+                            <button class="d-flex align-items-center btn-post margin-r-l p-15"><i class="fas fa-share icon-size-2 p-5"></i>Compartir</button>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between m-15 display">
+                        <img class="img-size-4 m-r-15" src="./images/perfil1.png" alt="avatar de mensaje">
+                        <div class="d-flex align-items-center p-15 w-100 rounded-2 bg-color-gris-2">
+                            <input class="bg-color-gris-2 w-100 " type="text" name="buscar" placeholder="Dejá tu comentario...">
+                            <button><i class="fas fa-paper-plane font-color-negro icon-size-2"></i></button>
+                        </div>
+                    </div>
+
+                    <!--Comentarios-->
+                    <div id="comentarios-galeria" class="display">
+                        <div class="d-flex align-items-center">
+                            <img class="img-size-4 m-15" src="./images/perfil2.png" alt="avatar de mensaje">
+                            <div class="d-flex flex-col">
+                                <div class="p-10 rounded-1 bg-color-gris-2 m-t-15">
+                                    <p class="font-body-3 font-color-gris-3">Juan Perez</p>
+                                    <p class="font-body-2 font-color-negro text-align-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                </div>
+                                <div class="d-flex align-items-center" >
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5"><a href="" class="font-body-4 font-color-gris-3 bold">Me gusta</a> - </p>                                
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5"><a href="" class="font-body-4 font-color-gris-3 bold">Responder</a> - </p>
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5">26 min</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <img class="img-size-4 m-15" src="./images/perfil3.png" alt="avatar de mensaje">
+                            <div class="d-flex flex-col">
+                                <div class="p-10 rounded-1 bg-color-gris-2 m-t-15">
+                                    <p class="font-body-3 font-color-gris-3">Maria Garcia</p>
+                                    <p class="font-body-2 font-color-negro text-align-justify">Lorem ipsum dolor sit amet.</p>
+                                </div>
+                                <div class="d-flex align-items-center" >
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5"><a href="" class="font-body-4 font-color-gris-3 bold">Me gusta</a> - </p>                                
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5"><a href="" class="font-body-4 font-color-gris-3 bold">Responder</a> - </p>
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5">26 min</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <img class="img-size-4 m-15" src="./images/perfil2.png" alt="avatar de mensaje">
+                            <div class="d-flex flex-col">
+                                <div class="p-10 rounded-1 bg-color-gris-2 m-t-15">
+                                    <p class="font-body-3 font-color-gris-3">Juan Perez</p>
+                                    <p class="font-body-2 font-color-negro text-align-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                </div>
+                                <div class="d-flex align-items-center" >
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5"><a href="" class="font-body-4 font-color-gris-3 bold">Me gusta</a> - </p>                                
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5"><a href="" class="font-body-4 font-color-gris-3 bold">Responder</a> - </p>
+                                    <p class="font-body-4 font-color-gris-3 m-l-10 p-t-5">26 min</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>   
+                </div>
             </div>
         </div>
+
+        <!--Amigos y sugerencias de contactos-->
         <div class="friend-list d-flex flex-col font-color-negro"> 
             <div class="friends rounded-1 bg-color-gris-1 ">
                 <div class=" bg-color-blanco p-15 m-b-15 rounded-top">
@@ -102,15 +493,15 @@
                     </div>
                     <div class="w-100 d-flex align-items-center justify-content-around">
                         <input class="rounded-2 p-10 m-r-10 bg-color-gris-2 w-100" type="text" name="buscar" placeholder="Buscar amigo...">
-                        <i class="fa fa-search font-color-celeste icon-size-2 icon-input"></i>
+                        <i class="fa fa-search font-color-celeste icon-size-2"></i>
                     </div>
                 </div>
                 <div>
-                    <div class="d-flex justify-content-center p-10">
+                    <div class="d-flex justify-content-center p-10 border-bottom">
                         <h4>Sugerencias</h4>
                     </div>
                     <ul class="scroll">  <!--VER SCROLL-->
-                        <li class="d-flex align-items-center margin-r-l border-top-bottom">
+                        <li class="d-flex align-items-center justify-content-around m-10 rounded-1 bg-color-blanco">
                             <div class="p-5 m-r-10 m-l-10">
                                 <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
                             </div >
@@ -119,16 +510,7 @@
                                 <i class="fas fa-user-plus font-color-celeste icon-size-2"></i>
                             </div>
                         </li>
-                        <li class="d-flex align-items-center margin-r-l border-top-bottom">
-                            <div class="p-5 m-r-10 m-l-10">
-                                <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
-                            </div >
-                            <div class="d-flex w-100 align-items-center justify-content-around">
-                                <p class="font-body-3 font-color-gris-3">Juan Perez</p>
-                                <i class="fas fa-user-plus font-color-celeste icon-size-2"></i>
-                            </div>
-                        </li>  
-                        <li class="d-flex align-items-center margin-r-l border-top-bottom">
+                        <li class="d-flex align-items-center justify-content-around m-10 rounded-1 bg-color-blanco">
                             <div class="p-5 m-r-10 m-l-10">
                                 <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
                             </div >
@@ -137,7 +519,7 @@
                                 <i class="fas fa-user-plus font-color-celeste icon-size-2"></i>
                             </div>
                         </li>
-                        <li class="d-flex align-items-center margin-r-l border-top-bottom">
+                        <li class="d-flex align-items-center justify-content-around m-10 rounded-1 bg-color-blanco">
                             <div class="p-5 m-r-10 m-l-10">
                                 <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
                             </div >
@@ -145,7 +527,16 @@
                                 <p class="font-body-3 font-color-gris-3">Juan Perez</p>
                                 <i class="fas fa-user-plus font-color-celeste icon-size-2"></i>
                             </div>
-                        </li>                           
+                        </li>
+                        <li class="d-flex align-items-center justify-content-around m-10 rounded-1 bg-color-blanco">
+                            <div class="p-5 m-r-10 m-l-10">
+                                <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                            </div >
+                            <div class="d-flex w-100 align-items-center justify-content-around">
+                                <p class="font-body-3 font-color-gris-3">Juan Perez</p>
+                                <i class="fas fa-user-plus font-color-celeste icon-size-2"></i>
+                            </div>
+                        </li>                        
                     </ul>   
                 </div>
             </div>
@@ -157,5 +548,9 @@
             </div>
         </div>           
     </section>
+
+
+    <!--Scripts-->
+    <script src="./js/muro-noticias.js"></script>
 </body>
 </html>
