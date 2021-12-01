@@ -50,29 +50,41 @@
                 Datos personales
             </h2>
             <form action="#">
-                <div class="p-10 d-flex flex-col">
+                <div class="p-10 d-flex flex-col input-container">
                     <label class="m-l-10 font-body-2" for="name">Nombre <span class="font-color-rojo">*</span></label>
                     <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="name" placeholder="Ingresa tu nombre">
-                    <p class="m-l-10 font-body-3">No se admiten un nombre vacio</p>
+                    <p class="m-l-10 font-body-3 success font-color-verde d-none"><i class="fas fa-check-circle font-color-verde font-body-3"></i> El nombre valido</p>
+                    <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> No se admiten un nombre vacio</p>
+                    <p class="m-l-10 font-body-3 default">No se admiten un nombre vacio</p>
                 </div>
-                <div class="p-10 d-flex flex-col">
-                    <label class="m-l-10" for="name">Email <span class="font-color-rojo">*</span></label>
-                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="name" placeholder="Ingresa tu email">
-                    <p class="m-l-10 font-body-3">Ingresa un mail con el formato “nombre”@dominio.com</p>
+                <div class="p-10 d-flex flex-col input-container">
+                    <label class="m-l-10" for="email">Email <span class="font-color-rojo">*</span></label>
+                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="email" placeholder="Ingresa tu email">
+                    <p class="m-l-10 font-body-3 success font-color-verde d-none"><i class="fas fa-check-circle font-color-verde font-body-3"></i> El email es valido</p>
+                    <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> El email es invalido</p>
+                    <p class="m-l-10 font-body-3 default">Ingresa un mail con el formato “nombre”@dominio.com</p>
                 </div>
-                <div class="p-10 d-flex flex-col">
-                    <label class="m-l-10" for="name">Contraseña <span class="font-color-rojo">*</span></label>
-                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="name" placeholder="Ingresa tu contraseña">
-                    <p class="m-l-10 font-body-3">La contraseña debe contener...</p>
+                <div class="p-10 d-flex flex-col input-container">
+                    <label class="m-l-10" for="pass1">Contraseña <span class="font-color-rojo">*</span></label>
+                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="pass1" placeholder="Ingresa tu contraseña">
+                    <div class="password">
+                        <p>Fuerza de la contraseña: <span class="strength">muy</span></p>
+                        <div></div>   
+                    </div>
+                    <p class="m-l-10 font-body-3 success font-color-verde d-none"><i class="fas fa-check-circle font-color-verde font-body-3"></i> La contraseña es valida</p>
+                    <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> La contraseña debe contener 8 caracteres, entre los cuales debe tener una letra minúscula, una letra mayúscula, un número, y un carácter no alfanumérico</p>
+                    <p class="m-l-10 font-body-3 default">La contraseña debe contener 8 caracteres, entre los cuales debe tener una letra minúscula, una letra mayúscula, un número, y un carácter no alfanumérico</p>
                 </div>
-                <div class="p-10 d-flex flex-col">
-                    <label class="m-l-10" for="name">Repetir contraseña <span class="font-color-rojo">*</span></label>
-                    <input class="p-10 border-negro font-color-gris-3 rounded-1 font-body-2" type="text" name="name" placeholder="Vuelva a Ingresa su contraseña">
-                    <p class="m-l-10 font-body-3">La contraseña debe ser igual a la que ya ingreso</p>
+                <div class="p-10 d-flex flex-col input-container">
+                    <label class="m-l-10" for="pass2">Repetir contraseña <span class="font-color-rojo">*</span></label>
+                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="pass2" placeholder="Vuelva a Ingresa su contraseña">
+                    <p class="m-l-10 font-body-3 success font-color-verde d-none"><i class="fas fa-check-circle font-color-verde font-body-3"></i> La contraseña ingresada es valida</p>
+                    <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> La contraseña debe ser igual a la que ya has ingresado</p>
+                    <p class="m-l-10 font-body-3 default">La contraseña debe ser igual a la que ya has ingresado</p>
                 </div>
                 <div class="p-10 w-100">
-                    <button class="bg-color-celeste p-15 text-center w-100 rounded-2 font-color-blanco font-body-2">
-                        Siguiente
+                    <button class="bg-color-celeste p-15 text-center w-100 rounded-2 font-color-blanco font-body-2" type="submit">
+                        Validar
                     </button>
                 </div>
             </form>
@@ -83,5 +95,6 @@
             </div>
         </section>
     </section>
+    <script src="js/form-validations.js"></script>
 </body>
 </html>
