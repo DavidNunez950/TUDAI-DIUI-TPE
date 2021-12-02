@@ -251,7 +251,7 @@
             <div class="bg-color-blanco p-15 rounded-bottom">
                 <div class="w-100 d-flex align-items-center justify-content-around">
                     <input class="rounded-2 p-10 m-r-10 bg-color-gris-2 w-100" type="text" name="enviar-mensaje" placeholder="Enviar mensaje...">
-                    <i class="fas fa-video font-color-celeste icon-size-2 icon-input p-l-10"></i>
+                    <i class="fas fa-video font-color-celeste icon-size-2 icon-input p-l-10" data-target-type="modal" data-target="#llamar"></i>
                     <i class="fas fa-paper-plane font-color-celeste icon-size-2 icon-input p-l-10"></i>
                 </div>
             </div>
@@ -259,30 +259,33 @@
     </section>
 
     <!--DIV PARA MODAL DE LLAMADA-->>
-
-    <!-- <div id="llamar" class="d-flex bg-color-gris-1 direction-col align-items-center p-15 w-25 rounded-1 m-15">
-        <div>
-            <p class="font-header-4 font-color-negro" >Maria Lopez</p>
-        </div>
-        <div>
-            <img class="img-size-3" src="./images/perfil3.png" alt="" >
-        </div>
-        <div class="d-flex justify-content-around direction-row">
-            <div class="bg-color-gris-3 rounded-2 p-10 m-10">
-                <i class="fas fa-video font-color-blanco"></i>
+    <div id="llamar" class="modal">
+        <div class="modal-content modal-fit-conten | d-flex direction-col bg-color-gris-1 align-items-center p-15 w-25 rounded-1 m-15">
+            <div class=" position-relative w-100">
+                <p class="font-header-4 font-color-negro" >Maria Lopez</p>
+                <!-- Boton para cerrar -->
+                <span class="close position-absolute position-end top-start">&times;</span>
             </div>
-            <div class="bg-color-gris-3 rounded-2 p-10 m-10">
-                <i class="fas fa-microphone font-color-blanco"></i>
+            <div>
+                <img class="img-size-3" src="./images/perfil3.png" alt="" >
+            </div>
+            <div class="d-flex justify-content-around direction-row">
+                <div class="bg-color-gris-3 rounded-2 p-10 m-10">
+                    <i class="fas fa-video font-color-blanco"></i>
+                </div>
+                <div class="bg-color-gris-3 rounded-2 p-10 m-10">
+                    <i class="fas fa-microphone font-color-blanco"></i>
+                </div>
+            </div>
+            <div>
+                <div class="bg-color-verde">
+                    <button class="font-body-2">Llamar</button>
+                </div>
+                <div class="bg-color-rojo">
+                    <button class="font-body-2">Cancelar</button>
+                </div>
             </div>
         </div>
-        <div>
-            <div class="bg-color-verde">
-                <button class="font-body-2">Llamar</button>
-            </div>
-            <div class="bg-color-rojo">
-                <button class="font-body-2">Cancelar</button>
-            </div>
-        </div>
-    </div> -->
+    </div>
 </body>
 </html>

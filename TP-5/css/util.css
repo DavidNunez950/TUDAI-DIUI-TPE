@@ -79,6 +79,9 @@
 .position-relative {
     position: relative;
 }
+.top-start {
+    top: 25%;
+}
 .top-25 {
     top: 25%;
 }
