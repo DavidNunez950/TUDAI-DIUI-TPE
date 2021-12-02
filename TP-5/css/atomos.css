@@ -266,6 +266,13 @@
     padding: 15px 0 15px 0;
 }
 
+.padding-r-l-10{
+    padding: 0 10px 0 10px;
+}
+.padding-t-b-10{
+    padding: 10px 0 10px 0;
+}
+
 /* Línea  */
 .line {
     height: 2px;

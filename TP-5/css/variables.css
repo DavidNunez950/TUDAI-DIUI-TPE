@@ -7,7 +7,8 @@
     --gris-3 : #595959; /** Letras grises */
     --rojo   : #FF6B6B;
     --verde  : #80ED99;
-    --celeste: #5DB8FA;
+    /* --celeste: #9d4edd;  */
+    --celeste: #5DB8FA; 
     --grid-col: repeat(12, 1fr);
 }
 
@@ -19,8 +20,12 @@
     padding: 0px;
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
+    
 }
-
+/* body{
+    height: 600px;
+}
+ */
 /* body{
     overflow-y: hidden;
 } */
@@ -35,6 +40,11 @@ input:focus {
     outline:none;
 }
 a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+header a, .link-noticia a{
     color: inherit;
     text-decoration: inherit;
 }

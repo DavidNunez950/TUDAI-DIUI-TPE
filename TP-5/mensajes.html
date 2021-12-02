@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/main.css">
     <title>VetTech</title>
 </head>
-<body class="bg-color-gris-2 overflow-y">
+<body class="bg-color-gris-2" >
     <!--Header-->
     <header class="navbar d-grid bg-color-blanco shadow">
         <div class="d-flex flex-row align-items-center text-center font-color-negro">
@@ -75,15 +75,20 @@
         </div> 
     </header>
     <section class="d-grid container-messages">
-        <div class="d-flex flex-col rounded-1 messages m-r-15 bg-color-gris-1">
-            <div class="container-search-message bg-color-blanco p-15 m-b-15 rounded-top">
+
+        <!--lista de mensajes-->
+        <div class="messages d-flex flex-col rounded-1 m-r-15 bg-color-gris-1 shadow">
+            <div class="container-search-message bg-color-blanco p-15 rounded-top ">
+                <div class="d-flex justify-content-center p-10">
+                    <h4 class="font-color-negro font-header-4">Chats</h4>
+                </div>
                 <div class="w-100 d-flex align-items-center justify-content-around">
                     <input class="rounded-2 p-10 m-r-10 bg-color-gris-2 w-100" type="text" name="buscar" placeholder="Buscar mensaje...">
                     <i class="fa fa-search font-color-celeste icon-size-2 icon-input"></i>
                 </div>
             </div>
             <ul class="scroll">                
-                <li class="d-flex align-items-center justify-content-around m-10 rounded-1 bg-color-blanco active">
+                <li class="d-flex align-items-center justify-content-center m-10 rounded-1 bg-color-blanco active">
                     <div class="p-5 m-r-10 m-l-10">
                         <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
                     </div >
@@ -95,7 +100,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="d-flex align-items-center justify-content-around m-10 rounded-1 bg-color-blanco">
+                <li class="d-flex align-items-center justify-content-center m-10 rounded-1 bg-color-blanco ">
                     <div class="p-5 m-r-10 m-l-10">
                         <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
                     </div >
@@ -107,7 +112,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="d-flex align-items-center justify-content-around m-10 rounded-1 bg-color-blanco">
+                <li class="d-flex align-items-center justify-content-center m-10 rounded-1 bg-color-blanco ">
                     <div class="p-5 m-r-10 m-l-10">
                         <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
                     </div >
@@ -119,7 +124,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="d-flex align-items-center justify-content-around m-10 rounded-1 bg-color-blanco">
+                <li class="d-flex align-items-center justify-content-center m-10 rounded-1 bg-color-blanco ">
                     <div class="p-5 m-r-10 m-l-10">
                         <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
                     </div >
@@ -131,7 +136,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="d-flex align-items-center justify-content-around m-10 rounded-1 bg-color-blanco">
+                <li class="d-flex align-items-center justify-content-center m-10 rounded-1 bg-color-blanco ">
                     <div class="p-5 m-r-10 m-l-10">
                         <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
                     </div >
@@ -143,7 +148,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="d-flex align-items-center justify-content-around m-10 rounded-1 bg-color-blanco">
+                <li class="d-flex align-items-center justify-content-center m-10 rounded-1 bg-color-blanco ">
                     <div class="p-5 m-r-10 m-l-10">
                         <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
                     </div >
@@ -155,7 +160,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="d-flex align-items-center justify-content-around m-10 rounded-1 bg-color-blanco">
+                <li class="d-flex align-items-center justify-content-center m-10 rounded-1 bg-color-blanco ">
                     <div class="p-5 m-r-10 m-l-10">
                         <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
                     </div >
@@ -167,7 +172,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="d-flex align-items-center justify-content-around m-10 rounded-1 bg-color-blanco">
+                <li class="d-flex align-items-center justify-content-center m-10 rounded-1 bg-color-blanco ">
                     <div class="p-5 m-r-10 m-l-10">
                         <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
                     </div >
@@ -179,11 +184,25 @@
                         </div>
                     </div>
                 </li>
-                
+                <li class="d-flex align-items-center justify-content-center m-10 rounded-1 bg-color-blanco ">
+                    <div class="p-5 m-r-10 m-l-10">
+                        <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                    </div >
+                    <div class="d-flex flex-col p-15">
+                        <p class="font-body-3 font-color-gris-3">Juan Perez</p>
+                        <div class="d-flex justify-content-around">
+                            <p class="font-body-4 font-color-negro text-overflow">jhhasbjhbjhbjscbjsbjabdjhbjfbjwbfwbefbwejhh</p>
+                            <p class="font-body-4 font-color-gris-3">27 nov</p>
+                        </div>
+                    </div>
+                </li>
+                              
             </ul>            
         </div>
-        <div class="d-flex flex-col font-color-negro rounded-1 bg-color-gris-1 chat">
-            <div class="d-flex align-items-center container-search-message bg-color-blanco p-10 rounded-top">
+
+         <!--chat-->
+        <div class="d-flex flex-col font-color-negro rounded-1 bg-color-gris-1 chat scroll shadow">
+            <div class="d-flex align-items-center bg-color-blanco p-10 rounded-top">
                 <img src="./images/perfil3.png" alt="Avatar" class="img-size-4 m-r-10">
                 <div class="w-100 d-flex flex-col">
                     <p class="font-body-3 font-color-gris-3">Maria Gomez</p>
@@ -214,6 +233,7 @@
                         <p class="font-body-3 font-color-negro">Me alegro. Bien, tratando de terminar el fucking tp de interfaces :S</p>
                     </div>
                 </div>
+                
             </div>
             <div class="bg-color-blanco p-15 rounded-bottom">
                 <div class="w-100 d-flex align-items-center justify-content-around">
@@ -224,5 +244,32 @@
             </div>
         </div>
     </section>
+
+    <!--DIV PARA MODAL DE LLAMADA-->>
+
+    <!-- <div id="llamar" class="d-flex bg-color-gris-1 direction-col align-items-center p-15 w-25 rounded-1 m-15">
+        <div>
+            <p class="font-header-4 font-color-negro" >Maria Lopez</p>
+        </div>
+        <div>
+            <img class="img-size-3" src="./images/perfil3.png" alt="" >
+        </div>
+        <div class="d-flex justify-content-around direction-row">
+            <div class="bg-color-gris-3 rounded-2 p-10 m-10">
+                <i class="fas fa-video font-color-blanco"></i>
+            </div>
+            <div class="bg-color-gris-3 rounded-2 p-10 m-10">
+                <i class="fas fa-microphone font-color-blanco"></i>
+            </div>
+        </div>
+        <div>
+            <div class="bg-color-verde">
+                <button class="font-body-2">Llamar</button>
+            </div>
+            <div class="bg-color-rojo">
+                <button class="font-body-2">Cancelar</button>
+            </div>
+        </div>
+    </div> -->
 </body>
 </html>

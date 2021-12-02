@@ -90,11 +90,13 @@
     animation: scroll 50s  infinite linear;
 }
 @keyframes scroll { 100% { background-position-x: -2898px; } }
+
+
 /* Mensajes */
 .container-messages {
     grid-template-columns: var(--grid-col);
     /* grid: template-ro2; */
-    grid-template-rows: 15px 73% 0;
+    grid-template-rows: 15px 532px;
     grid-template-areas: 
         " . . . . . . . . . . . . " 
         ". message message message chat chat chat chat chat chat  chat ."
@@ -110,7 +112,6 @@
 .container-search-message{
     grid-template-rows: 20px auto;
 }
-
 
 /* Muro de Noticias*/
 .container-inicio {
@@ -131,7 +132,8 @@
 
 /*Columna lista de amigos, publicidad y footer*/
 .friend-list{
-    grid-template-rows: 30% auto auto;
+    display: grid;
+    grid-template-rows: 300px 200px 200px;
     grid-template-areas: 
         "friends"
         "publicidad"
@@ -352,5 +354,22 @@ select:focus ~ .fa-chevron-up {
     width: 25%;
     position: absolute;
     right: 96px;
-    top: 66px;
+    top: 76px;
 }
+
+footer li{
+    padding: 5px;
+}
+
+footer li:hover{
+    text-decoration: underline;
+    color: var(--negro);
+}
+
+a:hover, 
+.btn-ver-comentarios:hover, 
+.respuestas-comentarios > div > div > div > button:hover, 
+.comentarios-video > div > div > div > div > button:hover{
+    text-decoration:underline;
+}
+
