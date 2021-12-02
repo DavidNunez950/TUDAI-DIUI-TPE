@@ -266,6 +266,18 @@
 .m-b-10 {
     margin-bottom: 10px;
 }
+.m-l-5 {
+    margin-left: 5px;
+}
+.m-t-5 {
+    margin-top: 5px;
+}
+.m-r-5 {
+    margin-right: 5px;
+}
+.m-b-5 {
+    margin-bottom: 5px;
+}
 .margin-r-l{
     margin: 0 15px 0 15px;
 }
