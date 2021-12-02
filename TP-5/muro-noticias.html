@@ -11,27 +11,25 @@
     
 </head>
 <body class="bg-color-gris-2">
-    <header class="navbar d-grid bg-color-blanco shadow">
-        <div class="d-flex flex-row align-items-center text-center font-color-negro">
+
+    <!-- Header -->
+    <header class=" p-b-5 p-t-5 d-grid bg-color-blanco shadow navbar">
+        <div class="text-center d-flex flex-row align-items-center ">
             <div>
                 <div>
-                    <img src="img/logo.jpg" class="img-size-4 p-5" alt="logo">
+                    <img src="img/logo.jpg" class="img-size-2" alt="logo">
                 </div>
-                <h1 class="header-1 font-body-3 font-color-negro">
+                <h1 class="font-body-3">
                     VetTech
                 </h1>
             </div>
-            <div class="d-flex rounded-2 p-5 m-r-15 bg-color-gris-2 w-75 justify-content-around">
-                <input class="bg-color-gris-2" type="text" name="buscar" placeholder="Buscar...">
-                <i class="fa fa-search font-color-negro icon-size-2"></i>
+            <div class=" p-l-15 w-100 position-relative ">
+                <input class=" p-10 w-100 rounded-2 bg-color-gris-2" type="text" name="buscar" placeholder="Busca...">
+                <i class="fa fa-search font-color-negro icon-size-2 icon-input position-absolute top-25 position-end"></i>
             </div>
-            <!-- <div class="position-relative w-100">
-                <input class="rounded-2 p-10 bg-color-gris-2 w-100" type="text" name="buscar" placeholder="Busca...">
-                <i class="fa fa-search  font-color-negro icon-size-2 position-absolute top-25 position-end"></i>
-            </div> -->
-        </div>  
+        </div>
         <div>
-            <ul class="d-flex flex-row h-100 text-center align-items-center justify-content-around">
+            <ul class=" h-100 text-center d-flex flex-row align-items-center justify-content-around">
                 <li >
                     <a href="inicio">    
                         <div>
@@ -43,14 +41,14 @@
                     </a>
                 </li>
                 <li>
-                    <a id="btn-notificaciones" href="#">    
+                    <a href="notificaciones">    
                         <div>
                             <i class="fas fa-bell font-color-negro icon-size-2"></i>
                             <p class="font-color-negro font-body-4">
                                 Notificaciones
                             </p>
                         </div>
-                    </a>                    
+                    </a>
                 </li>
                 <li>
                     <a href="Mensajes">    
@@ -73,8 +71,9 @@
                     </a>
                 </li>
             </ul>
-        </div> 
+        </div>        
     </header>
+    
     <!--container de notificaciones-->
     <div id="notificaciones" class="notificaciones display">
         <ul class="d-flex flex-col align-items-center m-5 bg-color-blanco scroll shadow">
