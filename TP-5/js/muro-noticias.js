@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function (event) {
+     
      let comentariosVideo = document.getElementById("comentarios-video");
      let btnComentariosVideo = document.getElementById("btn-comentarios-video");
      let containerInputComentar = document.getElementById("container-input-comentar");
