@@ -10,6 +10,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
      let notificaciones = document.getElementById('notificaciones');
      let btnNotificaciones = document.getElementById('btn-notificaciones');
      let nombreUsuario = "Agustina Notti";
+     let respuestasComentario = document.getElementById("respuestas-comentarios");
+     let btnVerRespuestasComentario = document.getElementById("btn-ver-respuestas");
+
+
+     btnVerRespuestasComentario.addEventListener("click", ()=>{
+          respuestasComentario.classList.toggle('display');
+     });
 
      btnNotificaciones.addEventListener("click", ()=>{
           notificaciones.classList.toggle('display');

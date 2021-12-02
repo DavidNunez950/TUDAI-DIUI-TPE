@@ -8,12 +8,21 @@
 .flex-col {
     flex-flow: column nowrap;
 }
+.direction-col{
+    flex-direction: column;
+}
+.direction-row{
+    flex-direction: row;
+}
 .flex-wrap {
     flex-flow: wrap;
 }
 .align-items-center {
     align-items: center;
 }
+.align-items-end{
+    align-items: flex-end;
+}    
 .justify-content-around {
     justify-content: space-around;
 }
@@ -22,6 +31,9 @@
 }
 .justify-content-start {
     justify-content: start;
+}
+.justify-content-end {
+    justify-content: end;
 }
 .justify-content-between {
     justify-content: space-between;
@@ -101,6 +113,9 @@
 }
 .w-100 {
     width: 100%;
+}
+.w-80 {
+    width: 80%;
 }
 .w-75 {
     width: 75%;
