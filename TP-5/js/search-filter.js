@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
+export { addSearchFilterEvents };
+
+function addSearchFilterEvents() {
     const select       = document.querySelector(".select select");
     const selectText   = document.querySelector(".select-text");
     const selectNumber = document.querySelector(".select-number");
@@ -37,26 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
             filterContainer.removeChild(e.target.parentElement);
         }
     });
-
-
-
-    var modal = document.getElementById("myModal");
-
-    var btn = document.getElementById("myBtn");
-
-    var span = document.getElementsByClassName("close")[0];
-
-    btn.onclick = function() {
-    modal.style.display = "block";
-    }
-
-    span.onclick = function() {
-    modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
 }
-});
+
+

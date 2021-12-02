@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
+export { addFormsValidationsEvents };
+
+function addFormsValidationsEvents() {
     "use strict";
 
     class FormValidator{
@@ -61,4 +63,4 @@ document.addEventListener("DOMContentLoaded", () => {
             btn.innerText = "Validar";
         }
     });
-});
+}

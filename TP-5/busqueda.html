@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <script src="js/main.js" type="module"></script>
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/search-filter.js"></script>
     <title>VetTech</title>
 </head>
 <body class="bg-color-gris-1">
@@ -70,6 +70,21 @@
             </ul>
         </div>        
     </header>
+    
+    <!-- ring de loading -->
+    <div class="w-100 d-flex justify-content-center m-15 loading">
+        <div class="css-spinner text-center">
+            <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <p class="font-body-2 font-color-negro">Cargando...</p>
+        </div>
+    </div>
+
+    <!-- contenido -->
     <section class="d-grid h-100  container-busqueda">
                 <!-- <div class="rounded-1 m-15  bg-color-gris-2 filtros">
                     <div class="p-15 bg-color-blanco  rounded-top">
@@ -185,13 +200,13 @@
                             <p class="font-body-2 font-color-negro p-r-10">El email <b class="font-color-gris-3">no contiene</b> gmail.com</p>
                             <i class="fas fa-times-circle icon-size-3"></i>
                         </div>
-                        <div id="myBtn" class="p-10 bg-color-blanco rounded-1 d-flex flex-row align-items-center m-l-10 m-t-10">
+                        <div data-target-type="modal" data-target="#btn-add-filter" class="p-10 bg-color-blanco rounded-1 d-flex flex-row align-items-center m-l-10 m-t-10">
                             <button class="rounded-1 font-body-2 d-flex align-items-center justify-content-center">
                                 <i class="fas fa-plus-circle icon-size-2"></i>
                             </button>
                         </div>
 
-                        <div id="myModal" class="modal">
+                        <div id="btn-add-filter" class="modal">
                             <div class="modal-content">
                                 <!-- <div class="modal-header">
                                     <h2>Modal Header</h2>
