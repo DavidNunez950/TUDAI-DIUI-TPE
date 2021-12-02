@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="notificaciones">    
+                    <a id="btn-notificaciones" href="#"> 
                         <div>
                             <i class="fas fa-bell font-color-negro icon-size-2"></i>
                             <p class="font-color-negro font-body-4">
@@ -73,7 +73,20 @@
             </ul>
         </div>        
     </header>
-    
+
+    <!-- ring de loading -->
+    <div class="w-100 | d-flex justify-content-center | loading">
+        <div class="css-spinner text-center">
+            <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <p class="font-body-2 font-color-negro">Cargando...</p>
+        </div>
+    </div>
+
     <!--container de notificaciones-->
     <div id="notificaciones" class="notificaciones display">
         <ul class="d-flex flex-col align-items-center p-15 bg-color-blanco scroll shadow">
@@ -154,21 +167,6 @@
             
         </ul>
     </div>
-    
-    <!-- ring de loading -->
-    <div class="w-100 d-flex justify-content-center m-15 loading">
-        <div class="css-spinner text-center">
-            <div class="lds-ring">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <p class="font-body-2 font-color-negro">Cargando...</p>
-        </div>
-    </div>
-
-    <!-- contenido -->
     <section class="d-grid h-100 container-inicio">
         <div class="container-posts d-flex flex-col m-r-15 ">
 

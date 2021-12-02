@@ -300,6 +300,7 @@ footer li:hover{
     color: var(--negro);
 }
 
+<<<<<<< HEAD
 
 
 .fade-in {
@@ -317,6 +318,8 @@ footer li:hover{
     0% {opacity: 1;}
     100% {opacity: 0;}
  }
+=======
+>>>>>>> tp5_messages_page
 a:hover, 
 .btn-ver-comentarios:hover, 
 .respuestas-comentarios > div > div > div > button:hover, 
