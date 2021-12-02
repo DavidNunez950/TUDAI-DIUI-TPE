@@ -44,6 +44,9 @@
 .text-start {
     text-align: start;
 }
+.text-end {
+    text-align: end;
+}
 
 
 
@@ -222,6 +225,13 @@
 }
 .p-b-5 {
     padding-bottom: 5px;
+}
+
+.mn-t-15 {
+    margin-top: -15px;
+}
+.mn-t-5 {
+    margin-top: -5px;
 }
 .m-15 {
     margin: 15px;

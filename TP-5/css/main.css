@@ -15,7 +15,7 @@
 .navbar {
     flex-direction: row no-wrap;
     grid-template-columns: var(--grid-col);
-    grid-template-areas: ". navbar-logo navbar-logo navbar-logo navbar-logo  . . . navbar-menu navbar-menu navbar-menu  .";
+    grid-template-areas: ". navbar-logo navbar-logo navbar-logo navbar-logo   navbar-logo . . navbar-menu navbar-menu navbar-menu  .";
     /* grid-template-areas: ". navbar-logo navbar-logo navbar-logo . . . . . navbar-menu navbar-menu ."; */
 }
 .navbar > div { 
