@@ -22,68 +22,91 @@
             </div>
             <p class="font-body-2 font-color-negro">Cargando...</p>
         </div>
-    </div>
+    </div>  
+    
+    <!-- parallax - layer 1 -->
+    <div class="layer layer-2 z-index-2"v></div>
+    <!-- parallax - layer 2 -->
+    <div class="layer layer-1 z-index-3"></div>
 
     <!-- contenido -->
-    <section class="d-grid h-100  container-login">
-        <div class=" d-flex flex-col font-color-negro rounded-1 p-15 bg-color-blanco">
+    <section class="d-grid h-100  container-login position-relative fade-in z-index-4">
+
+        <div class=" d-flex flex-col font-color-negro rounded-1 p-15 bg-color-blanco h-fit-content m-t-15 z-index-4">
             <div class=" d-flex flex-col align-items-center justify-content-around text-center">
-                <h1 class="header-1 font-color-negro">
+                <h1 class="font-header-4 font-color-negro">
                     VetTech
                 </h1>
-                    <img src="img/logo.jpg" class="img-size-2" alt="logo">
-                <h2 class="header-2 font-color-negro">
-                    Crea tu cuenta
-                </h2>
+                <img src="img/logo.jpg" class="img-size-2" alt="logo">
             </div>
-            <div class="login-steps text-center d-flex align-items-center justify-content-around  position-relative ">
-                <span class="login-steps-step login-steps-step-prosecing      d-flex align-items-center justify-content-around z-index-2">
-                    1
+            <div class="m-l-15 m-r-15 text-center d-flex align-items-center justify-content-around  position-relative m-5">
+                <span class="d-flex align-items-center justify-content-around z-index-2 bg-color-blanco step border-celetes">
+                    1 
                 </span>
-                <span class="login-steps-step login-steps-step-pending      d-flex align-items-center justify-content-around z-index-2">
+                <div class="m-l-15 m-r-15 steps-line bg-color-gris-1 w-25 bg-color-gris-1"></div>
+                <span class="d-flex align-items-center justify-content-around z-index-2 bg-color-gris-1 step">
                     2
                 </span>
-                <span class="login-steps-step login-steps-step-pending d-flex align-items-center justify-content-around z-index-2">
+                <div class="m-l-15 m-r-15 steps-line bg-color-gris-1 w-25"></div>
+                <span class="d-flex align-items-center justify-content-around z-index-2 bg-color-gris-1 step">
                     3
                 </span>
-                <div class="login-steps-load-bar position-absolute w-100 h-100 d-flex align-items-center z-index-1">
-                    <div class="login-steps-bar w-100  rounded-1"></div>
-                </div>
             </div>
-            <h2 class="header-2 font-color-negro text-center">
-                Datos personales
+            <h2 class="font-body-1 font-color-negro text-center">
+                Crear cuenta: datos de usuario
             </h2>
+            <div class="m-l-10 m-r-10 d-flex flex-col">
+                <p class="font-color-negro font-body-2 m-l-5 m-r-5"> 
+                   Los campos que tienen una estrellita roja (<span class="font-color-rojo">*</span>), son obligatorios
+                </p>
+            </div>
             <form action="#" class="p-10 d-flex flex-col">
-                <div class="p-10 d-flex flex-col input-container">
-                    <label class="m-l-10 font-body-2" for="name">Nombre <span class="font-color-rojo">*</span></label>
-                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="name" placeholder="Ingresa tu nombre">
-                    <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> No se admiten un nombre vacio</p>
+                <div class="p-5 d-flex flex-col input-container">
+                    <label for="name">Nombre <span class="font-color-rojo">*</span></label>
+                    <input class="input p-10 border-negro rounded-1 font-body-2" type="text" name="name" placeholder="Ingresa tu nombre">
+                    <p class="font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> No se admiten un nombre vacio</p>
                 </div>
-                <div class="p-10 d-flex flex-col input-container">
-                    <label class="m-l-10" for="email">Email <span class="font-color-rojo">*</span></label>
-                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="email" placeholder="Ingresa tu email">
-                    <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> El email es invalido</p>
+                <div class="p-5 d-flex flex-col input-container">
+                    <label for="email">Email <span class="font-color-rojo">*</span></label>
+                    <input class="input p-10 border-negro rounded-1 font-body-2" type="text" name="email" placeholder="Ingresa tu email">
+                    <p class="font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> El email es invalido</p>
                 </div>
-                <div class="p-10 d-flex flex-col input-container">
-                    <label class="m-l-10" for="pass1">Contraseña <span class="font-color-rojo">*</span></label>
-                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="pass1" placeholder="Ingresa tu contraseña">
-                    <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> La contraseña es invalida</p>
+                <div class="p-5 d-flex flex-col input-container">
+                    <label for="pass1">Contraseña <span class="font-color-rojo">*</span></label>
+                    <div class="input p-10 border-negro rounded-1 font-body-2 d-flex d-row justify-content-between position-relative" >
+                        <input class="rounded-1 font-body-2" type="text" name="pass1" placeholder="Ingresa tu contraseña">
+                        <i class="fas fa-question-circle" data-target-type="drowpdown" data-target="#drowdown-question"></i>
+                        <div class="dropdown-content d-none position-end text-start position-absolute bg-color-blanco rounded-1 shadow p-15 m-t-15" id="drowdown-question">
+                            <p>La contraseña debe contener</p>
+                            <ul>
+                                <li class="m-l-5"> • Una letra minúscula</li>
+                                <li class="m-l-5"> • Una letra mayúscula</li>
+                                <li class="m-l-5"> • Una un número</li>
+                                <li class="m-l-5"> • Un caracter especial (!, #, ., @)</li>
+                                <li class="m-l-5"> • 8 catácteres</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> La contraseña es invalida</p>
                 </div>
-               <div class="p-10 d-flex flex-col input-container">
-                    <label class="m-l-10" for="pass2">Repetir contraseña <span class="font-color-rojo">*</span></label>
-                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="pass2" placeholder="Vuelva a Ingresa su contraseña">
-                    <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> La contraseña debe ser igual a la que ya has ingresado</p>
+               <div class="p-5 d-flex flex-col input-container">
+                    <label for="pass2">Repetir contraseña <span class="font-color-rojo">*</span></label>
+                    <input class="input p-10 border-negro rounded-1 font-body-2" type="text" name="pass2" placeholder="Vuelva a Ingresa su contraseña">
+                    <p class="font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> La contraseña debe ser igual a la que ya has ingresado</p>
                 </div>
-                <div class="p-10 w-100">
-                    <button class="bg-color-celeste p-15 text-center w-100 rounded-2 font-color-blanco font-body-2" type="submit">
+                <div class="p-10 d-flex flex-row justify-content-between">
+                    <button class="bg-color-rojo    p-15 m-r-5 text-center rounded-2 w-75 font-color-blanco font-body-2" type="button">
+                        Volver
+                    </button>
+                    <button class="bg-color-celeste p-15 m-l-5 text-center rounded-2 w-75 font-color-blanco font-body-2" type="submit" data-href="registro_2.html">
                         Validar
                     </button>
                 </div>
             </form>
-            <hr>
+            <hr class="m-l-15 m-r-15">
             <div>
-                <p class="text-center p-10">¿Ya tenes una cuenta? <a href="" class="font-color-celeste">Inicia sesión</a></p>
-                <p class="text-center p-10">¿Olvídate tu contraseña? <a href="" class="font-color-celeste">Recupera tu contraseña</a></p>
+                <p class="text-center p-10">¿Ya tenes una cuenta? <a href="login.html" class="font-color-celeste">Inicia sesión</a></p>
+                <p class="text-center p-10">¿Olvídate tu contraseña? <a href="#" class="font-color-celeste">Recupera tu contraseña</a></p>
             </div>
         </div>
     </section>

@@ -25,43 +25,15 @@
     grid-area: navbar-menu;
 }
 
-
 /* Login */
-.login-steps-step {
+.steps-line {
+    height: 2px;
+}
+.step {
     border-radius: 100%;
-    height: 45px;
-    width:  45px;
+    height: 24px;
+    width:  24px;
 }
-.login-steps-step-pending {
-    background-color: var(--gris-1);
-}
-.login-steps-step-prosecing {
-    border:  var(--celeste) 3px solid;
-    background-color: var(--blanco);
-}
-.login-steps-step-done {
-    background-color: var(--celeste);
-}
-.login-steps-bar {
-    width: 100%;
-    height: 20px;
-}
-
-.login-steps-step-prosecing + .login-steps-step-pending + .login-steps-step-pending + .login-steps-load-bar >.login-steps-bar{
-    background: rgb(0,0,0);
-    background: linear-gradient(90deg, var(--celeste) 17%, var(--gris-1) 16%);
-}
-
-.login-steps-step-done + .login-steps-step-prosecing + .login-steps-step-pending + .login-steps-load-bar >.login-steps-bar {
-    background: rgb(0,0,0);
-    background: linear-gradient(90deg, var(--celeste) 50%, var(--gris-1) 51%);
-}
-
-.login-steps-step-done + .login-steps-step-done + .login-steps-step-prosecing + .login-steps-load-bar >.login-steps-bar  {
-    background: rgb(0,0,0);
-    background: linear-gradient(90deg, var(--celeste) 85%, var(--gris-1) 86%);
-}
-
 .container-login {
     grid-template-columns: var(--grid-col);
     grid-template-rows: 15px auto 15px;
@@ -78,7 +50,7 @@
 /** Layer */
 .layer {
     background: red;
-    /* position: absolute; */
+    position: absolute;
     bottom: 0px;
     left: 0px;
     width: 100%;
@@ -91,6 +63,13 @@
 .layer-1 {
     background-size: calc(2898/1200px) auto !important;
     background: url("../img/printfoot.png");
+    animation: scroll 50s  infinite linear;
+    filter: opacity(30%);
+}
+.layer-2 {
+    background-size: calc(2898/1200px) auto !important;
+    background: url("../img/printfoot-2.png");
+    filter: opacity(13%);
     animation: scroll 50s  infinite linear;
 }
 @keyframes scroll { 100% { background-position-x: -2898px; } }

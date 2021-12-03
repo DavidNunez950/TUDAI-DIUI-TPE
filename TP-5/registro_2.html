@@ -23,67 +23,67 @@
             <p class="font-body-2 font-color-negro">Cargando...</p>
         </div>
     </div>
+    
+    <!-- parallax - layer 1 -->
+    <div class="layer layer-2 z-index-2"v></div>
+    <!-- parallax - layer 2 -->
+    <div class="layer layer-1 z-index-3"></div>
 
     <!-- contenido -->
-    <section class="d-grid h-100  container-login layer layer-1">
-        <div class=" d-flex flex-col font-color-negro rounded-1 p-15 bg-color-blanco">
+    <section class="d-grid h-100  container-login position-relative fade-in z-index-4">
+        <div class=" d-flex flex-col font-color-negro rounded-1 p-15 bg-color-blanco h-fit-content">
             <div class=" d-flex flex-col align-items-center justify-content-around text-center">
-                <h1 class="header-1 font-color-negro">
+                <h1 class="font-header-4 font-color-negro">
                     VetTech
                 </h1>
-                    <img src="img/logo.jpg" class="img-size-2" alt="logo">
-                <h2 class="header-2 font-color-negro">
-                    Crea tu cuenta
-                </h2>
+                <img src="img/logo.jpg" class="img-size-2" alt="logo">
             </div>
-            <h2 class="header-2 font-color-negro text-center">
-                Datos personales
-            </h2>
-            <div class="login-steps text-center d-flex align-items-center justify-content-around  position-relative ">
-                <span class="login-steps-step login-steps-step-done      d-flex align-items-center justify-content-around z-index-2">
+            <div class="m-l-15 m-r-15 text-center d-flex align-items-center justify-content-around  position-relative m-5">
+                <span class="d-flex align-items-center justify-content-around z-index-2 bg-color-celeste step">
                     1
                 </span>
-                <span class="login-steps-step login-steps-step-prosecing      d-flex align-items-center justify-content-around z-index-2">
+                <div class="m-l-15 m-r-15 steps-line w-25 bg-color-celeste"></div>
+                <span class="d-flex align-items-center justify-content-around z-index-2 bg-color-blanco step border-celetes">
                     2
                 </span>
-                <span class="login-steps-step login-steps-step-pending d-flex align-items-center justify-content-around z-index-2">
+                <div class="m-l-15 m-r-15 steps-line bg-color-gris-1 w-25"></div>
+                <span class="d-flex align-items-center justify-content-around z-index-2 bg-color-gris-1 step">
                     3
                 </span>
-                <div class="login-steps-load-bar position-absolute w-100 h-100 d-flex align-items-center z-index-1">
-                    <div class="login-steps-bar w-100  rounded-1"></div>
-                </div>
             </div>
+            <h2 class="font-body-1 font-color-negro text-center">
+                Crear cuenta: datos personales
+            </h2>
             <form action="#">
-                <div class="p-10 d-flex flex-col">
-                    <label class="m-l-10 font-body-2" for="fecha-nacimiento">Fecha de nacimiento</label>
+                <div class="p-5 d-flex flex-col">
+                    <label for="fecha-nacimiento">Fecha de nacimiento</label>
                     <input class="p-10 border-negro rounded-1 font-body-2" type="date" name="fecha-nacimiento" placeholder="Ingresa tu faecha de nacimiento">
                 </div>
-                <div class="p-10 d-flex flex-col">
-                    <label class="m-l-10" for="trabajo-ocupacion">Cúal es tu trabajo u ocupación</label>
-                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="trabajo-ocupacion" placeholder="Ingresa tu trabajo u ocupación">
+                <div class="p-5 d-flex flex-col">
+                    <label for="genero">Género</label>
+                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="genero" placeholder="Ingresa tu género">
                 </div>
-                <div class="p-10 d-flex flex-col">
-                    <label class="m-l-10" for="localidad">Localidad donde vives</label>
+                <div class="p-5 d-flex flex-col">
+                    <label for="nacionalidad">Nacionalidad</label>
+                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="nacionalidad" placeholder="Ingresa nacionalidad">
+                </div>
+                <div class="p-5 d-flex flex-col">
+                    <label for="localidad">Localidad donde vives</label>
                     <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="localidad" placeholder="Ingresa la localidad donde vives">
                 </div>
-                <div class="p-10 d-flex flex-col">
-                    <label class="m-l-10" for="donde-estudio">Dónde estudiate</label>
-                    <input class="p-10 border-negro font-color-gris-3 rounded-1 font-body-2" type="text" name="donde-estudio" placeholder="Ingresa el lugar dónde estudiate">
-                </div>
-                <div class="p-10 d-flex flex-col">
-                    <label class="m-l-10" for="contacto">Número o email de contacto</label>
-                    <input class="p-10 border-negro font-color-gris-3 rounded-1 font-body-2" type="text" name="contacto" placeholder="Ingresa tu número o email de contacto">
-                </div>
-                <div class="p-10 ">
-                    <button class="bg-color-celeste p-15 text-center w-100 rounded-2 font-color-blanco font-body-2">
+                <div class="p-10 d-flex flex-row justify-content-between">
+                    <button class="bg-color-rojo    p-15 m-r-5 text-center rounded-2 w-75 font-color-blanco font-body-2" data-href="registro_1.html" type="button">
+                        Volver
+                    </button>
+                    <button class="bg-color-celeste p-15 m-l-5 text-center rounded-2 w-75 font-color-blanco font-body-2" type="submit" data-href="registro_3.html">
                         Siguiente
                     </button>
                 </div>
             </form>
-            <hr>
+            <hr class="m-l-15 m-r-15">
             <div>
-                <p class="text-center p-10">¿Ya tenes una cuenta? <a href="" class="font-color-celeste">Inicia sesión</a></p>
-                <p class="text-center p-10">¿Olvídate tu contraseña? <a href="" class="font-color-celeste">Recupera tu contraseña</a></p>
+                <p class="text-center p-10">¿Ya tenes una cuenta? <a href="login.html" class="font-color-celeste">Inicia sesión</a></p>
+                <p class="text-center p-10">¿Olvídate tu contraseña? <a href="#" class="font-color-celeste">Recupera tu contraseña</a></p>
             </div>
         </section>
     </section>

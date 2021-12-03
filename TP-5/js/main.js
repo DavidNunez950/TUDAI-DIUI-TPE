@@ -15,6 +15,12 @@ switch((/(.*)\/(.*?).html/).exec(window.location).pop()) {
     case "registro_1":
         addFormsValidationsEvents();
         break;
+    case "registro_2":
+        addFormsValidationsEvents();
+        break;
+    case "registro_3":
+        addFormsValidationsEvents();
+        break;
     case "login":
         addFormsValidationsEvents();
         break;

@@ -16,7 +16,8 @@ function addFormsValidationsEvents() {
             this.input.classList.remove("border-verde");
             this.input.classList.remove("border-negro");
             this.input.classList.remove("border-rojo");
-            return (this.validate(this.input.value)) ? this.success() : this.error(); 
+            let value = (this.input.value) ? this.input.value : this.inputContainer.querySelector("input").value;
+            return (value) ? this.success() : this.error(); 
         }
 
         success() {
@@ -34,7 +35,7 @@ function addFormsValidationsEvents() {
         get helperTextDefault() { return this.inputContainer.querySelector("p.default"); }
         get helperTextSucces()  { return this.inputContainer.querySelector("p.success"); }
         get helperTextError()   { return this.inputContainer.querySelector("p.error"); }
-        get input() { return this.inputContainer.querySelector("input"); }
+        get input() { return this.inputContainer.querySelector(".input"); }
     }
 
     const validations = {
@@ -55,11 +56,17 @@ function addFormsValidationsEvents() {
     const inputs = [];
     document.querySelectorAll(".input-container").forEach(input => inputs.push(new FormValidator(input)) );
     form.addEventListener("submit", (e) => { 
-        e.preventDefault(); 
+        e.preventDefault();
+        const defaultText = btn.innerText;
         if(inputs.filter( input => input.applyValidation() === false ).length === 0) {
-            btn.innerText = "Siguiente";
+            if(btn.innerText !== defaultText) {
+                btn.innerText = defaultText;
+            } else {
+                window.location.assign(btn.getAttribute("data-href"));
+            }
         } else {
             btn.innerText = "Validar";
         }
     });
+    form.querySelectorAll('button[type="button"]').forEach( btn =>  btn.addEventListener("click", ()=> window.location.assign(btn.getAttribute("data-href"))) );
 }

@@ -23,40 +23,42 @@
             <p class="font-body-2 font-color-negro">Cargando...</p>
         </div>
     </div>
+    
+    <!-- parallax - layer 1 -->
+    <div class="layer layer-2 z-index-2"v></div>
+    <!-- parallax - layer 2 -->
+    <div class="layer layer-1 z-index-3"></div>
 
     <!-- contenido -->
-    <section class="d-grid container-login layer layer-1 fade-in">
-        <div class=" d-flex flex-col font-color-negro rounded-1 p-15 bg-color-blanco">
+    <section class="d-grid h-100  container-login position-relative fade-in z-index-4">
+        <div class=" d-flex flex-col font-color-negro rounded-1 p-15 bg-color-blanco h-fit-content">
             <div class=" d-flex flex-col align-items-center justify-content-around text-center">
-                <h1 class="header-1 font-color-negro">
+                <h1 class="font-header-4 font-color-negro">
                     VetTech
                 </h1>
-                    <img src="img/logo.jpg" class="img-size-2" alt="logo">
-                <h2 class="header-2 font-color-negro">
-                    Inicia sesión
-                </h2>
+                <img src="img/logo.jpg" class="img-size-2" alt="logo">
             </div>
             <form action="#">
                 <div class="p-10 d-flex flex-col input-container">
-                    <label class="m-l-10" for="email">Email</label>
-                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="email" placeholder="Ingresa tu email">
+                    <label for="email">Email</label>
+                    <input class="input p-10 border-negro rounded-1 font-body-2" type="text" name="email" placeholder="Ingresa tu email">
                     <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> El email es invalido</p>
                 </div>
                 <div class="p-10 d-flex flex-col input-container">
-                    <label class="m-l-10" for="pass1">Contraseña</label>
-                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="pass1" placeholder="Ingresa tu contraseña">
-                    <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> La contraseña debe contener 8 caracteres, entre los cuales debe tener una letra minúscula, una letra mayúscula, un número, y un carácter no alfanumérico</p>
+                    <label for="pass1">Contraseña</label>
+                    <input class="input p-10 border-negro rounded-1 font-body-2" type="text" name="pass1" placeholder="Ingresa tu contraseña">
+                    <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> La contraseña es invalida</p>
                 </div>
-                <div class="p-10 w-100">
-                    <button class="bg-color-celeste p-15 text-center w-100 rounded-2 font-color-blanco font-body-2"  type="submit">
+                <div class="p-10">
+                    <button class="bg-color-celeste p-15 text-center w-100 rounded-2 font-color-blanco font-body-2"  type="submit" data-href="muro-noticias.html">
                         Iniciar sesión
                     </button>
                 </div>
             </form>
-            <hr>
+            <hr class="m-l-15 m-r-15">
             <div>
-                <p class="text-center p-10">¿No tenes cuenta? <a href="" class="font-color-celeste">Creá tu cuenta</a></p>
-                <p class="text-center p-10">¿Olvídate tu contraseña? <a href="" class="font-color-celeste">Recupera tu contraseña</a></p>
+                <p class="text-center p-10">¿No tenes cuenta? <a href="registro_1.html" class="font-color-celeste">Creá tu cuenta</a></p>
+                <p class="text-center p-10">¿Olvídate tu contraseña? <a href="#" class="font-color-celeste">Recupera tu contraseña</a></p>
             </div>
         </div>
     </section>
