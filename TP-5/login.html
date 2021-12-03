@@ -37,16 +37,18 @@
                 </h2>
             </div>
             <form action="#">
-                <div class="p-10 d-flex flex-col">
-                    <label class="m-l-10" for="name">Email</label>
-                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="name" placeholder="Ingresa tu email">
+                <div class="p-10 d-flex flex-col input-container">
+                    <label class="m-l-10" for="email">Email</label>
+                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="email" placeholder="Ingresa tu email">
+                    <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> El email es invalido</p>
                 </div>
-                <div class="p-10 d-flex flex-col">
-                    <label class="m-l-10" for="name">Contraseña</label>
-                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="name" placeholder="Ingresa tu contraseña">
+                <div class="p-10 d-flex flex-col input-container">
+                    <label class="m-l-10" for="pass1">Contraseña</label>
+                    <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="pass1" placeholder="Ingresa tu contraseña">
+                    <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> La contraseña debe contener 8 caracteres, entre los cuales debe tener una letra minúscula, una letra mayúscula, un número, y un carácter no alfanumérico</p>
                 </div>
                 <div class="p-10 w-100">
-                    <button class="bg-color-celeste p-15 text-center w-100 rounded-2 font-color-blanco font-body-2">
+                    <button class="bg-color-celeste p-15 text-center w-100 rounded-2 font-color-blanco font-body-2"  type="submit">
                         Iniciar sesión
                     </button>
                 </div>

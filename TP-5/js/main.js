@@ -14,6 +14,10 @@ switch((/(.*)\/(.*?).html/).exec(window.location).pop()) {
         break;
     case "registro_1":
         addFormsValidationsEvents();
+        break;
+    case "login":
+        addFormsValidationsEvents();
+        break;
     default:
         break;
 }

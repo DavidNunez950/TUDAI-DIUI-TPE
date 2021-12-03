@@ -53,99 +53,28 @@
             <h2 class="header-2 font-color-negro text-center">
                 Datos personales
             </h2>
-            <form action="#">
+            <form action="#" class="p-10 d-flex flex-col">
                 <div class="p-10 d-flex flex-col input-container">
                     <label class="m-l-10 font-body-2" for="name">Nombre <span class="font-color-rojo">*</span></label>
                     <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="name" placeholder="Ingresa tu nombre">
-                    <!-- <p class="m-l-10 font-body-3 success font-color-verde d-none"><i class="fas fa-check-circle font-color-verde font-body-3"></i> El nombre valido</p>
-                    <p class="m-l-10 font-body-3 error font-color-rojo d-none">   <i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> No se admiten un nombre vacio</p> -->
-                    <p class="m-l-10 font-body-3 default">
-                        <i class="fas fa-check-circle font-color-verde font-body-3"></i>
-                        <i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i>
-                        No se admiten un nombre vacio
-                    </p>
+                    <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> No se admiten un nombre vacio</p>
                 </div>
                 <div class="p-10 d-flex flex-col input-container">
                     <label class="m-l-10" for="email">Email <span class="font-color-rojo">*</span></label>
                     <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="email" placeholder="Ingresa tu email">
-                    <p class="m-l-10 font-body-3 default ">
-                        <i class="fas fa-check-circle font-color-verde font-body-3"></i>
-                        <i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i>
-                         El email es invalido: Ingresa un mail con el formato “nombre”@dominio.com
-                    </p>
-                    <!-- <p class="m-l-10 font-body-3 default"></p> -->
+                    <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> El email es invalido</p>
                 </div>
                 <div class="p-10 d-flex flex-col input-container">
                     <label class="m-l-10" for="pass1">Contraseña <span class="font-color-rojo">*</span></label>
                     <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="pass1" placeholder="Ingresa tu contraseña">
-
-                    <p class="m-l-10 font-body-3 default    font-color-negro">
-                        <i class="fas fa-check-circle font-color-verde font-body-3"></i>
-                        <i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i>
-                        La contraseña debe contener 8 caracteres, entre los cuales debe tener una letra minúscula, una letra mayúscula, un número, y un carácter no alfanumérico
-                    </p>
-                    <!-- <p class="m-l-10 font-body-3 default    font-color-rojo"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> La contraseña debe contener 8 caracteres, entre los cuales debe tener una letra minúscula, una letra mayúscula, un número, y un carácter no alfanumérico</p>
-                    <p class="m-l-10 font-body-3 success font-color-verde"></p><i class="fas fa-check-circle font-color-verde font-body-3"></i> La contraseña debe contener 8 caracteres, entre los cuales debe tener una letra minúscula, una letra mayúscula, un número, y un carácter no alfanumérico</p> -->
-
-                    <p class="m-l-10 font-body-3 error   font-color-rojo">
-                        <i class="fas fa-check-circle font-color-verde font-body-3"></i>
-                        <i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i>
-                        La contraseña es valida
-                    </p>
-                     
-                    
-                    <p class="m-l-10 font-body-3 error    font-color-negro">
-                        <i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i>
-                        <i class="fas fa-check-circle font-color-verde font-body-3"></i>
-                        La contraseña debe contener:</p>
-                    </p>
-                    
-                    <p class="m-l-10 font-body-3 cant-caracters   font-color-negro">
-                        <i class="fas fa-check-circle font-color-verde font-body-3"></i>
-                        <i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i>
-                        8 caracteres
-                    </p>
-                    
-                    <p class="m-l-10 font-body-3 letter-min   font-color-negro">
-                        <i class="fas fa-check-circle font-color-verde font-body-3"></i>
-                        <i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i>
-                        Una letra minúscula
-                    </p>
-                    
-                    <p class="m-l-10 font-body-3 letter-may   font-color-negro">
-                        <i class="fas fa-check-circle font-color-verde font-body-3"></i>
-                        <i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i>
-                        Una letra mayúscula
-                    </p>
-                    
-                    <p class="m-l-10 font-body-3 num    font-color-negro">
-                        <i class="fas fa-check-circle font-color-verde font-body-3"></i>
-                        <i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i>
-                        Un número
-                    </p>
-                    
-                    <p class="m-l-10 font-body-3 esp    font-color-negro">
-                        <i class="fas fa-check-circle font-color-verde font-body-3"></i>
-                        <i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i>
-                        Un carácter no especial (!, @, #)
-                    </p>
-                    
+                    <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> La contraseña es invalida</p>
                 </div>
-                <div class="p-10 d-flex flex-col input-container">
+               <div class="p-10 d-flex flex-col input-container">
                     <label class="m-l-10" for="pass2">Repetir contraseña <span class="font-color-rojo">*</span></label>
                     <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="pass2" placeholder="Vuelva a Ingresa su contraseña">
-                    <p class="m-l-10 font-body-3 default font-color-negro">
-                        <i class="fas fa-check-circle font-color-verde font-body-3"></i> 
-                        <i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i>
-                        La contraseña debe ser igual a la que ya has ingresado
-                    </p>
+                    <p class="m-l-10 font-body-3 error font-color-rojo d-none"><i class="fas fa-exclamation-triangle font-color-rojo font-body-3"></i> La contraseña debe ser igual a la que ya has ingresado</p>
                 </div>
-                <div class="p-10 d-flex flex-row justify-content-between">
-                    <button class="bg-color-rojo    p-15 text-center w-100 rounded-2 font-color-blanco font-body-2" type="submit">
-                        Validar
-                    </button>
-                </div>
-                <div class="p-10 d-flex flex-row justify-content-between">
+                <div class="p-10 w-100">
                     <button class="bg-color-celeste p-15 text-center w-100 rounded-2 font-color-blanco font-body-2" type="submit">
                         Validar
                     </button>
