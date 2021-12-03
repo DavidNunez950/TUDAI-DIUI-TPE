@@ -76,6 +76,14 @@
 .position-end {
     right: 0;
 }
+.position-right-top {
+    right: 0px;
+    top:  0px;
+}
+.position-center {
+    right: 50%;
+    top:  50%;
+}
 .position-relative {
     position: relative;
 }

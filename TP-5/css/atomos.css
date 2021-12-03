@@ -233,6 +233,9 @@
 .mn-t-5 {
     margin-top: -5px;
 }
+.mn-r-5 {
+    margin-right: -5px;
+}
 .m-15 {
     margin: 15px;
 }
@@ -242,11 +245,17 @@
 .m-t-15 {
     margin-top: 15px;
 }
+.m-t-25 {
+    margin-top: 25px;
+}
 .m-r-15 {
     margin-right: 15px;
 }
 .m-b-15 {
     margin-bottom: 15px;
+}
+.m-b-25 {
+    margin-bottom: 25px;
 }
 .m-10 {
     margin: 10px;
