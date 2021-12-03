@@ -220,7 +220,7 @@ select:focus ~ .fa-chevron-up {
 }
 .search-filter {
     display: grid;
-    grid-template-columns: 2fr 2fr 7fr 1fr;
+    grid-template-columns: 2fr 2fr 7fr 3fr;
     grid-template-areas: "field operator input add";
 }
 .search-filter div:nth-child(1) {

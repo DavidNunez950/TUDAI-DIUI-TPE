@@ -29,7 +29,7 @@ function addSearchFilterEvents() {
             let filter = 
             `<div class="p-10 bg-color-blanco rounded-1 d-flex flex-row align-items-center m-l-10 m-t-10">
                 <p class="font-body-2 font-color-negro p-r-10">${ select.selectedOptions["0"].innerText } <b class="font-color-gris-3">${ operation.selectedOptions["0"].innerText }</b> ${input.value}</p>
-                <i class="fas fa-times-circle icon-size-3"></i>
+                <i class="fas fa-times-circle icon-size-3 font-color-rojo"></i>
             </div>`;
             filterContainer.innerHTML +=filter;
         }

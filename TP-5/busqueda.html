@@ -33,7 +33,7 @@
                     <div class="dropdown-content d-none text-start position-absolute w-100 bg-color-gris-1 rounded-1 shadow p-10 m-t-15" id="drowdown-search"> 
                         <p>resultados busqueda</p>
                         <hr class="m-t-10 m-b-10">
-                        <div class=" w-100 text-end">
+                        <div class=" w-100 text-end font-body-1">
                             <a class="text-end"><i class="fas fa-sliders-h"></i> Filtros de busqueda avanzada </a>
                         </div>
                     </div>
@@ -115,30 +115,40 @@
     <!-- contenido -->
     <section class="d-grid h-100  container-busqueda">
         <div class="rounded-1 m-15  bg-color-gris-2 resultados">
-            <div class="p-15 bg-color-blanco  rounded-top">
-                <h3 class="font-color-negro font-body-2">Filtros aplicados</h3>
+            <div class="p-15 bg-color-blanco  rounded-top  d-flex align-items-center justify-content-between">
+                <h3 class="font-color-negro font-body-1">Filtros aplicados</h3>
+                <div class="d-flex flex-row">
+
+                    <div data-target-type="modal" data-target="#btn-add-filter" class="p-10 bg-color-blanco rounded-1 d-flex flex-row align-items-center m-l-10 m-t-10">
+                        <button class="rounded-1 font-body-2 d-flex align-items-center justify-content-center">
+                            Añadir filtro
+                            <i class="fas fa-plus-circle icon-size-3 m-l-5"></i>
+                        </button>
+                    </div>
+                    <!-- <div data-target-type="modal" data-target="#btn-add-filter" class="p-10 bg-color-blanco rounded-1 d-flex flex-row align-items-center m-l-10 m-t-10">
+                        <button class="rounded-1 font-body-2 d-flex align-items-center justify-content-center">
+                            Buscar 
+                            <i class="fa fa-search font-color-negro icon-size-3 m-l-5   "></i>
+                        </button>
+                    </div> -->
+                </div>
             </div>
             <div class="p-r-10 p-b-10 d-flex  bg-color-gris-2  flex-wrap align-items-center"> 
                 <div class="p-10 bg-color-blanco rounded-1 d-flex flex-row align-items-center m-l-10 m-t-10">
                     <p class="font-body-2 font-color-negro p-r-10">El nombre de usuario <b class="font-color-gris-3">contiene</b> juan</p>
-                    <i class="fas fa-times-circle icon-size-3"></i>
+                    <i class="fas fa-times-circle icon-size-3 font-color-rojo"></i>
                 </div>
                 <div class="p-10 bg-color-blanco rounded-1 d-flex flex-row align-items-center m-l-10 m-t-10">
                     <p class="font-body-2 font-color-negro p-r-10">El email <b class="font-color-gris-3">es</b> david@hotmail.com</p>
-                    <i class="fas fa-times-circle icon-size-3"></i>
+                    <i class="fas fa-times-circle icon-size-3 font-color-rojo"></i>
                 </div>
                 <div class="p-10 bg-color-blanco rounded-1 d-flex flex-row align-items-center m-l-10 m-t-10">
                     <p class="font-body-2 font-color-negro p-r-10">El email <b class="font-color-gris-3">contiene</b> hotmail.com</p>
-                    <i class="fas fa-times-circle icon-size-3"></i>
+                    <i class="fas fa-times-circle icon-size-3 font-color-rojo"></i>
                 </div>
                 <div class="p-10 bg-color-blanco rounded-1 d-flex flex-row align-items-center m-l-10 m-t-10">
                     <p class="font-body-2 font-color-negro p-r-10">El email <b class="font-color-gris-3">no contiene</b> gmail.com</p>
-                    <i class="fas fa-times-circle icon-size-3"></i>
-                </div>
-                <div data-target-type="modal" data-target="#btn-add-filter" class="p-10 bg-color-blanco rounded-1 d-flex flex-row align-items-center m-l-10 m-t-10">
-                    <button class="rounded-1 font-body-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-plus-circle icon-size-2"></i>
-                    </button>
+                    <i class="fas fa-times-circle icon-size-3 font-color-rojo"></i>
                 </div>
 
                 <div id="btn-add-filter" class="modal">
@@ -150,7 +160,7 @@
                             <div class="p-15 bg-color-blanco  rounded-top">
                                 <div>
                                     <span class="close">&times;</span>
-                                    <h3 class="font-color-negro font-body-2">Filtros avanzados de busqueda</h3>
+                                    <h3 class="font-color-negro font-body-1">Filtros avanzados de busqueda</h3>
                                     <div class="search-filter">
                                         <div class="p-10">
                                             <div class="p-10 rounded-1 border-negro bg-color-blanco d-flex flex-row align-items-center select">
@@ -197,15 +207,16 @@
                                         <div class="p-10 d-flex flex-col">
                                             <input class="p-10 border-negro rounded-1 font-body-2" type="text" name="name" placeholder="Ingresa lo que estas buscando">
                                         </div>
-                                        <div class="p-10 d-flex flex-col">
-                                            <button class="rounded-1 font-body-2 bg-color-celeste p-10 d-flex align-items-center justify-content-center">
-                                                Añadir <i class="fas fa-plus-circle icon-size-3"></i>
+                                        <div class="p-10 d-flex flex-col ">
+                                            <button class="p-10 rounded-1 border-negro font-body-2 d-flex align-items-center justify-content-center">
+                                                Añadir filtro
+                                                <i class="fas fa-plus-circle icon-size-3 m-l-5"></i>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                                 <hr class="m-t-10 m-b-10">
-                                <div class="d-flex flex-row align-items-center p-10">
+                                <div class="d-flex flex-row align-items-center">
                                     <p class="m-l-10 font-body-3 font-color-negro">Los resultados de la busqueda deben cumplir con</p>
                                     <select class="font-body-3 rounded-1 border-negro m-l-10  m-r-10 ">
                                         <option value="1">uno de</option>
@@ -217,19 +228,19 @@
                             <div class="p-r-10 p-b-10 d-flex flex-wrap align-items-center filters-container"> 
                                     <div class="p-10 bg-color-blanco rounded-1 d-flex flex-row align-items-center m-l-10 m-t-10">
                                         <p class="font-body-2 font-color-negro p-r-10">El nombre de usuario <b class="font-color-gris-3">contiene</b> juan</p>
-                                        <i class="fas fa-times-circle icon-size-3"></i>
+                                        <i class="fas fa-times-circle icon-size-3 font-color-rojo"></i>
                                     </div>
                                     <div class="p-10 bg-color-blanco rounded-1 d-flex flex-row align-items-center m-l-10 m-t-10">
                                         <p class="font-body-2 font-color-negro p-r-10">El email <b class="font-color-gris-3">es</b> david@hotmail.com</p>
-                                        <i class="fas fa-times-circle icon-size-3"></i>
+                                        <i class="fas fa-times-circle icon-size-3 font-color-rojo"></i>
                                     </div>
                                     <div class="p-10 bg-color-blanco rounded-1 d-flex flex-row align-items-center m-l-10 m-t-10">
                                         <p class="font-body-2 font-color-negro p-r-10">El email <b class="font-color-gris-3">contiene</b> hotmail.com</p>
-                                        <i class="fas fa-times-circle icon-size-3"></i>
+                                        <i class="fas fa-times-circle icon-size-3 font-color-rojo"></i>
                                     </div>
                                     <div class="p-10 bg-color-blanco rounded-1 d-flex flex-row align-items-center m-l-10 m-t-10">
                                         <p class="font-body-2 font-color-negro p-r-10">El email <b class="font-color-gris-3">no contiene</b> gmail.com</p>
-                                        <i class="fas fa-times-circle icon-size-3"></i>
+                                        <i class="fas fa-times-circle icon-size-3 font-color-rojo"></i>
                                     </div>
                                     <!-- <div class="position-absolute bottom-0 bg-color-blanco rounded-1 bottomn-10 p-10">
                                         <input type="radio" name="a" id="">
@@ -249,45 +260,77 @@
                 </div> -->
             </div>
             <div class="p-15 bg-color-blanco  rounded-top">
-                <h3 class="font-color-negro font-body-2">Resultados de busqueda: "Juan"</h3>
+                <h3 class="font-color-negro font-body-1">Resultados de busqueda: "Juan"</h3>
             </div>
-            <div class="p-15 d-flex bg-color-gris-2 rounded-bottom">
-                <ul class="d-flex w-100 flex-row flex-wrap">
-
-                    <li class="d-flex align-items-center flex-col text-start w-fit-content p-r-15 p-L-15">
-                        <div class=" p-15 m-r-10 m-l-10 bg-color-blanco rounded-top w-100 d-flex flex-col justify-content-center align-items-center">
-                            <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
-                            <p class="font-body-2 font-color-negro">Juan Perez</p>
-                        </div >
-                        <div class=" p-15 d-flex w-100 align-items-center flex-col text-start w-100 d-flex bg-color-gris-1 rounded-bottom">
-                            <p class="font-body-3 font-color-negro">Edad: 20 años</p>
-                            <p class="font-body-3 font-color-negro">Datos</p>
-                            <p class="font-body-3 font-color-negro">20 años</p>
-                        </div>
-                    </li>
-                    <li class="d-flex align-items-center flex-col text-start w-fit-content p-r-15 p-L-15">
-                        <div class=" p-15 m-r-10 m-l-10 bg-color-blanco rounded-top w-100 d-flex flex-col justify-content-center align-items-center">
-                            <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
-                            <p class="font-body-2 font-color-negro">Juan Perez</p>
-                        </div >
-                        <div class=" p-15 d-flex w-100 align-items-center flex-col text-start w-100 d-flex bg-color-gris-1 rounded-bottom">
-                            <p class="font-body-3 font-color-negro">Edad: 20 años</p>
-                            <p class="font-body-3 font-color-negro">Datos</p>
-                            <p class="font-body-3 font-color-negro">20 años</p>
-                        </div>
-                    </li>
-                    <li class="d-flex align-items-center flex-col text-start w-fit-content p-r-15 p-L-15">
-                        <div class=" p-15 m-r-10 m-l-10 bg-color-blanco rounded-top w-100 d-flex flex-col justify-content-center align-items-center">
-                            <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
-                            <p class="font-body-2 font-color-negro">Juan Perez</p>
-                        </div >
-                        <div class=" p-15 d-flex w-100 align-items-center flex-col text-start w-100 d-flex bg-color-gris-1 rounded-bottom">
-                            <p class="font-body-3 font-color-negro">Edad: 20 años</p>
-                            <p class="font-body-3 font-color-negro">Datos</p>
-                            <p class="font-body-3 font-color-negro">20 años</p>
-                        </div>
-                    </li>
-                </ul>   
+            <div class="p-15 d-flex flex-row flex-wrap justify-content-around bg-color-gris-2 rounded-bottom ">
+                <div class="d-flex align-items-center flex-col text-start w-fit-content p-L-15 m-15">
+                    <div class=" p-15 m-r-15 m-l-15 bg-color-blanco rounded-top w-100 d-flex flex-col justify-content-center align-items-center">
+                        <img class="img-size-4" src="./images/perfil1.png" alt="avatar de perfíl">
+                        <p class="font-body-2 font-color-negro">Juan Perez</p>
+                    </div>
+                    <div class=" p-15 d-flex w-100 align-items-center flex-col text-start w-100 d-flex bg-color-gris-1 rounded-bottom">
+                        <p class="font-body-3 font-color-negro">Edad: 20 años</p>
+                        <p class="font-body-3 font-color-negro">Datos</p>
+                        <p class="font-body-3 font-color-negro">20 años</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center flex-col text-start w-fit-content p-L-15 m-15">
+                    <div class=" p-15 m-r-15 m-l-15 bg-color-blanco rounded-top w-100 d-flex flex-col justify-content-center align-items-center">
+                        <img class="img-size-4" src="./images/perfil1.png" alt="avatar de perfíl">
+                        <p class="font-body-2 font-color-negro">Juan Perez</p>
+                    </div>
+                    <div class=" p-15 d-flex w-100 align-items-center flex-col text-start w-100 d-flex bg-color-gris-1 rounded-bottom">
+                        <p class="font-body-3 font-color-negro">Edad: 20 años</p>
+                        <p class="font-body-3 font-color-negro">Datos</p>
+                        <p class="font-body-3 font-color-negro">20 años</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center flex-col text-start w-fit-content p-L-15 m-15">
+                    <div class=" p-15 m-r-15 m-l-15 bg-color-blanco rounded-top w-100 d-flex flex-col justify-content-center align-items-center">
+                        <img class="img-size-4" src="./images/perfil1.png" alt="avatar de perfíl">
+                        <p class="font-body-2 font-color-negro">Juan Perez</p>
+                    </div>
+                    <div class=" p-15 d-flex w-100 align-items-center flex-col text-start w-100 d-flex bg-color-gris-1 rounded-bottom">
+                        <p class="font-body-3 font-color-negro">Edad: 20 años</p>
+                        <p class="font-body-3 font-color-negro">Datos</p>
+                        <p class="font-body-3 font-color-negro">20 años</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center flex-col text-start w-fit-content p-L-15 m-15">
+                    <div class=" p-15 m-r-15 m-l-15 bg-color-blanco rounded-top w-100 d-flex flex-col justify-content-center align-items-center">
+                        <img class="img-size-4" src="./images/perfil1.png" alt="avatar de perfíl">
+                        <p class="font-body-2 font-color-negro">Juan Perez</p>
+                    </div>
+                    <div class=" p-15 d-flex w-100 align-items-center flex-col text-start w-100 d-flex bg-color-gris-1 rounded-bottom">
+                        <p class="font-body-3 font-color-negro">Edad: 20 años</p>
+                        <p class="font-body-3 font-color-negro">Datos</p>
+                        <p class="font-body-3 font-color-negro">20 años</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center flex-col text-start w-fit-content p-L-15 m-15">
+                    <div class=" p-15 m-r-15 m-l-15 bg-color-blanco rounded-top w-100 d-flex flex-col justify-content-center align-items-center">
+                        <img class="img-size-4" src="./images/perfil1.png" alt="avatar de perfíl">
+                        <p class="font-body-2 font-color-negro">Juan Perez</p>
+                    </div>
+                    <div class=" p-15 d-flex w-100 align-items-center flex-col text-start w-100 d-flex bg-color-gris-1 rounded-bottom">
+                        <p class="font-body-3 font-color-negro">Edad: 20 años</p>
+                        <p class="font-body-3 font-color-negro">Datos</p>
+                        <p class="font-body-3 font-color-negro">20 años</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center flex-col text-start w-fit-content p-L-15 m-15">
+                    <div class=" p-15 m-r-15 m-l-15 bg-color-blanco rounded-top w-100 d-flex flex-col justify-content-center align-items-center">
+                        <img class="img-size-4" src="./images/perfil1.png" alt="avatar de perfíl">
+                        <p class="font-body-2 font-color-negro">Juan Perez</p>
+                    </div>
+                    <div class=" p-15 d-flex w-100 align-items-center flex-col text-start w-100 d-flex bg-color-gris-1 rounded-bottom">
+                        <p class="font-body-3 font-color-negro">Edad: 20 años</p>
+                        <p class="font-body-3 font-color-negro">Datos</p>
+                        <p class="font-body-3 font-color-negro">20 años</p>
+                    </div>
+                </div>
+                
+                
             </div>
         </div>
     </section>
