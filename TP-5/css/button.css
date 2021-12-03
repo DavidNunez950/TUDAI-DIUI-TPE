@@ -1,0 +1,75 @@
+    /* body,html{
+        height: 100%;
+    }
+
+    body {
+        font-family: "Lato", sans-serif;
+        color: #111;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        background-color: #ECECEC;
+    } */
+
+.container {
+	width: auto;
+	display: flex;
+	flex-direction: column;
+	/* //border: 2px solid black; */
+}
+
+.btn{
+	margin: 20px auto;
+	border: none;
+	padding: 10px 44px;
+	position: relative;
+}
+
+.btn::before{
+    transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    content: '';
+    width: 0%;
+    height: 100%;
+    background: #8D75AD;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.btn .btn-text{
+    color: rgb(155, 1, 1);
+    mix-blend-mode: difference;
+}
+.btn:hover::before{
+    background: white;
+    border-radius: 50px;
+    width: 100%;
+}
+
+
+
+/* //rounded btn styles */
+.btn.rounded{
+    border-radius:50px;
+}
+.btn.rounded .text-green{
+    color:#00F0B5;
+    mix-blend-mode: difference;
+}
+
+.btn.rounded::before{
+    border-radius: 50px;
+    width: 25%;
+    background: #00F0B5;
+}
+/* .btn.rounded:hover{
+}	 */
+.btn.rounded:hover::before{
+background: #00F0B5;
+    width: 100%;
+}
+
+
+	

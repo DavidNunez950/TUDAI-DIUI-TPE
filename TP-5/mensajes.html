@@ -25,7 +25,7 @@
                     <div class="w-100">
                         <input id="search-input" class="w-100 bg-color-gris-1 font-body-2 font-color-negro" type="text" name="buscar" placeholder="Busca...">
                     </div>
-                    <i class="fa fa-search font-color-negro icon-size-2 mn-t-3 icon-input position-absolute top-25 p-r-10   position-end"></i>
+                    <i class="fa fa-search font-color-celeste icon-size-2 mn-t-3 icon-input position-absolute top-25 p-r-10   position-end"></i>
                 </div>  
                 <div class="position-relative mn-t-5">
                     <div class="dropdown-content d-none text-start position-absolute w-100 bg-color-blanco rounded-1 shadow p-10 mn-t-15 p-t-15 z-index-1" id="drowdown-search"> 
@@ -62,25 +62,21 @@
                 <li>
                     <a href="muro-noticias.html">    
                         <div>
-                            <i class="fas fa-home font-color-negro icon-size-2"></i>
-                            <p class="font-color-negro font-body-4">
-                            </p>
+                            <i class="fas fa-home font-color-celeste icon-size-2"></i>
                         </div>
                     </a>
                 </li>
                 <li>
                     <a id="btn-notificaciones" href="#"> 
                         <div>
-                            <i class="fas fa-bell font-color-negro icon-size-2"></i>
-                            <p class="font-color-negro font-body-4">
-                            </p>
+                            <i class="fas fa-bell font-color-celeste icon-size-2"></i>
                         </div>
                     </a>
                 </li>
                 <li>
                     <a href="mensajes.html">    
                         <div>
-                            <i class="fas fa-comment-alt font-color-negro icon-size-2"></i>
+                            <i class="fas fa-comment-alt font-color-celeste icon-size-2"></i>
                             <p class="font-color-negro font-body-4">
                             </p>
                         </div>
@@ -89,19 +85,18 @@
                 <li>
                     <a href="#">    
                         <div class="drowpdown" data-target-type="drowpdown" data-target="#drowdown-perfil"> 
-                            <i class="fas fa-user font-color-negro icon-size-2"></i>
-                            <p class="font-color-negro font-body-4">
-                            </p>
+                            <i class="fas fa-user font-color-celeste icon-size-2"></i>
+                            <p class="font-color-negro font-body-4"></p>
                         </div>
                         <div class="position-relative w-100">
                             <div class="dropdown-content d-none position-end text-start position-absolute bg-color-blanco rounded-1 shadow p-15 m-t-15" id="drowdown-perfil">
                                 <div>
                                     <p class="m-t-10 m-b-10">
-                                        <i class="fas fa-user rounded-2 border-negro-2v"></i>
+                                        <i class="fas fa-user rounded-2 border-negro-2 font-color-celeste"></i>
                                         Ver perfil
                                     </p>
                                     <p class="m-t-10 m-b-10">
-                                        <i class="fas fa-cog rounded-2 border-negro-2v"></i>
+                                        <i class="fas fa-cog rounded-2 border-negro-2v font-color-celeste"></i>
                                         Editar peril
                                     </p>
                                 </div>
@@ -118,10 +113,9 @@
         </div>        
     </header>
 
-
     <!--container de notificaciones-->
-    <div id="notificaciones" class="notificaciones display">
-        <ul class="d-flex flex-col align-items-center p-15 bg-color-blanco  shadow">
+    <div id="notificaciones" class="notificaciones display ">
+        <ul class="d-flex flex-col align-items-center p-15 bg-color-blanco rounded-1 shadow">
             <h3 class="font-header-4 p-b-15 font-color-negro bold">Notificaciones</h3>
 
             <li class="d-flex align-items-center bg-color-gris-1 rounded-1 m-b-10">
@@ -188,36 +182,14 @@
         <div class="messages d-flex flex-col rounded-1 m-r-15 bg-color-gris-1 shadow">
             <div class="container-search-message bg-color-blanco p-15 rounded-top ">
                 <div class="d-flex justify-content-center p-10">
-                    <h4 class="font-color-negro font-header-4">Chats</h4>
+                    <h4 class="font-color-negro font-body-2">Chats</h4>
                 </div>
                 <div class="w-100 d-flex align-items-center justify-content-around">
-                    <input class="rounded-2 p-10 m-r-10 bg-color-gris-2 w-100" type="text" name="buscar" placeholder="Buscar mensaje...">
+                    <input class="rounded-2 p-10 m-r-10 bg-color-gris-1 w-100" type="text" name="buscar" placeholder="Buscar mensaje...">
                     <i class="fa fa-search font-color-celeste icon-size-2 icon-input"></i>
                 </div>
             </div>
-            <ul class="scroll">   
-                
-                <!-- <li>
-                    <div class="d-flex rounded-1 bg-color-blanco align-items-center justify-content-evenly padding-r-l-10 m-10">
-                        <div class="">
-                            <img class="img-size-4 m-5" src="./images/perfil1.png" alt="avatar de mensaje">
-                        </div >
-                        <div class="d-flex align-items-center">
-                            <div>
-                                <div>
-                                    <p class="font-body-3 font-color-gris-3">Juan Perez</p>
-                                </div>
-                                <div>
-                                    <p class="font-body-4 font-color-negro text-overflow">jhhasbjhbjhbjscbjsbjabdjhbjfbjwbfwbefbwejhh</p>
-                                </div>
-                                <div class="m-t-10">
-                                    <p class="font-body-4 font-color-gris-3">27 nov</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li> -->
-
+            <ul class="scroll">                   
                 <li class="d-flex align-items-center justify-content-center m-10 rounded-1 bg-color-blanco active">
                     <div class="d-flex">
                         <div class="p-5 m-r-10 m-l-10">
@@ -340,8 +312,8 @@
             <div class="d-flex align-items-center bg-color-blanco p-10 rounded-top">
                 <img src="./images/perfil3.png" alt="Avatar" class="img-size-4 m-r-10">
                 <div class="w-100 d-flex flex-col">
-                    <p class="font-body-3 font-color-gris-3">Maria Gomez</p>
-                    <p class="font-body-4 font-color-gris-3">Escribiendo...</p>
+                    <p class="font-body-2 font-color-gris-3">Maria Gomez</p>
+                    <p class="font-body-3 font-color-gris-3">Escribiendo...</p>
                 </div>
             </div>
             
@@ -353,10 +325,10 @@
                     </div>
                     <div>
                         <div class="bg-color-blanco rounded-1 p-10 m-5">
-                            <p class="font-body-3 font-color-negro">Hola! como estas?</p>
+                            <p class="font-body-2 font-color-negro">Hola! como estas?</p>
                         </div>
                         <div class="m-l-5">
-                            <p class="font-body-4 font-color-gris-3"> 18:40 pm</p>
+                            <p class="font-body-3 font-color-gris-3"> 18:40 pm</p>
                         </div>
                     </div>
                 </div>
@@ -364,16 +336,16 @@
                 <div class="d-flex align-items-start margin-r-l p-t-15 justify-content-end">
                     <div class="d-flex flex-col">
                         <div class="bg-color-blanco rounded-1 p-10 m-5">
-                            <p class="font-body-3 font-color-negro text-align-justify interlineado">Bien</p>
+                            <p class="font-body-2 font-color-negro text-align-justify interlineado">Bien</p>
                         </div>
                         <div class="m-l-5">
-                            <p class="font-body-4 font-color-gris-3 text-align-justify interlineado"> 18:40 pm</p>
+                            <p class="font-body-3 font-color-gris-3 text-align-justify interlineado"> 18:40 pm</p>
                         </div>
                         <div class="bg-color-blanco rounded-1 p-10 m-5">
-                            <p class="font-body-3 font-color-negro text-align-justify interlineado">vos?</p>
+                            <p class="font-body-2 font-color-negro text-align-justify interlineado">vos?</p>
                         </div>
                         <div class="m-l-5">
-                            <p class="font-body-4 font-color-gris-3 text-align-justify interlineado"> 18:40 pm</p>
+                            <p class="font-body-3 font-color-gris-3 text-align-justify interlineado"> 18:40 pm</p>
                         </div>
                     </div>
                     <div>
@@ -387,10 +359,10 @@
                     </div>
                     <div class="d-flex flex-col">
                         <div class="bg-color-blanco rounded-1 p-10 m-5">
-                            <p class="font-body-3 font-color-negro text-align-justify interlineado">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, labore quae dolor non accusamus quaerat, nemo facilis odio eaque asperiores, eius rem praesentium. Pariatur ab neque esse nobis! Veritatis, cumque.</p>
+                            <p class="font-body-2 font-color-negro text-align-justify interlineado">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, labore quae dolor non accusamus quaerat, nemo facilis odio eaque asperiores, eius rem praesentium. Pariatur ab neque esse nobis! Veritatis, cumque.</p>
                         </div>
                         <div class="m-l-5">
-                            <p class="font-body-4 font-color-gris-3 text-align-justify interlineado"> 18:40 pm</p>
+                            <p class="font-body-3 font-color-gris-3 text-align-justify interlineado"> 18:40 pm</p>
                         </div>
                     </div>
                 </div>
@@ -408,10 +380,10 @@
                     </div>
                     <div>
                         <div class="bg-color-blanco rounded-1 p-10 m-5">
-                            <p class="font-body-3 font-color-negro">Hola! como te fue con el trabajo?</p>
+                            <p class="font-body-2 font-color-negro">Hola! como te fue con el trabajo?</p>
                         </div>
                         <div class="m-l-5">
-                            <p class="font-body-4 font-color-gris-3"> 18:40 pm</p>
+                            <p class="font-body-3 font-color-gris-3"> 18:40 pm</p>
                         </div>
                     </div>
                 </div>
@@ -422,7 +394,7 @@
                 <div class="w-100 d-flex align-items-center justify-content-around">
                     <input id="input-chat" class="rounded-2 p-10 m-r-10 bg-color-gris-2 w-100" type="text" name="enviar-mensaje" placeholder="Enviar mensaje...">
                     <button>
-                        <i class="fas fa-video font-color-celeste icon-size-2 icon-input p-l-10" data-target-type="modal" data-target="#llamar"></i>
+                        <i class="fas fa-video font-color-celeste icon-size-2 icon-input p-l-10"></i>
                     </button>
                     <button id="btn-enviar-mensaje">
                         <i class="fas fa-paper-plane font-color-celeste icon-size-2 icon-input p-l-10"></i>
@@ -432,12 +404,12 @@
         </div>
     </section>
 
-    <!--DIV PARA MODAL DE LLAMADA-->>
+    <!--DIV PARA MODAL DE LLAMADA
     <div id="llamar" class="modal">
         <div class="modal-content modal-fit-conten | d-flex direction-col bg-color-gris-1 align-items-center p-15 w-25 rounded-1 m-15">
             <div class=" position-relative w-100">
                 <p class="font-header-4 font-color-negro" >Maria Lopez</p>
-                <!-- Boton para cerrar -->
+                
                 <span class="close position-absolute position-end top-start">&times;</span>
             </div>
             <div>
@@ -461,5 +433,6 @@
             </div>
         </div>
     </div>
+    Boton para cerrar -->
 </body>
 </html>

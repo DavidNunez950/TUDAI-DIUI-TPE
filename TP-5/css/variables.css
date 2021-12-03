@@ -8,7 +8,8 @@
     --rojo   : #FF6B6B;
     --verde  : #80ED99;
     /* --celeste: #9d4edd;  */
-    --celeste: #5DB8FA; 
+    --celeste: #8D75AD ; 
+    /* --celeste: #8D75AD ;  */
     --grid-col: repeat(12, 1fr);
 }
 
@@ -40,7 +41,7 @@ input:focus {
     outline:none;
 }
 a {
-    color: inherit;
+    color: var(--celeste);
     text-decoration: inherit;
 }
 

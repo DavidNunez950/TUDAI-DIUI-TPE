@@ -8,6 +8,7 @@
 @import url(loading.css);
 @import url(modal.css);
 @import url(dropdown.css);
+@import url(button.css);
 
 
 
@@ -116,7 +117,7 @@
 /*Columna lista de amigos, publicidad y footer*/
 .friend-list{
     display: grid;
-    grid-template-rows: 300px 200px 200px;
+    grid-template-rows: 325px 250px 200px;
     grid-template-areas: 
         "friends"
         "publicidad"
@@ -311,14 +312,23 @@ a:hover,
     width: 10px;
   }
   
-  /* Track */
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
-    border-radius: 10px;
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: var(--negro); 
-    border-radius: 10px;
-  }
+/* Track */
+::-webkit-scrollbar-track {
+box-shadow: inset 0 0 5px grey; 
+border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: var(--negro); 
+border-radius: 10px;
+}
+
+i:hover, button:hover{
+    color: #1C063A ;
+    cursor: pointer;
+}
+
+a{
+    color: var(--celeste);
+}

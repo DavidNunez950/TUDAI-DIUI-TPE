@@ -19,29 +19,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
    });
 
 
-    /* 
-    divContenedor
-    <div class="d-flex align-items-start margin-r-l p-t-15">
-        div1
-        <div>
-            <img src="./images/perfil3.png" alt="Avatar" class="img-size-4">
-        </div>
-
-        div2
-        <div>
-            div3
-            <div class="bg-color-blanco rounded-1 p-10 m-5">
-                <p class="font-body-3 font-color-negro">Hola! como te fue con el trabajo?</p>
-            </div>
-
-            div4
-            <div class="m-l-5">
-                <p class="font-body-4 font-color-gris-3"> 18:40 pm</p>
-            </div>
-        </div>
-    </div> */
-    
-
     function appendMensaje() {
          /**Crear elementos */
          let divContenedor = document.createElement("div");
