@@ -11,9 +11,14 @@
     --celeste: #8D75AD ; 
     /* --celeste: #8D75AD ;  */
     --grid-col: repeat(12, 1fr);
+    --login-diplay: grid;
 }
 
-
+@media (max-width: 480px) {
+    :root {
+        --login-diplay: flex;
+    }
+}
 
 /* Global */
 * {
