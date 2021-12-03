@@ -49,6 +49,9 @@
 }
 
 /*Texto*/
+.text-align-end{
+    text-align: end;
+}
 .text-align-justify{
     text-align: justify;
 }
@@ -193,4 +196,8 @@
 .oscurecer{
     /* filter: blur(2px); */
     filter: brightness(50%)
+}
+
+.rotate{
+    transform: rotate(90deg);
 }
