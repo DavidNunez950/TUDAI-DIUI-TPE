@@ -57,7 +57,7 @@ function addFormsValidationsEvents() {
     document.querySelectorAll(".input-container").forEach(input => inputs.push(new FormValidator(input)) );
     form.addEventListener("submit", (e) => { 
         e.preventDefault();
-        const defaultText = btn.innerText;
+        const defaultText = btn.getAttribute("data-default-text");
         if(inputs.filter( input => input.applyValidation() === false ).length === 0) {
             if(btn.innerText !== defaultText) {
                 btn.innerText = defaultText;
