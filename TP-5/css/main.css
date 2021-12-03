@@ -100,7 +100,7 @@
 .container-messages {
     grid-template-columns: var(--grid-col);
     /* grid: template-ro2; */
-    grid-template-rows: 15px 532px;
+    grid-template-rows: 15px 492px;
     grid-template-areas: 
         " . . . . . . . . . . . . " 
         ". message message message chat chat chat chat chat chat  chat ."
@@ -325,3 +325,21 @@ a:hover,
     text-decoration:underline;
 }
 
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--negro); 
+    border-radius: 10px;
+  }
