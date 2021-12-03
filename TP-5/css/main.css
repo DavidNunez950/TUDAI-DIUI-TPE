@@ -331,3 +331,44 @@ i:hover, button:hover{
 a{
     color: var(--celeste);
 }
+
+
+
+
+
+.slide_right:hover {
+    box-shadow: inset 400px 0 0 0 var(--celeste);
+    color: var(--blanco);
+
+}  
+
+button.slide_right{
+    background-color: var(--blanco);
+    color: var(--celeste);
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+    border: 2px solid var(--celeste);;
+}
+
+
+.slide_right_back:hover {
+    box-shadow: inset 400px 0 0 0 var(--rojo);
+    color: var(--blanco);
+
+}  
+
+button.slide_right_back{
+    background-color: var(--blanco);
+    color: var(--rojo);
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+    border: 2px solid var(--rojo);;
+}
