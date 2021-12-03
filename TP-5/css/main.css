@@ -15,7 +15,7 @@
 .navbar {
     flex-direction: row no-wrap;
     grid-template-columns: var(--grid-col);
-    grid-template-areas: ". navbar-logo navbar-logo navbar-logo navbar-logo   navbar-logo . . navbar-menu navbar-menu navbar-menu  .";
+    grid-template-areas: ". navbar-logo navbar-logo navbar-logo navbar-logo . . . navbar-menu navbar-menu navbar-menu  .";
     /* grid-template-areas: ". navbar-logo navbar-logo navbar-logo . . . . . navbar-menu navbar-menu ."; */
 }
 .navbar > div { 
@@ -203,7 +203,7 @@ select:focus ~ .fa-chevron-up {
 
 .container-busqueda {
     grid-template-columns: var(--grid-col);
-    grid-template-rows: 15px auto 15px;
+    grid-template-rows: 15px auto auto 15px;
     grid-template-areas: 
         " . . . . . . . . . . . . " 
         ". filtro filtro filtro filtro filtro filtro filtro filtro filtro filtro ." 

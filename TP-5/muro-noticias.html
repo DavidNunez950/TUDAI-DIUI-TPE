@@ -13,50 +13,45 @@
 <body class="bg-color-gris-1">
 
     <!-- Header -->
-    <header class=" p-b-5 p-t-5 d-grid bg-color-blanco shadow navbar">
+    <header class=" p-b-5 p-t-5 d-grid bg-color-blanco shadow navbar z-index-2">
         <div class="text-center d-flex flex-row align-items-center ">
             <a href="muro-noticias.html">
                 <div>
-                    <img src="img/logo.jpg" class="img-size-2" alt="logo">
+                    <img src="img/logo.jpg" class="img-size-4" alt="logo">
                 </div>
-                <h1 class="font-body-3">
-                    VetTech
-                </h1>
             </a>
             <div class=" w-100 m-l-15  font-color-negro font-body-2 position-relative drowpdown">
-                <div class=" w-100  position-relative rounded-2 p-10  bg-color-gris-1" data-target-type="drowpdown" data-target="#drowdown-search">
+                <div class=" w-100  position-relative rounded-2 p-10  z-index-4  bg-color-gris-1" data-target-type="drowpdown" data-target="#drowdown-search">
                     <div class="w-100">
-                        <input class="w-100 bg-color-gris-1 font-body-2 font-color-negro" type="text" name="buscar" placeholder="Busca...">
+                        <input id="search-input" class="w-100 bg-color-gris-1 font-body-2 font-color-negro" type="text" name="buscar" placeholder="Busca...">
                     </div>
-                    <i class="fa fa-search font-color-negro icon-size-2 icon-input position-absolute top-25 p-r-10   position-end"></i>
+                    <i class="fa fa-search font-color-negro icon-size-2 mn-t-3 icon-input position-absolute top-25 p-r-10   position-end"></i>
                 </div>  
-                <div class="position-relative">
-                    <div class="dropdown-content d-none text-start position-absolute w-100 bg-color-gris-1 rounded-1 shadow p-10 m-t-15" id="drowdown-search"> 
-                        <p>Resultados busqueda: </p>
+                <div class="position-relative mn-t-5">
+                    <div class="dropdown-content d-none text-start position-absolute w-100 bg-color-blanco rounded-1 shadow p-10 mn-t-15 p-t-15 z-index-1" id="drowdown-search"> 
+                        <p class="p-t-15">Resultados busqueda: </p>
                         <hr class="m-t-1 m-b-10">
                         <div class="d-flex flex-col">
-                            <ul class=" ">
-                                <li class="d-flex align-items-center rounded-1 m-10">
-                                    <div class="p-5 m-r-10 m-l-10">
-                                        <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
-                                    </div >
-                                    <div class="d-flex w-100">
-                                        <p class="font-body-3 font-color-gris-3">Juan Perez</p>
-                                    </div>
-                                </li>  
-                                <li class="d-flex align-items-center rounded-1 m-10">
-                                    <div class="p-5 m-r-10 m-l-10">
-                                        <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
-                                    </div >
-                                    <div class="d-flex w-100">
-                                        <p class="font-body-3 font-color-gris-3">Juan Perez</p>
-                                    </div>
-                                </li>  
-                            </ul>
+                            <div class="d-flex align-items-center rounded-1">
+                                <div class="p-5 m-r-5 m-l-5">
+                                    <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                                </div >
+                                <div class="d-flex w-100">
+                                    <p class="font-body-2 font-color-gris-3">Juan Perez</p>
+                                </div>
+                            </div> 
+                            <div class="d-flex align-items-center rounded-1">
+                                <div class="p-5 m-r-5 m-l-5">
+                                    <img class="img-size-4" src="./images/perfil1.png" alt="avatar de mensaje">
+                                </div >
+                                <div class="d-flex w-100">
+                                    <p class="font-body-2 font-color-gris-3">Juan Perez</p>
+                                </div>
+                            </div> 
                         </div>
                         <hr class="m-t-10 m-b-10">
                         <div class=" w-100 text-end">
-                            <a class="text-end"><i class="fas fa-sliders-h"></i> Filtros de busqueda avanzada </a>
+                            <a href="busqueda.html" class="text-end"><i class="fas fa-sliders-h"></i> Filtros de busqueda avanzada </a>
                         </div>
                     </div>
                 </div>
@@ -69,7 +64,6 @@
                         <div>
                             <i class="fas fa-home font-color-negro icon-size-2"></i>
                             <p class="font-color-negro font-body-4">
-                                Inicio
                             </p>
                         </div>
                     </a>
@@ -79,7 +73,6 @@
                         <div>
                             <i class="fas fa-bell font-color-negro icon-size-2"></i>
                             <p class="font-color-negro font-body-4">
-                                Notificaciones
                             </p>
                         </div>
                     </a>
@@ -89,7 +82,6 @@
                         <div>
                             <i class="fas fa-comment-alt font-color-negro icon-size-2"></i>
                             <p class="font-color-negro font-body-4">
-                                Mensajes
                             </p>
                         </div>
                     </a>
@@ -99,22 +91,25 @@
                         <div class="drowpdown" data-target-type="drowpdown" data-target="#drowdown-perfil"> 
                             <i class="fas fa-user font-color-negro icon-size-2"></i>
                             <p class="font-color-negro font-body-4">
-                                Perfil
                             </p>
                         </div>
                         <div class="position-relative w-100">
                             <div class="dropdown-content d-none position-end text-start position-absolute bg-color-blanco rounded-1 shadow p-15 m-t-15" id="drowdown-perfil">
                                 <div>
-                                    <p>
+                                    <p class="m-t-10 m-b-10">
                                         <i class="fas fa-user rounded-2 border-negro-2v"></i>
-                                        Perfíl
+                                        Ver perfil
+                                    </p>
+                                    <p class="m-t-10 m-b-10">
+                                        <i class="fas fa-cog rounded-2 border-negro-2v"></i>
+                                        Editar peril
                                     </p>
                                 </div>
                                 <hr class="m-t-10 m-b-10">
-                                <p>
+                                <a href="login.html">
                                     <i class="fas fa-sign-out-alt"></i>
                                     Salir
-                                </p>
+                                </a>
                             </div>
                         </div>
                     </a>
